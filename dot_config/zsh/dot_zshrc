@@ -46,7 +46,9 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 bindkey -s '^a' '^ubc -lq\n'
 
-bindkey -s '^f' '^ucd "$(dirname "$(fzf)")"\n'
+bindkey -s '^f' '^ucd "$(dirname "$(fzy)")"\n'
+
+bindkey -s '^x' '^uchezmoi edit "${HOME}/$(chezmoi managed | fzy)"\n'
 
 bindkey '^[[P' delete-char
 
