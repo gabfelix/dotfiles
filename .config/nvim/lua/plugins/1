@@ -13,7 +13,7 @@ local M = {
 		autopairs = { enable = true },
 		autotag = { enable = true },
 		indent = { enable = true },
-		ensure_installed = {"c", "cpp"},
+		ensure_installed = {"c", "cpp", "python", "markdown", "lua", "json", "javascript", "typescript", "rust"},
         sync_install = true,
 	},
 	config = function(_, opts)

@@ -2,7 +2,7 @@ local M = {
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
-		{ "nvim-telescope/telescope-fzy-native.nvim" },
+		{ "nvim-telescope/telescope-fzf-native.nvim" },
 	},
 	keys = {
 			{ '<leader>ff', function() require('telescope.builtin').find_files() end },
@@ -13,7 +13,7 @@ local M = {
 	config = function(_, opts)
 		local telescope = require("telescope")
 		telescope.setup(opts)
-		telescope.load_extension("fzy_native")
+		telescope.load_extension("fzf_native")
 	end
 }
 
