@@ -1,7 +1,5 @@
-local M = {
+return {
 	"nvim-lualine/lualine.nvim",
 	lazy = false,
 	config = true,
 }
-
-return M

@@ -1,6 +1,6 @@
-local M = {
+return {
 	"nvim-treesitter/nvim-treesitter",
-	event = "BufReadPost",
+	event = "VeryLazy",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-refactor",
 	},
@@ -20,5 +20,3 @@ local M = {
 		require("nvim-treesitter.configs").setup(opts)
 	end,
 }
-
-return M

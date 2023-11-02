@@ -1,14 +1,13 @@
-local M = {
-	"ellisonleao/gruvbox.nvim",
+return {
+	"navarasu/onedark.nvim",
 	lazy = false,
 	priority = 1000,
 	config = function(_, opts)
 		vim.opt.termguicolors = true
-		vim.opt.background = "dark"
-		local gruvbox = require("gruvbox")
-		gruvbox.setup(opts)
-		vim.cmd.colorscheme('gruvbox')
+		local theme = require("onedark")
+		theme.setup({
+			style = 'dark'
+		})
+		theme.load()
 	end,
 }
-
-return M
