@@ -11,6 +11,7 @@ alias "v"="$EDITOR"
 
 alias "g"="git"
 alias "ga"="git add -A"
+alias "gac"="git add -A && git commit"
 alias "gap"="git add -p"
 alias "gc"="git commit"
 
