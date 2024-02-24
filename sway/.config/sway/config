@@ -219,7 +219,7 @@ bar {
     colors {
         statusline #ffffff
         background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        inactive_workspace #323232 #323232 #5c5c5c
     }
 }
 
@@ -258,6 +258,11 @@ set $exec exec
 bindsym $mod+Print exec grim ~/img/shots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png && notify-send "📸 Screenshot taken" "Saved to ~/img/shots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png" -t 3000
 bindsym $mod+Shift+Print exec slurp | grim -g - ~/img/shots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png && notify-send "📸 Screenshot taken" "Saved to ~/img/shots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png" -t 3000
 bindsym $mod+y $exec ${BROWSER:-firefox}
+
+# Workspace assignments
+# Use `swaymsg -t get_tree` to get app information
+assign [app_id="LibreWolf"] workspace number 1
+assign [class="Gimp"] workspace number 4
 
 # Hide idling cursor (3s)
 seat * hide_cursor 3000
