@@ -1,0 +1,16 @@
+set smartcase true
+set sixel true
+set previewer ~/.config/lf/scope
+
+cmd mkdir $mkdir -p "$@"
+cmd touch $touch "$@"
+
+map <c-n> push :mkdir<space>""<left>
+map <c-t> push :touch<space>""<left>
+map D delete
+# rename (keep only extension)
+map R :rename; cmd-delete-home
+
+# Shortcuts
+map gh cd ~
+map gc cd ~/.config
