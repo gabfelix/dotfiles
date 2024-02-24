@@ -1,11 +1,13 @@
 return {
-	"mcchrish/zenbones.nvim",
+	"luisiacc/gruvbox-baby",
 	lazy = false,
 	priority = 1000,
 	config = function()
-		vim.g.zenbones_compat = 1
 		vim.opt.termguicolors = true
 		vim.opt.background = "dark"
-		vim.cmd.colorscheme("zenbones")
+		require("lualine").setup({
+			theme = "gruvbox-baby"
+		})
+		vim.cmd.colorscheme("gruvbox-baby")
 	end,
 }
