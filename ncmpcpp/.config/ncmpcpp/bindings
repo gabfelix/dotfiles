@@ -465,10 +465,10 @@ def_key "g"
 #jump_to_position_in_song
 def_key "U"
   update_database
-def_key "s"
+def_key "S"
   reset_search_engine
 def_key "s"
-  show_search_engine
+  stop
 def_key "f"
   show_browser
 def_key "f"
