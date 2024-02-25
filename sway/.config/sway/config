@@ -18,7 +18,11 @@ set $term ${TERMINAL:-foot}
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu bemenu-run
+
+# Arguments to try to make bemenu look like as much like dmenu as possible
+set $dmenu_compat_args -p '' --tb "#1a1a1a" --tf "#268bd2" --fb "#1a1a1a" --nb "#1a1a1a" --ab "#1a1a1a" --hb "#1a1a1a" --hf "#268bd2" --line-height 30
+set $dmenu bemenu $dmenu_compat_args
+set $dmenu_run bemenu-run $dmenu_compat_args
 
 ### Output configuration
 #
@@ -80,7 +84,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+q kill
 
 # Start your launcher
-bindsym $mod+d exec $menu
+bindsym $mod+d exec $dmenu_run
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
