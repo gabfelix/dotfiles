@@ -15,7 +15,7 @@ alias "gac"="git add -A && git commit"
 alias "gap"="git add -p"
 alias "gc"="git commit"
 
-alias "p"="pacman"
+alias "p"="sudo pacman"
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias cp="cp -iv" 
