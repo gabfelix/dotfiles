@@ -214,7 +214,7 @@ bindsym $mod+r mode "resize"
 bar {
     position top
 
-    status_command while echo "$(cat /sys/class/power_supply/BAT1/capacity)% $(date +'%Y-%m-%d %H:%M')"; do sleep 30; done
+    status_command while echo "$(cat /sys/class/power_supply/BAT1/capacity)% $([ $(cat /sys/class/power_supply/BAT1/status) == 'Charging' ] && echo 󰂄) $(date +'%Y-%m-%d %H:%M')"; do sleep 30; done
 
     colors {
         statusline #ffffff
