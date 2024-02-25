@@ -22,5 +22,6 @@ case "$(file -Lb --mime-type -- "$1")" in
 		;;
 	application/*zip) atool --list -- "$1" ;;
 	audio/* | application/octet-stream) mediainfo "$1" || exit 1 ;;
+	text/plain) cat "$1" ;;
     *) file "$1" ;;
 esac
