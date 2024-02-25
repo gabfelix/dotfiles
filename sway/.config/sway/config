@@ -264,8 +264,8 @@ bindsym $mod+o $exec ncmpcpp
 bindsym $mod+p $exec pulsemixer
 # GUI/Others:
 set $exec exec
-bindsym $mod+Print exec grim ~/img/shots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png && notify-send "📸 Screenshot taken" "Saved to ~/img/shots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png" -t 3000
-bindsym $mod+Shift+Print exec slurp | grim -g - ~/img/shots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png && notify-send "📸 Screenshot taken" "Saved to ~/img/shots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png" -t 3000
+bindsym $mod+Print exec grim ~/img/shot/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png && notify-send "📸 Screenshot taken" "Saved to ~/img/shot/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png" -t 3000
+bindsym $mod+Shift+Print exec slurp | grim -g - ~/img/shot/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png && notify-send "📸 Screenshot taken" "Saved to ~/img/shot/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png" -t 3000
 bindsym $mod+y $exec ${BROWSER:-firefox}
 
 # Workspace assignments
