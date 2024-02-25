@@ -1,4 +1,4 @@
-# Dotfiles
+# dotfiles
 These are my personal configuration files and scripts managed using GNU Stow.
 
 ## Structure
