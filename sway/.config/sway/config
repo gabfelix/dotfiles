@@ -236,7 +236,7 @@ bindsym $mod+r mode "resize"
 bar {
 	position top
 
-	status_command while echo "$(check_last_backup) \| $(cat /sys/class/power_supply/BAT1/capacity)% $([ $(cat /sys/class/power_supply/BAT1/status) == 'Charging' ] && echo 󰂄) \| $(date +'%Y-%m-%d %H:%M')"; do sleep 30; done
+	status_command while echo "Root: $(df -h /dev/mapper/root | awk '{print $5}' | tail -n 1) \| $(check_last_backup) \| $(cat /sys/class/power_supply/BAT1/capacity)% $([ $(cat /sys/class/power_supply/BAT1/status) == 'Charging' ] && echo 󰂄) \| $(date +'%Y-%m-%d %H:%M')"; do sleep 30; done
 
 	colors {
 		statusline #ffffff
