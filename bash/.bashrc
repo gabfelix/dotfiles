@@ -13,7 +13,8 @@ alias "g"="git"
 alias "ga"="git add -A"
 alias "gac"="git add -A && git commit"
 alias "gap"="git add -p"
-alias "gc"="git commit"
+alias "gco"="git commit"
+alias "gst"="git status"
 
 alias "p"="sudo pacman"
 
