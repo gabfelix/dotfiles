@@ -20,9 +20,8 @@ set $term ${TERMINAL:-foot}
 # on the original workspace that the command was run on.
 
 # Arguments to try to make bemenu look like as much like dmenu as possible
-set $dmenu_compat_args -p '' --tb "#1a1a1a" --tf "#268bd2" --fb "#1a1a1a" --nb "#1a1a1a" --ab "#1a1a1a" --hb "#1a1a1a" --hf "#268bd2" --line-height 30
-set $dmenu bemenu $dmenu_compat_args
-set $dmenu_run bemenu-run $dmenu_compat_args
+set $dmenu wmenu
+set $dmenu_run wmenu_run
 
 ### Output configuration
 #
