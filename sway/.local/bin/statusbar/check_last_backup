@@ -1,0 +1,16 @@
+#!/bin/bash
+# The reminder file is placed there by a private script.
+REMINDERFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/borg/last"
+
+printf "Last Backup: "
+
+if [ ! -f "$REMINDERFILE" ]; then
+	echo '-d'
+	exit 0
+fi
+
+last=$(date -d $(cat ${REMINDERFILE}) +%s)
+now=$(date -d $(date -Iseconds) +%s)
+
+diff=$((($now - $last)/60/60/24)) # days
+echo "${diff}d"

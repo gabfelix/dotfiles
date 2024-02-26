@@ -236,7 +236,7 @@ bindsym $mod+r mode "resize"
 bar {
 	position top
 
-	status_command while echo "$(cat /sys/class/power_supply/BAT1/capacity)% $([ $(cat /sys/class/power_supply/BAT1/status) == 'Charging' ] && echo 󰂄) $(date +'%Y-%m-%d %H:%M')"; do sleep 30; done
+	status_command while echo "$(check_last_backup) \| $(cat /sys/class/power_supply/BAT1/capacity)% $([ $(cat /sys/class/power_supply/BAT1/status) == 'Charging' ] && echo 󰂄) \| $(date +'%Y-%m-%d %H:%M')"; do sleep 30; done
 
 	colors {
 		statusline #ffffff
@@ -244,10 +244,6 @@ bar {
 		inactive_workspace #323232 #323232 #5c5c5c
 	}
 }
-
-#
-# Autolaunch:
-#
 
 #
 # Border:

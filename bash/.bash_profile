@@ -4,7 +4,9 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-export PATH="${HOME}/.local/bin:${PATH}"
+# Append ${HOME}/.local/bin and all subdirectories (follow symlinks for stow
+# compatibility)
+export PATH="$PATH:$(find -L ${HOME}/.local/bin -type d | paste -sd ':' -)"
 
 export TERMINAL="foot"
 export BROWSER="librewolf"
