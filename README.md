@@ -17,12 +17,18 @@ Should this repository become public, any potential users of these files are
 expected to fix the issues themselves and (if possible) contribute a fix back.
 
 ## Installation
-Create symlinks to everything in `~` using GNU Stow:
+Assuming you've already cloned and entered this repository, run this to create symlinks to all directories in ~/ using GNU Stow:
 ```sh
-$ stow */ -t ~/
+$ stow */ -t ~
 ```
 
 You may also pick and choose specific programs to link:
 ```sh
-$ stow bash sway -t ~/
+$ stow bash sway -t ~
 ```
+
+To avoid folding (symlinking the entire directory instead of only the files) and getting logs and other junk files inside this repo, consider using the `--no-folding` flag: 
+```sh
+$ stow --no-folding bash sway -t ~
+```
+Note that this makes it harder to check new files into the repository, as you'll have to manually copy them over.
