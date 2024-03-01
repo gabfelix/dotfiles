@@ -1,0 +1,11 @@
+{
+    // Disable usesOnlineServices
+    "workbench.enableExperiments": false,
+    "workbench.cloudChanges.continueOn": "off",
+    "workbench.cloudChanges.autoResume": "off",
+    "update.showReleaseNotes": false,
+    "update.mode": "none",
+
+    "python.defaultInterpreterPath": "/usr/bin/python",
+    "editor.fontFamily": "'MesloLGS Nerd Font', 'Droid Sans Mono', 'monospace', monospace"
+}
