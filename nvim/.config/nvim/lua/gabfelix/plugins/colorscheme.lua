@@ -1,15 +1,11 @@
 return {
-	"mcchrish/zenbones.nvim",
+	"miikanissi/modus-themes.nvim",
 	dependencies = { "lualine.nvim" },
 	lazy = false,
 	priority = 1000,
 	config = function()
-		vim.g.zenbones_compat = 1 -- Don't require lush.nvim
 		vim.opt.termguicolors = true
 		vim.opt.background = "dark"
-		require("lualine").setup({
-			theme = "zenbones"
-		})
-		vim.cmd.colorscheme("zenbones")
+		vim.cmd.colorscheme("modus_vivendi")
 	end,
 }
