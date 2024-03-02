@@ -159,6 +159,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Controls
 ## Brightness
+### NOTE: xbacklight needs a udev rule to work without root. Consult the Arch Wiki.
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && exec notify-send "🔆 Brightness" "Brightness set to $(xbacklight -get)%" -t 1500
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && exec notify-send "🔆 Brightness" "Brightness set to $(xbacklight -get)%" -t 1500
 ## Volume
