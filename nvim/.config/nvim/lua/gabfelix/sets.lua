@@ -3,7 +3,6 @@ local opts = {
 	number = true,
 	relativenumber = true,
 	hidden = true, -- Switch from unsaved edited buffer
-	wrap = false,
 	completeopt = {'menuone', 'noinsert', 'noselect'},
 	laststatus = 3, -- All splits use the same status line
 	ignorecase = true,
