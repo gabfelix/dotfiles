@@ -11,6 +11,7 @@ local opts = {
 	shiftwidth = 4,
 	scrolloff = 8,
 	sidescrolloff = 8,
+	cursorline = true
 }
 
 for k, v in pairs(opts) do
