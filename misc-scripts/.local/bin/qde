@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Quick dotfile editing script
+
+pushd ${HOME}
+fd -H . "${HOME}/.config" | fzf | xargs ${EDITOR:-nvim}
+popd
+
+cd ${HOME}/dev/dotfiles
+git add -A
+git status

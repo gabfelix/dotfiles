@@ -1,0 +1,19 @@
+#!/bin/sh
+
+wmpid(){ # This function is needed if there are multiple instances of the window manager.
+	tree="$(pstree -ps $$)"
+	tree="${tree#*sway(}"
+	echo "${tree%%)*}"
+}
+
+case "$(printf "🔒 lock\n🚪 leave sway\n♻️ renew sway\n🐻 hibernate\n🔃 reboot\n🖥️shutdown\n💤 sleep\n📺 display off" | wmenu -i -p 'Action: ')" in
+	'🔒 lock') slock ;;
+	"🚪 leave sway") kill -TERM "$(wmpid)" ;;
+	"♻️ renew sway") kill -HUP "$(wmpid)" ;;
+	'🐻 hibernate') slock systemctl hibernate -i ;;
+	'💤 sleep') slock systemctl suspend -i ;;
+	'🔃 reboot') systemctl reboot -i ;;
+	'🖥️shutdown') systemctl poweroff -i ;;
+	'📺 display off') xset dpms force off ;;
+	*) exit 1 ;;
+esac
