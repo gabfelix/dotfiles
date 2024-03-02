@@ -32,7 +32,7 @@ alias ytt="yt --skip-download --write-thumbnail"
 alias ffmpeg="ffmpeg -hide_banner"
 alias stow="stow -v"
 
-alias ls="ls --color=auto"
+alias ls="ls --color=auto --group-directories-first -h"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 
