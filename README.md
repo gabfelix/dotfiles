@@ -17,6 +17,7 @@ Should this repository become public, any potential users of these files are
 expected to fix the issues themselves and (if possible) contribute a fix back.
 
 ## Installation
+### GNU Stow
 Assuming you've already cloned and entered this repository, run this to create symlinks to all directories in ~/ using GNU Stow:
 ```sh
 $ stow */ -t ~
@@ -32,3 +33,14 @@ To avoid folding (symlinking the entire directory instead of only the files) and
 $ stow --no-folding bash sway -t ~
 ```
 Note that this makes it harder to check new files into the repository, as you'll have to manually copy them over.
+
+### Wrapper script
+The `stow.sh` wrapper script can help the user quickly stow to `$HOME` by wrapping around the stow command. Assuming you're inside this repository's cloned directory, run:
+```sh
+$ ./stow-it.sh */
+```
+
+You may also pass specific modules, just like before:
+```sh
+$ ./stow-it.sh bash sway
+```
