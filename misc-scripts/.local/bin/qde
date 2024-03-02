@@ -2,10 +2,25 @@
 
 # Quick dotfile editing script
 
-pushd ${HOME}
-fd -H . "${HOME}/.config" | fzf | xargs ${EDITOR:-nvim}
-popd
+function yes_or_no {
+    while true; do
+        read -p "$* [y/N]: " yn
+        case $yn in
+            [Yy]*) return 0  ;;  
+            *) echo "Aborted" ; return  1 ;;
+        esac
+    done
+}
 
-cd ${HOME}/dev/dotfiles
+dotfile_repo_location="${HOME}/dev/dotfiles"
+
+cd "${HOME}"
+fd -H . "$dotfile_repo_location" | fzf | xargs ${EDITOR:-nvim}
+
+cd "$dotfile_repo_location"
 git add -A
 git status
+yes_or_no "Would you like to add and commit these changes?" && \
+	git add -A && \
+	git commit
+#qde
