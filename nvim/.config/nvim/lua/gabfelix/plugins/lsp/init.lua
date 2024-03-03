@@ -22,6 +22,7 @@ return {
 				'rust_analyzer',
 				'tsserver',
 				'eslint',
+				'lua_ls',
 			}
 
 			lsp_zero.on_attach(function(client, bufnr)
