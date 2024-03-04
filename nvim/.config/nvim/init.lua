@@ -525,6 +525,7 @@ require('lazy').setup {
         rust_analyzer = {},
         tsserver = {},
         eslint = {},
+        tailwindcss = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes { ...},
