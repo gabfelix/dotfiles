@@ -1,3 +1,3 @@
 #!/bin/sh
 
-stow --no-folding $@ -t ~
+stow -v --no-folding $@ -t ~
