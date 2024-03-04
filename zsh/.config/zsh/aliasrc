@@ -7,6 +7,9 @@ set_alt() {
 
 set_alt nvim vim
 set_alt nvim vi
+set_alt fd find
+set_alt fd find
+set_alt eza ls
 
 alias "v"="$EDITOR"
 alias "e"="$EDITOR"
@@ -33,6 +36,6 @@ alias yta="yt -x -f bestaudio/best --audio-format mp3"
 alias ytt="yt --skip-download --write-thumbnail" 
 alias ffmpeg="ffmpeg -hide_banner"
 alias stow="stow -v"
-alias ls="ls --color=auto --group-directories-first -h"
+[ -z "$(alias ls)" ] && alias ls="ls --color=auto --group-directories-first -h"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
