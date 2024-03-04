@@ -25,5 +25,6 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
 # Autostart sway on TTY1
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-	exec sway
+	echo "" > sway.log
+	exec sway -d >sway.log 2>&1
 fi
