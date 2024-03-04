@@ -518,6 +518,8 @@ require('lazy').setup {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
+        -- LSP Server ensure_installed
+        -- NOTE: This only installs LSP SERVERS, and not tools like linters or formatters!
         clangd = {},
         pyright = {},
         rust_analyzer = {},
@@ -563,6 +565,8 @@ require('lazy').setup {
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
+        -- LSP Tools ensure_installed
+        -- NOTE: Only for tools (linters & formatters), don't put servers here!
         'stylua', -- Used to format lua code
         'prettier',
       })
@@ -770,7 +774,24 @@ require('lazy').setup {
 
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'bash', 'c', 'cpp', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'json', 'javascript', 'typescript', 'rust', 'latex' },
+        ensure_installed = {
+          -- Treesitter ensure_installed
+          'bash',
+          'c',
+          'cpp',
+          'html',
+          'lua',
+          'markdown',
+          'vim',
+          'vimdoc',
+          'json',
+          'javascript',
+          'typescript',
+          'rust',
+          'yaml',
+          'toml',
+          'latex',
+        },
         -- Autoinstall languages that are not installed
         auto_install = true,
         highlight = { enable = true },
