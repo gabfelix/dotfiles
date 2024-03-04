@@ -42,3 +42,9 @@ You may also pass specific modules, just like before:
 ```sh
 $ ./stowit.sh bash sway
 ```
+
+## Modules
+Small observations about certain modules:
+
+- The `lf` module contains a systemd service and timer for automatically clearing the cache in `$HOME/.cache` once a week. It is important to note that, should the `.timer` or the `.service` be disabled, their symlinks created by stow will ALSO be removed because systemd removes ALL links to the file.
+- Most modules in this repository are better installed with `--no-folding` because it avoids miscellaneous files, which is why the `stowit.sh` script was added. However, some modules like `nvim`, whose structure constantly changes between commits, work better when installed with folding.

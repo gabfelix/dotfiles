@@ -1,0 +1,8 @@
+[Unit]
+Description=Clears the user's lf image preview cache
+
+[Service]
+Type=oneshot
+#ExecStartPre=+/bin/bash -c "echo ${XDG_CACHE_HOME:-${HOME}/.cache}"
+ExecStartPre=+/bin/bash -c "rm ${XDG_CACHE_HOME:-${HOME}/.cache}/lf/*"
+ExecStart=/usr/bin/echo "Cleared"
