@@ -276,6 +276,8 @@ set $exec exec
 bindsym $mod+Print exec grim ~/img/shot/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png && notify-send "📸 Screenshot taken" "Saved to ~/img/shot/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png" -t 3000
 bindsym $mod+Shift+Print exec slurp | grim -g - ~/img/shot/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png && notify-send "📸 Screenshot taken" "Saved to ~/img/shot/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png" -t 3000
 bindsym $mod+y $exec ${BROWSER:-firefox}
+# The tmux_attach script uses wmenu to attach to a running session
+bindsym $mod+t $exec tmux_attach
 
 # Workspace assignments
 # Use `swaymsg -t get_tree` to get app information

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+n_sessions="$(tmux list-sessions 2> /dev/null)"
+[ -z "$n_sessions" ] && notify-send "🚫 Error" "No running tmux sessions to attach" -t 2000 && exit 1
+
+sessions=$(tmux list-sessions)
+target="$(tmux list-sessions | awk '{print $1}' | sed 's/://g' | wmenu -p "Select tmux session" -i -l 5)"
+exec ${TERMINAL:-foot} "tmux" "attach" "-t" "$target"
