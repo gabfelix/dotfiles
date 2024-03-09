@@ -26,5 +26,5 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 # Autostart sway on TTY1
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
 	echo "" > sway.log
-	exec sway -d >sway.log 2>&1
+	exec sway --unsupported-gpu -d >sway.log 2>&1
 fi
