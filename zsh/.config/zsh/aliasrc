@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Setup command $1 as an alternative to $1
+# Setup command $1 as an alternative to $2 (if $1 is present)
 set_alt() {
 	[ -x "$(command -v "$1")" ] && alias "$2"="$1"
 }
