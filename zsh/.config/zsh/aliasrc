@@ -5,8 +5,16 @@ set_alt() {
 	[ -x "$(command -v "$1")" ] && alias "$2"="$1"
 }
 
-set_alt nvim vim
-set_alt nvim vi
+# Only sets up $1 as an alternative to $2 if
+# 1. $1 is present in the system
+# 2. $2 is NOT present in the system
+set_alt_exclusive() {
+	[ ! -x "$(command -v "$2")" ] && \
+		set_alt "$1" "$2"
+}
+
+set_alt_exclusive nvim vim
+set_alt_exclusive nvim vi
 set_alt fd find
 set_alt fd find
 set_alt eza ls
