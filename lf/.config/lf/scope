@@ -6,10 +6,10 @@ render_sixel()
 }
 
 case "$(file -Lb --mime-type -- "$1")" in
-    image/*)
+	image/*)
 		render_sixel "$1" "$2" "$3"
-        exit 1
-        ;;
+		exit 1
+		;;
 	video/*)
 		CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/lf/thumb.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | cut -d' ' -f1)"
 		[ ! -f "$CACHE" ] && ffmpegthumbnailer -i "$1" -o "$CACHE" -s 0
@@ -23,5 +23,5 @@ case "$(file -Lb --mime-type -- "$1")" in
 	application/*zip) atool --list -- "$1" ;;
 	audio/* | application/octet-stream) mediainfo "$1" || exit 1 ;;
 	text/plain) cat "$1" ;;
-    *) file "$1" ;;
+	*) file "$1" ;;
 esac
