@@ -22,7 +22,7 @@ set_alt eza ls
 alias "v"="$EDITOR"
 alias "e"="$EDITOR"
 
-# Shorten long commands
+# Shorten commands
 alias "g"="git"
 alias "ga"="git add -A"
 alias "gac"="git add -A && git commit"
@@ -30,6 +30,8 @@ alias "gap"="git add -p"
 alias "gco"="git commit"
 alias "gst"="git status"
 alias "p"="sudo pacman"
+alias "ll"="ls -l"
+alias "la"="ls -la"
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias cp="cp -iv" 
