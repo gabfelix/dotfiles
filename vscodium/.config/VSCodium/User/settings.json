@@ -1,11 +1,27 @@
 {
-    // Disable usesOnlineServices
-    "workbench.enableExperiments": false,
-    "workbench.cloudChanges.continueOn": "off",
-    "workbench.cloudChanges.autoResume": "off",
-    "update.showReleaseNotes": false,
-    "update.mode": "none",
-
-    "python.defaultInterpreterPath": "/usr/bin/python",
-    "editor.fontFamily": "'MesloLGS Nerd Font', 'Droid Sans Mono', 'monospace', monospace"
+  "telemetry.telemetryLevel": "off",
+  "editor.formatOnSave": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "remote.SSH.remotePlatform": {
+    "192.168.0.173": "linux"
+  },
+  "window.restoreWindows": "none",
+  "editor.fontFamily": "'Jetbrains Mono', Consolas, 'Courier New', monospace",
+  "workbench.startupEditor": "none",
+  "workbench.enableExperiments": false,
+  "workbench.cloudChanges.continueOn": "off",
+  "workbench.cloudChanges.autoResume": "off",
+  "update.showReleaseNotes": false,
+  "update.mode": "none",
+  "python.defaultInterpreterPath": "/bin/python3",
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontSize": 16
 }
