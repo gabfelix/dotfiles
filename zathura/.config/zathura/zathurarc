@@ -1,2 +1,6 @@
+set font 'monospace normal 14'
+
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
+map l follow
+map L display_link
