@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Terminates the entire session using loginctl.
+# This is a workaround for a hyprland bug which causes it to hang every time
+# you try to exit the compositor "the proper way"
+
+loginctl terminate-session ''
