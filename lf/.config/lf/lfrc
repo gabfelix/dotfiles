@@ -1,6 +1,4 @@
 set smartcase true
-set sixel true
-set previewer ~/.config/lf/scope
 
 cmd mkdir $mkdir -p "$@"
 cmd touch $touch "$@"
