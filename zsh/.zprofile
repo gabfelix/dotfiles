@@ -6,7 +6,7 @@ export PATH="$PATH:$(find -L ${HOME}/.local/bin -type d | paste -sd ':' -)"
 unsetopt PROMPT_SP 2>/dev/null
 
 # Default programs
-export TERMINAL="foot"
+export TERMINAL="kitty"
 export TERMINAL_PROG="$TERMINAL"
 export BROWSER="librewolf"
 export EDITOR="nvim"

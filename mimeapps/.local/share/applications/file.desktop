@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=File manager
-Exec=/usr/bin/foot -e lf %u
+Exec=/usr/bin/kitty -e lf %u
