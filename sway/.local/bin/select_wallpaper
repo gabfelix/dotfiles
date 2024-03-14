@@ -1,9 +1,0 @@
-#!/bin/sh
-
-location="${HOME}/img/wall"
-selected="$(find ${location} -type f | shuf | head -n 1)"
-if [ ! -z "$selected" ]; then
-	echo "$selected"
-	exit 0
-fi
-echo /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
