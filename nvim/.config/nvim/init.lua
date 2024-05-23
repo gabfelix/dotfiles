@@ -791,7 +791,6 @@ require('lazy').setup {
           'rust',
           'yaml',
           'toml',
-          'latex',
         },
         -- Autoinstall languages that are not installed
         auto_install = true,
