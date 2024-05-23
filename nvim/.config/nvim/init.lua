@@ -569,7 +569,7 @@ require('lazy').setup {
         -- LSP Tools ensure_installed
         -- NOTE: Only for tools (linters & formatters), don't put servers here!
         'stylua', -- Used to format lua code
-        'prettier',
+        'prettierd',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -598,8 +598,8 @@ require('lazy').setup {
       },
       formatters_by_ft = {
         lua = { 'stylua' },
-        typescript = { 'prettier' },
-        javascript = { 'prettier' },
+        typescript = { 'prettierd' },
+        javascript = { 'prettierd' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -714,7 +714,7 @@ require('lazy').setup {
     config = function()
       vim.opt.termguicolors = true
       require('gruvbox').setup {
-        transparent_mode = true,
+        transparent_mode = false,
       }
       -- Load the colorscheme here
       vim.opt.background = 'dark'
