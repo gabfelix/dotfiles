@@ -1,143 +1,144 @@
-@define-color background #1d2021;
-@define-color foreground #ebdbb2;
-@define-color dim        #928374;
-@define-color yellow     #fabd2f;
-@define-color red        #fb4934;
-@define-color green      #b8bb26;
-
 * {
-  background: @background;
   border: none;
   border-radius: 0;
-  font-family: NotoSans, "Font Awesome 6 Free Solid";
-  font-size: 13px;
   min-height: 0;
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 13px;
 }
 
 window#waybar {
-  background: @background;
-  color: @foreground;
+  background-color: #181825;
   transition-property: background-color;
   transition-duration: 0.5s;
 }
 
+window#waybar.hidden {
+  opacity: 0.5;
+}
+
+#workspaces {
+  background-color: transparent;
+}
+
 #workspaces button {
-  padding: 0 10px;
-  background: transparent;
-  color: @foreground;
-  border-top: 3px solid @background;
-  border-bottom: 3px solid transparent;
-  box-shadow: none;
+  all: initial;
+  /* Remove GTK theme values (waybar #1351) */
+  min-width: 0;
+  /* Fix weird spacing in materia (waybar #450) */
+  box-shadow: inset 0 -3px transparent;
+  /* Use box-shadow instead of border so the text isn't offset */
+  padding: 6px 18px;
+  margin: 6px 3px;
+  border-radius: 4px;
+  background-color: #1e1e2e;
+  color: #cdd6f4;
 }
 
 #workspaces button.active {
-  border-bottom: 3px solid @green;
+  color: #1e1e2e;
+  background-color: #cdd6f4;
 }
 
-/* Leave this below #workspaces button.active so that it will also apply to
-* active workspace buttons */
 #workspaces button:hover {
-  border-bottom: 3px solid @foreground;
+  box-shadow: inherit;
+  text-shadow: inherit;
+  color: #1e1e2e;
+  background-color: #cdd6f4;
 }
 
 #workspaces button.urgent {
-  border-bottom: 3px solid @yellow;
+  background-color: #f38ba8;
 }
 
-#submap {
-  border-bottom: 3px solid @red;
+#memory,
+#custom-power,
+#battery,
+#backlight,
+#pulseaudio,
+#network,
+#clock,
+#tray {
+  border-radius: 4px;
+  margin: 6px 3px;
+  padding: 6px 12px;
+  background-color: #1e1e2e;
+  color: #181825;
 }
 
-#custom-usbguard,
-#custom-decrypted,
-#custom-updates,
-#custom-mail,
-#custom-vpn.off,
+#custom-power {
+  margin-right: 6px;
+}
+
+#custom-logo {
+  padding-right: 7px;
+  padding-left: 7px;
+  margin-left: 5px;
+  font-size: 15px;
+  border-radius: 8px 0px 0px 8px;
+  color: #1793d1;
+}
+
+#memory {
+  background-color: #fab387;
+}
+
+#battery {
+  background-color: #f38ba8;
+}
+
+@keyframes blink {
+  to {
+    background-color: #f38ba8;
+    color: #181825;
+  }
+}
+
 #battery.warning,
-#disk.warning,
-#memory.warning,
-#cpu.warning,
-#custom-movie.on,
-#custom-dnd.dnd-notification,
-#custom-dnd.dnd-none {
-  border-top: 3px solid @background;
-  border-bottom: 3px solid @yellow;
-}
-
-#custom-security,
-#custom-systemd,
 #battery.critical,
-#disk.critical,
-#memory.critical,
-#cpu.critical,
-#custom-yubikey,
-#custom-eyes,
-#custom-recording {
-  border-top: 3px solid @background;
-  border-bottom: 3px solid @red;
+#battery.urgent {
+  background-color: #ff0048;
+  color: #181825;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #battery.charging {
-  border-top: 3px solid @background;
-  border-bottom: 3px solid @green;
+  background-color: #a6e3a1;
 }
 
-#submap,
-#pulseaudio,
-#custom-usbguard,
-#custom-yubikey,
-#custom-eyes,
-#custom-decrypted,
-#custom-security,
-#custom-systemd,
-#custom-updates,
-#custom-mail,
-#network,
-#cpu,
-#disk,
-#memory,
-#backlight,
-#battery,
-#clock {
-  padding: 0 6px;
-  margin: 0 6px;
+#backlight {
+  background-color: #fab387;
 }
 
-#custom-vpn,
-#custom-dnd,
-#language,
-#custom-recording {
-  padding: 0;
-  margin: 0 6px;
-}
-
-#tray {
-  margin-left: -1000000px;
-}
-
-#backlight,
-#battery,
-#clock,
-#cpu,
-#custom-eyes,
-#custom-mail,
-#custom-progress,
-#custom-recording,
-#custom-security,
-#custom-systemd,
-#custom-updates,
-#custom-usbguard,
-#custom-yubikey,
-#disk,
-#memory,
-#submap,
-#network,
 #pulseaudio {
-  color: @foreground;
+  background-color: #f9e2af;
 }
 
-#custom-decrypted,
-#custom-movie,
-#custom-vpn {
-  color: @dim;
+#network {
+  background-color: #94e2d5;
+  padding-right: 17px;
+}
+
+#clock {
+  font-family: JetBrainsMono Nerd Font;
+  background-color: #cba6f7;
+}
+
+#custom-power {
+  background-color: #f2cdcd;
+}
+
+
+tooltip {
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #131822;
+}
+
+tooltip label {
+  padding: 5px;
+  background-color: #131822;
 }
