@@ -23,7 +23,7 @@ export HISTFILE="$XDG_DATA_HOME/history"
 # systemctl --user enable ssh-agent.service
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
-# Autostart sway on TTY1
+# Autostart sway on TTY1 (this should be last)
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
 	exec Hyprland
 fi
