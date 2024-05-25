@@ -12,15 +12,15 @@ function yes_or_no {
     done
 }
 
-dotfile_repo_location="${HOME}/dev/dotfiles"
+dotfile_repo="${HOME}/dev/dotfiles"
 
-cd "${HOME}"
-fd -H . "$dotfile_repo_location" | fzf | xargs ${EDITOR:-nvim}
+find "$dotfile_repo" -type f -not -iwholename '*.git*' | fzf | xargs ${EDITOR:-vi}
 
-cd "$dotfile_repo_location"
+cwd="$(pwd)"
+cd "$dotfile_repo"
 git add -A
 git status
-yes_or_no "Would you like to add and commit these changes?" && \
+yes_or_no "Would you like to add and commit ALL of these changes?" && \
 	git add -A && \
 	git commit
-#qde
+cd "$cwd"
