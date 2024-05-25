@@ -4,6 +4,7 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 # Opts
 setopt autocd
 setopt interactive_comments # Allow comments on interactive shells
+setopt rmstarsilent # I already have an alias to rm to ask for confirmation
 HISTSIZE=1000
 SAVEHIST=10000
 HISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/history"
