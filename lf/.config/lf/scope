@@ -1,24 +1,25 @@
 #!/bin/sh
 
-render_sixel()
+render_kitty()
 {
-	chafa -f sixel -s "$2x$3" --animate off --polite on "$1"
+    kitty +kitten icat --silent --stdin no --transfer-mode file --place "${2}x${3}@${4}x${5}" "$1" < /dev/null > /dev/tty
 }
 
 case "$(file -Lb --mime-type -- "$1")" in
 	image/*)
-		render_sixel "$1" "$2" "$3"
+		render_kitty "$1" "$2" "$3" "$4" "$5"
 		exit 1
 		;;
 	video/*)
 		CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/lf/thumb.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | cut -d' ' -f1)"
-		[ ! -f "$CACHE" ] && ffmpegthumbnailer -i "$1" -o "$CACHE" -s 0
-		render_sixel "$CACHE" $2 $3
+		# [ ! -f "$CACHE" ] && ffmpegthumbnailer -i "$1" -o "$CACHE" -s 0
+		ffmpegthumbnailer -i "$1" -o "$CACHE" -s 0
+		render_kitty "$CACHE" "$2" "$3" "$4" "$5"
 		;;
 	*/pdf)
 		CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/lf/thumb.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | cut -d' ' -f1)"
 		[ ! -f "$CACHE.jpg" ] && pdftoppm -jpeg -f 1 -singlefile "$1" "$CACHE"
-		render_sixel "${CACHE}.jpg" $2 $3
+		render_kitty "$CACHE" "$2" "$3" "$4" "$5"
 		;;
 	application/*zip) atool --list -- "$1" ;;
 	audio/* | application/octet-stream) mediainfo "$1" || exit 1 ;;

@@ -12,3 +12,7 @@ map R :rename; cmd-delete-home
 # Shortcuts
 map gh cd ~
 map gc cd ~/.config
+
+# Image previews (kitty)
+set previewer ~/.config/lf/scope
+set cleaner ~/.config/lf/cleaner

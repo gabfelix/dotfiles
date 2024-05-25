@@ -1,9 +1,0 @@
-[Unit]
-Description=Triggers a service to clear lf cache
-
-[Timer]
-OnCalendar=weekly
-Persistent=true
-
-[Install]
-WantedBy=timers.target

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+kitty +kitten icat --clear --stdin no --silent --transfer-mode file < /dev/null > /dev/tty
+# rm -f "${XDG_CACHE_HOME:-$HOME/.config}/lf/thumb*"
