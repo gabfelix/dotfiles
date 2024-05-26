@@ -1,7 +1,9 @@
-# Opts
-setopt autocd
+#!/usr/bin/zsh
+
+setopt autocd # change directory by typing name without 'cd'
 setopt interactive_comments # Allow comments on interactive shells
-setopt rmstarsilent # I already have an alias to rm to ask for confirmation
+setopt rmstarsilent # I already have an alias to `rm -I` for confirmation
+
 HISTSIZE=1000
 SAVEHIST=10000
 HISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/history"
@@ -67,7 +69,7 @@ bindkey -s '^a' '^utmux_sessionizer\n'
 aliasfile="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc"
 [ -f "$aliasfile" ] && source "$aliasfile"
 
+[ -x "$(command -v starship)" ] && eval "$(starship init zsh)"
+
 # Load syntax highlighting; should be last
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
-
-eval "$(starship init zsh)"

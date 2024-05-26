@@ -3,8 +3,6 @@
 # Append ${HOME}/.local/bin and all subdirectories (follow symlinks for stow compatibility)
 export PATH="$PATH:$(find -L ${HOME}/.local/bin -type d | paste -sd ':' -)"
 
-unsetopt PROMPT_SP 2>/dev/null
-
 # Default programs
 export TERMINAL="kitty"
 export TERMINAL_PROG="$TERMINAL"
@@ -26,8 +24,7 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 # Soydev stuff
 source /usr/share/nvm/init-nvm.sh
 
-
-# Autostart sway on TTY1 (this should be last)
+# Autostart WM on TTY1 (this should be last)
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
 	exec Hyprland
 fi
