@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+[ ! -z "$TMUX" ] && echo "tmux-sessionizer does not support running inside tmux" && exit 1
+
 search_dirs="$HOME/dev"
 
 if [[ $# -eq 1 ]]; then
@@ -13,19 +15,8 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
-    exec ${TERMINAL:-kitty} -e "tmux" "attach" "-t" "$selected_name"
-    exit 0
-fi
-
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
     tmux new-session -ds $selected_name -c $selected
-    exec ${TERMINAL:-kitty} -e "tmux" "attach" "-t" "$selected_name"
 fi
 
-if [[ -z $TMUX ]]; then
-    exec ${TERMINAL:-kitty} -e "tmux" "attach" "-t" "$selected_name"
-else
-    exec ${TERMINAL:-kitty} -e "tmux" "switch-client" "-t" "$selected_name"
-fi
+exec ${TERMINAL:-kitty} -e "tmux" "attach" "-t" "$selected_name"
