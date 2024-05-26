@@ -1,6 +1,3 @@
-autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-
 # Opts
 setopt autocd
 setopt interactive_comments # Allow comments on interactive shells
@@ -66,12 +63,11 @@ bindkey -s '^o' '^ulfcd\n'
 # Open tmux session in repositories
 bindkey -s '^a' '^utmux_sessionizer\n'
 
-# Soydev stuff
-source /usr/share/nvm/init-nvm.sh
-
 # Load aliases
 aliasfile="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc"
 [ -f "$aliasfile" ] && source "$aliasfile"
 
 # Load syntax highlighting; should be last
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
+
+eval "$(starship init zsh)"
