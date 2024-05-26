@@ -16,8 +16,6 @@ set_alt_exclusive() {
 set_alt_exclusive nvim vim
 set_alt_exclusive nvim vi
 set_alt_exclusive yt-dlp youtube-dl
-set_alt fd find
-set_alt fd find
 set_alt eza ls
 
 alias "v"="$EDITOR"
