@@ -8,7 +8,7 @@ unsetopt PROMPT_SP 2>/dev/null
 # Default programs
 export TERMINAL="kitty"
 export TERMINAL_PROG="$TERMINAL"
-export BROWSER="firefox"
+export BROWSER="librewolf"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
