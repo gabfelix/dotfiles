@@ -62,9 +62,6 @@ lfcd () {
 }
 bindkey -s '^o' '^ulfcd\n'
 
-# Open tmux session in repositories
-bindkey -s '^a' '^utmux_sessionizer\n'
-
 # Load aliases
 aliasfile="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc"
 [ -f "$aliasfile" ] && source "$aliasfile"
