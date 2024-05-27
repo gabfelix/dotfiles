@@ -4,7 +4,7 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
 -- Sets
-vim.opt.number = true
+vim.opt.number = false
 vim.opt.mouse = 'a'
 vim.opt.showmode = false
 vim.opt.breakindent = true
@@ -19,13 +19,9 @@ vim.opt.timeoutlen = 300
 -- How new splits should be opened
 vim.opt.splitright = true
 vim.opt.splitbelow = true
--- vim.opt.list = true
--- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
-
-vim.opt.cursorline = true
 vim.opt.scrolloff = 8
 
 -- basic keymaps
@@ -161,6 +157,11 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      -- Transparent telescope background
+      vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
+      vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
+      vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "none" })
     end,
   },
 
