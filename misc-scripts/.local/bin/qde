@@ -23,4 +23,5 @@ git status
 yes_or_no "Would you like to add and commit ALL of these changes?" && \
 	git add -A && \
 	git commit
+yes_or_no "Push?" && git push
 cd "$cwd"
