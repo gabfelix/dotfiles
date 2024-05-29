@@ -13,6 +13,8 @@ map R :rename; cmd-delete-home
 map gh cd ~
 map gc cd ~/.config
 
+set icons
+
 # Image previews
 set previewer ctpv
 set cleaner ctpvclear
