@@ -5,7 +5,7 @@ export PATH="${PATH}:$(find -L ${HOME}/.local/bin -type d | paste -sd ':' -)"
 
 # Language package/runtime managers
 # Ruby
-[ ! -z "$(pacman -Q ruby)" ] && export PATH="${PATH}:${HOME}/.local/share/gem/ruby/3.0.0/bin"
+pacman -Qm "rbenv" && eval "$(rbenv init -)" && export CUCUMBER_PUBLISH_QUIET=true
 
 # Node (requires AUR package)
 nvm_location="/usr/share/nvm/init-nvm.sh"
