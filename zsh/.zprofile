@@ -5,7 +5,7 @@ export PATH="${PATH}:$(find -L ${HOME}/.local/bin -type d | paste -sd ':' -)"
 
 # Language package/runtime managers
 # Ruby
-pacman -Qm "rbenv" && eval "$(rbenv init -)" && export CUCUMBER_PUBLISH_QUIET=true
+pacman -Qm "rbenv" > /dev/null && eval "$(rbenv init -)" && export CUCUMBER_PUBLISH_QUIET=true
 
 # Node (requires AUR package)
 nvm_location="/usr/share/nvm/init-nvm.sh"
@@ -28,8 +28,3 @@ export HISTFILE="$XDG_DATA_HOME/history"
 # Don't forget to enable the ssh-agent service as a user:
 # systemctl --user enable ssh-agent.service
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
-
-# Autostart WM on TTY1 (this should be last)
-if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-	exec Hyprland
-fi
