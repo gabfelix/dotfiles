@@ -1,10 +1,14 @@
+-- Globals
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = true
 
 -- Sets
-vim.opt.number = false
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
+
 vim.opt.mouse = 'a'
 vim.opt.showmode = false
 vim.opt.breakindent = true
@@ -462,6 +466,9 @@ require('lazy').setup({
       local statusline = require 'mini.statusline'
       -- set use_icons to true if you have a Nerd Font
       statusline.setup { use_icons = vim.g.have_nerd_font }
+
+      -- Global status bar
+      vim.opt.laststatus = 3
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
