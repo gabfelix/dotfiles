@@ -1,6 +1,6 @@
 #!/bin/sh
 
-walls="${HOME}/img/wall"
+walls="${HOME}/pic/wall"
 
 [ -z "$walls" ] && echo "invalid argument" && exit 1
 
