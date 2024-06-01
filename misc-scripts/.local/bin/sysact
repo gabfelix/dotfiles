@@ -6,8 +6,13 @@ wmpid(){ # This function is needed if there are multiple instances of the window
 	echo "${tree%%)*}"
 }
 
-case "$(printf "🔃 reboot\n🖥️shutdown\n" | wmenu -i -p 'Action: ')" in
-	'🔃 reboot') systemctl reboot -i ;;
-	'🖥️shutdown') systemctl poweroff -i ;;
+reboot='🔃 reboot'
+shutdown='🖥️shutdown'
+hibernate='🛌hibernate'
+
+case "$(printf "${reboot}\n${hibernate}\n${shutdown}\n" | wmenu -i -p 'Action: ')" in
+	$reboot) systemctl reboot -i ;;
+	$hibernate) systemctl hibernate -i ;;
+	$shutdown) systemctl poweroff -i ;;
 	*) exit 1 ;;
 esac
