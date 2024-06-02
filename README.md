@@ -48,3 +48,108 @@ Small observations about certain modules:
 
 - The `lf` module contains a systemd service and timer for automatically clearing the cache in `$HOME/.cache` once a week. It is important to note that, should the `.timer` or the `.service` be disabled, their symlinks created by stow will ALSO be removed because systemd removes ALL links to the file.
 - Most modules in this repository are better installed with `--no-folding` because it avoids miscellaneous files, which is why the `stowit.sh` script was added. However, some modules like `nvim`, whose structure constantly changes between commits, work better when installed with folding.
+
+## Packages
+Some programs you'll need to make the setup work.
+I can't promise that this list is exhaustive, but I just did a fresh reinstall so everything should be here.
+All package names are Arch names.
+
+* `udisks2`
+
+* `udisks2-btrfs`
+
+* `stow`
+
+* `hyprland`
+
+* `hyprpaper`
+
+* `hyprcursor`
+
+* `waybar`
+
+* `tmux`
+
+* `kitty`
+
+* `gtk3` # kitty requires this as an implicit dependency
+
+* `imagemagick`
+
+* `zsh`
+
+* `zsh-completions`
+
+* `zsh-syntax-highlighting`
+
+* `starship`
+
+* `wmenu`
+
+* `pipewire-pulse`
+
+* `pipewire-alsa`
+
+* `pipewire-jack`
+
+* `ttf-sourcecodepro-nerd`
+
+* `yt-dlp`
+
+* `mpv`
+
+* `ffmpeg`
+
+* `zathura`
+
+* `zathura-cb`
+
+* `zathura-pdf-mupdf`
+
+* `lf`
+
+* `atool`
+
+* `ffmpegthumbnailer`
+
+* `atool`
+
+* `bat`
+
+* `chafa`
+
+* `colordiff`
+
+* `ctpv-git` # AUR
+
+* `mpd` # systemctl --user enable
+
+* `ncmpcpp`
+
+* `mako` # systemctl --user enable
+
+* `noto-fonts`
+
+* `noto-fonts-cjk`
+
+* `noto-fonts-emoji`
+
+* `noto-fonts-extra`
+
+* `librewolf-bin` # AUR
+
+* `pulsemixer`
+
+* `libnotify`
+
+* `slurp`
+
+* `grim`
+
+* `nvim`
+
+* `wl-clipboard`
+
+* `ripgrep`
+
+* `nvm` # AUR
