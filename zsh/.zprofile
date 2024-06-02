@@ -3,14 +3,6 @@
 # Append ${HOME}/.local/bin and all subdirectories (follow symlinks for stow compatibility)
 export PATH="${PATH}:$(find -L ${HOME}/.local/bin -type d | paste -sd ':' -)"
 
-# Language package/runtime managers
-# Ruby
-pacman -Qm "rbenv" > /dev/null && eval "$(rbenv init -)" && export CUCUMBER_PUBLISH_QUIET=true
-
-# Node (requires AUR package)
-nvm_location="/usr/share/nvm/init-nvm.sh"
-[ -f "$nvm_location" ] && source "$nvm_location"
-
 # Default programs
 export TERMINAL="kitty"
 export TERMINAL_PROG="$TERMINAL"

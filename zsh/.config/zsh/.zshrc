@@ -68,5 +68,14 @@ aliasfile="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc"
 
 [ -x "$(command -v starship)" ] && eval "$(starship init zsh)"
 
+# Language package/runtime managers
+#
+# Node (requires AUR package)
+nvm_location="/usr/share/nvm/init-nvm.sh"
+[ -f "$nvm_location" ] && source "$nvm_location"
+
+# Ruby
+pacman -Qm "rbenv" 2>& /dev/null && eval "$(rbenv init -)" && export CUCUMBER_PUBLISH_QUIET=true
+
 # Load syntax highlighting; should be last
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
