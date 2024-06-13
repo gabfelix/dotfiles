@@ -32,10 +32,16 @@ vim.opt.scrolloff = 8
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-vim.keymap.set('n', '[d', function () vim.diagnostic.jump { count = 1 } end, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', function () vim.diagnostic.jump { count = -1 } end, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', '[d', function()
+  vim.diagnostic.jump { count = 1 }
+end, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', function()
+  vim.diagnostic.jump { count = -1 }
+end, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+vim.keymap.set('n', '<leader>B', ':bd ', { desc = 'Auto-fill buffer delete command' }) -- TODO: Use telescope to do this
 
 -- Split navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
@@ -500,7 +506,12 @@ require('lazy').setup({
     end,
   },
 
-  { 'tpope/vim-fugitive' },
+  {
+    'tpope/vim-fugitive',
+    config = function()
+      vim.keymap.set('n', '<leader>G', '<cmd>Git<cr>', { desc = 'Open fugitive' })
+    end,
+  },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
