@@ -427,7 +427,7 @@ require('lazy').setup({
     'polirritmico/monokai-nightasty.nvim',
     priority = 1000,
     opts = {
-      dark_style_background = 'transparent',
+      dark_style_background = '#272822',
     },
     config = function(_, opts)
       vim.opt.termguicolors = true
