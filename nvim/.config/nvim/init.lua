@@ -32,8 +32,8 @@ vim.opt.scrolloff = 8
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', '[d', function () vim.diagnostic.jump { count = 1 } end, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', function () vim.diagnostic.jump { count = -1 } end, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -176,7 +176,7 @@ require('lazy').setup({
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       { 'j-hui/fidget.nvim', opts = {} }, -- LSP Status updates in the corner
-      { 'folke/neodev.nvim', opts = {} }, -- Lua LSP + Neovim
+      { 'folke/neodev.nvim', opts = {} }, -- (DEPRECATED for lazydev.nvim)
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
