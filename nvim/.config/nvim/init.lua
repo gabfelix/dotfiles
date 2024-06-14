@@ -236,7 +236,7 @@ require('lazy').setup({
 
           if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
             map('<leader>th', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
             end, '[T]oggle Inlay [H]ints')
           end
         end,
@@ -249,6 +249,7 @@ require('lazy').setup({
       local servers = {
         clangd = {},
         tsserver = {},
+        ruby_lsp = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -430,16 +431,12 @@ require('lazy').setup({
   },
 
   {
-    'polirritmico/monokai-nightasty.nvim',
+    'miikanissi/modus-themes.nvim',
     priority = 1000,
-    opts = {
-      dark_style_background = '#272822',
-    },
-    config = function(_, opts)
+    config = function()
       vim.opt.termguicolors = true
       vim.opt.background = 'dark'
-      require('monokai-nightasty').load(opts)
-      vim.cmd.colorscheme 'monokai-nightasty'
+      vim.cmd.colorscheme 'modus'
     end,
   },
 
