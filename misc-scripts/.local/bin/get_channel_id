@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# Uses yt-dlp to get the channel id of a given youtube URL.
-
-url="$1"
-
-yt-dlp --print channel_url --playlist-items 1 "$url" | sed 's/https\:\/\/www\.youtube\.com\/channel\///'
