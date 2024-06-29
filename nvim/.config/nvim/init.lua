@@ -430,16 +430,6 @@ require('lazy').setup({
     end,
   },
 
-  {
-    'miikanissi/modus-themes.nvim',
-    priority = 1000,
-    config = function()
-      vim.opt.termguicolors = true
-      vim.opt.background = 'dark'
-      vim.cmd.colorscheme 'modus'
-    end,
-  },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
