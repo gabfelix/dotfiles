@@ -7,7 +7,7 @@ search_dirs="$HOME/dev"
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find $search_dirs -mindepth 1 -maxdepth 1 -type d | wmenu -p "Sessionize:" -i -l 5)
+    selected=$(find $search_dirs -mindepth 1 -maxdepth 1 -type d | wofi --show dmenu -p "Sessionize:" -i -l 5)
 fi
 
 [ -z "$selected" ] && exit 0
