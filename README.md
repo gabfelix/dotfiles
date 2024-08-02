@@ -120,7 +120,9 @@ All package names are Arch names.
 
 * `colordiff`
 
-* `ctpv-git` # AUR
+* `ctpv` # AUR
+
+* `poppler` # Dependency for ctpv
 
 * `mpd` # systemctl --user enable
 
@@ -146,10 +148,14 @@ All package names are Arch names.
 
 * `grim`
 
-* `nvim`
+* `neovim`
 
 * `wl-clipboard`
 
 * `ripgrep`
+
+* `just`
+
+* `jq`
 
 * `nvm` # AUR
