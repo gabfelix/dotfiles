@@ -164,4 +164,8 @@ All package names are Arch names.
 
 * `unzip`
 
+* `newsboat`
+
+* `ttf-jetbrains-mono-nerd`
+
 * `nvm` # AUR
