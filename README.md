@@ -33,7 +33,10 @@ $ stow --no-folding zsh -t ~
 ```
 
 ### Wrapper script
-The `stowit.sh` wrapper script can help the user quickly stow to `$HOME` by wrapping around the stow command. Assuming you're inside this repository's cloned directory, run:
+The `stowit.sh` wrapper script can help the user quickly symlink config files to `$HOME` by wrapping around the `stow` command.
+Note that `--no-folding` is enabled by default, which means it'll only symlink files, not directories.
+Assuming you're inside this repository's cloned directory, run:
+
 ```sh
 $ ./stowit.sh */
 ```
@@ -50,9 +53,11 @@ Small observations about certain modules:
 - Most modules in this repository are better installed with `--no-folding` because it avoids miscellaneous files, which is why the `stowit.sh` script was added. However, some modules like `nvim`, whose structure constantly changes between commits, work better when installed with folding.
 
 ## Packages
-Some programs you'll need to make the setup work.
+Some programs you'll need in order to make the setup work.
 I can't promise that this list is exhaustive, but I just did a fresh reinstall so everything should be here.
-All package names are Arch names.
+All packages are using Arch names.
+
+### Official repos
 
 * `udisks2`
 
@@ -72,7 +77,7 @@ All package names are Arch names.
 
 * `kitty`
 
-* `gtk3` # kitty requires this as an implicit dependency
+* `gtk3` # unspecified kitty dependency (won't open otherwise)
 
 * `imagemagick`
 
@@ -120,7 +125,6 @@ All package names are Arch names.
 
 * `colordiff`
 
-* `ctpv` # AUR
 
 * `poppler` # Dependency for ctpv
 
@@ -138,8 +142,6 @@ All package names are Arch names.
 
 * `noto-fonts-extra`
 
-* `librewolf-bin` # AUR
-
 * `pulsemixer`
 
 * `libnotify`
@@ -154,6 +156,8 @@ All package names are Arch names.
 
 * `ripgrep`
 
+* `fzf`
+
 * `just`
 
 * `jq`
@@ -166,10 +170,18 @@ All package names are Arch names.
 
 * `newsboat`
 
-* `ttf-comicshanns-nerd `
+* `otf-comicshanns-nerd `
 
 * `ttf-jetbrains-mono-nerd`
 
 * `ttf-font-awesome`
 
-* `nvm` # AUR
+### AUR
+
+* `paru-bin` # The AUR helper I use, install this first
+
+* `nvm`
+
+* `librewolf-bin`
+
+* `ctpv`
