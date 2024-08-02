@@ -909,7 +909,8 @@ require('lazy').setup({
     'm4xshen/autoclose.nvim',
     opts = {
       options = {
-        disabled_filetypes = { '', 'text', 'markdown' },
+        -- Autopair ignores
+        disabled_filetypes = { '', 'text', 'markdown', 'gitcommit' },
       },
     },
   },
