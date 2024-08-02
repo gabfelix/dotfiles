@@ -84,7 +84,7 @@ All package names are Arch names.
 
 * `starship`
 
-* `wmenu`
+* `wofi`
 
 * `pipewire-pulse`
 
