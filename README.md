@@ -170,9 +170,9 @@ All packages are using Arch names.
 
 * `newsboat`
 
-* `otf-comicshanns-nerd `
-
 * `ttf-jetbrains-mono-nerd`
+
+* `inter-font`
 
 * `ttf-font-awesome`
 
