@@ -166,6 +166,8 @@ All package names are Arch names.
 
 * `newsboat`
 
+* `ttf-comicshanns-nerd `
+
 * `ttf-jetbrains-mono-nerd`
 
 * `ttf-font-awesome`
