@@ -158,4 +158,6 @@ All package names are Arch names.
 
 * `jq`
 
+* `imv`
+
 * `nvm` # AUR
