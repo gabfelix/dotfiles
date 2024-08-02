@@ -292,13 +292,12 @@ require('lazy').setup({
 
       -- Document existing key chains
       require('which-key').add {
-        { '<leader>c', group = '[C]ode', hidden = true },
-        { '<leader>d', group = '[D]ocument', hidden = true },
-        { '<leader>r', group = '[R]ename', hidden = true },
-        { '<leader>s', group = '[S]earch', hidden = true },
-        { '<leader>w', group = '[W]orkspace', hidden = true },
-        { '<leader>t', group = '[T]oggle', hidden = true },
-        { '<leader>h', group = 'Git [H]unk', hidden = true, mode = 'v' },
+        { '<leader>c', group = '[C]ode' },
+        { '<leader>d', group = '[D]ocument' },
+        { '<leader>r', group = '[R]ename' },
+        { '<leader>s', group = '[S]earch' },
+        { '<leader>w', group = '[W]orkspace' },
+        { '<leader>t', group = '[T]oggle' },
       }
     end,
   },
