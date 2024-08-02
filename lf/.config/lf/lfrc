@@ -12,6 +12,10 @@ map R :rename; cmd-delete-home
 # Shortcuts
 map gh cd ~
 map gc cd ~/.config
+map gd cd ~/dl
+map gD cd ~/doc
+map gi cd ~/pic
+map gp cd ~/pic
 
 set icons
 
