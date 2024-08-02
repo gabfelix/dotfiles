@@ -10,7 +10,7 @@ reboot='🔃 reboot'
 shutdown='🖥️shutdown'
 hibernate='🛌hibernate'
 
-case "$(printf "${reboot}\n${hibernate}\n${shutdown}\n" | wmenu -i -p 'Action: ')" in
+case "$(printf "${reboot}\n${hibernate}\n${shutdown}\n" | wofi --show dmenu -i -p 'Action: ')" in
 	$reboot) systemctl reboot -i ;;
 	$hibernate) systemctl hibernate -i ;;
 	$shutdown) systemctl poweroff -i ;;
