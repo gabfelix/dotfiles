@@ -160,4 +160,8 @@ All package names are Arch names.
 
 * `imv`
 
+* `zip`
+
+* `unzip`
+
 * `nvm` # AUR
