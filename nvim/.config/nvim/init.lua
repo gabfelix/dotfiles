@@ -298,6 +298,7 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
+        { '<leader>G', desc = "Open fugitive's [G]it UI", icon = '' },
       }
     end,
   },
@@ -908,7 +909,7 @@ require('lazy').setup({
   {
     'tpope/vim-fugitive',
     config = function()
-      vim.keymap.set('n', '<leader>G', vim.cmd.Git, { desc = "Open fugitive's [G]it UI" })
+      vim.keymap.set('n', '<leader>G', vim.cmd.Git)
     end,
   },
   {
