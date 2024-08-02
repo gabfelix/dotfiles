@@ -168,4 +168,6 @@ All package names are Arch names.
 
 * `ttf-jetbrains-mono-nerd`
 
+* `ttf-font-awesome`
+
 * `nvm` # AUR
