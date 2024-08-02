@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Add youtube channel RSS feed to newsboat
+
+url="$1"
+
+channel_id="$(yt-dlp --print channel_url --playlist-items 1 "$url" | sed 's/https\:\/\/www\.youtube\.com\/channel\///')"
+echo "https://www.youtube.com/feeds/videos.xml?channel_id=${channel_id}" >> ${XDG_CONFIG_HOME:-$HOME/.config}/newsboat/urls
