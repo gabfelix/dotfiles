@@ -46,6 +46,12 @@ You may also pass specific modules, just like before:
 $ ./stowit.sh bash sway
 ```
 
+### GTK
+Set the font in GTK to `Inter 10.5` (which GNOME will use by default in the future) by running:
+```sh
+gsettings set org.gnome.desktop.interface font-name 'Inter 10'
+```
+
 ## Modules
 Small observations about certain modules:
 
