@@ -103,8 +103,6 @@ All packages are using Arch names.
 
 * `pipewire-jack`
 
-* `ttf-sourcecodepro-nerd`
-
 * `yt-dlp`
 
 * `mpv`
@@ -176,11 +174,11 @@ All packages are using Arch names.
 
 * `newsboat`
 
-* `ttf-jetbrains-mono-nerd`
-
 * `inter-font`
 
 * `ttf-font-awesome`
+
+* `ttf-meslo-nerd`
 
 ### AUR
 
