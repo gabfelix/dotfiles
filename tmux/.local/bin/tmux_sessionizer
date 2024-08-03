@@ -16,7 +16,7 @@ selected_name=$(basename "$selected" | tr . _)
 
 # Check if selected_name corresponds to a valid directory in search_dirs
 if [ ! -d "$search_dirs/$selected_name" ]; then
-    notify-send "Error" "'$selected_name' is not a valid directory in '$search_dirs'."
+    notify-send "Error" "Invalid directory '${selected_name}'" -t 1500
     exit 1
 fi
 
