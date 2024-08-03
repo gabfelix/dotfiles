@@ -13,6 +13,13 @@ fi
 [ -z "$selected" ] && exit 0
 
 selected_name=$(basename "$selected" | tr . _)
+
+# Check if selected_name corresponds to a valid directory in search_dirs
+if [ ! -d "$search_dirs/$selected_name" ]; then
+    notify-send "Error" "'$selected_name' is not a valid directory in '$search_dirs'."
+    exit 1
+fi
+
 tmux_running=$(pgrep tmux)
 
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
