@@ -168,6 +168,10 @@ vim.keymap.set('n', '<A-k>', ':m .-2<CR>==') -- move line down(n)
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv") -- move line up(v)
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv") -- move line down(v)
 
+-- :make keymaps
+vim.keymap.set('n', '<leader>m', vim.cmd.make, { desc = ':[M]ake' })
+vim.keymap.set('n', '<leader>M', ':set makeprg=', { desc = 'Set [M]ake command' })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', function()
   vim.diagnostic.jump { count = -1 }
