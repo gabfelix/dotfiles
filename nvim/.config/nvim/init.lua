@@ -302,7 +302,6 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>G', desc = "Open fugitive's [G]it UI", icon = '' },
       }
     end,
   },
@@ -912,12 +911,6 @@ require('lazy').setup({
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   -- { import = 'custom.plugins' },
   {
-    'tpope/vim-fugitive',
-    config = function()
-      vim.keymap.set('n', '<leader>G', vim.cmd.Git)
-    end,
-  },
-  {
     'NeogitOrg/neogit',
     dependencies = {
       'nvim-lua/plenary.nvim', -- required
@@ -927,7 +920,13 @@ require('lazy').setup({
       'nvim-telescope/telescope.nvim', -- optional
       'ibhagwan/fzf-lua', -- optional
     },
-    config = true,
+    config = function()
+      require('which-key').add {
+        { '<leader>G', desc = "Open Neogit's [G]it UI", icon = '' },
+      }
+      vim.keymap.set('n', '<leader>G', vim.cmd.Neogit)
+      require('neogit').setup {}
+    end,
   },
   {
     'm4xshen/autoclose.nvim',
