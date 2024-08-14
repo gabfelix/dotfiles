@@ -52,6 +52,10 @@ Set the font in GTK to `Inter 10.5` (which GNOME will use by default in the futu
 gsettings set org.gnome.desktop.interface font-name 'Inter 10'
 ```
 
+### Vim
+If you're installing the `vim` module, you need the `vim-plug` plugin manager. Check out [vim-plug's installation instructions for vim](https://github.com/junegunn/vim-plug?tab=readme-ov-file#vim).
+
+
 ## Modules
 Small observations about certain modules:
 
