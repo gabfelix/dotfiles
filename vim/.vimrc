@@ -14,8 +14,8 @@ let mapleader = ' '
 let localmapleader = ' '
 
 set nocompatible
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=8
+set tabstop=8
 set incsearch
 set hlsearch
 set ignorecase
@@ -31,8 +31,9 @@ set relativenumber
 
 " highlight any trailing whitespace with red
 highlight TrailingWhitespace ctermbg=red guibg=red
+match TrailingWhitespace /\s\+$/
 " delete trailing whitespace on save
-"match TrailingWhitespace /\s\+$/
+autocmd BufWritePre * :%s/\s\+$//e
 
 " I HATE WINDOWS section
 function! IsWindows()
