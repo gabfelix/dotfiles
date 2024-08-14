@@ -13,9 +13,6 @@ syntax on
 let mapleader = ' '
 let localmapleader = ' '
 
-set notermguicolors
-colorscheme peachpuff
-
 set nocompatible
 set shiftwidth=4
 set tabstop=4
@@ -36,6 +33,21 @@ set relativenumber
 highlight TrailingWhitespace ctermbg=red guibg=red
 " delete trailing whitespace on save
 "match TrailingWhitespace /\s\+$/
+
+" I HATE WINDOWS section
+function! IsWindows()
+	" Check for WINDIR environment variable
+	let l:is_windows = system('echo %WINDIR%') != ''
+	return l:is_windows
+endfunction
+
+if IsWindows()
+" force block cursor
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
+endif
 
 " Plugins
 call plug#begin()
