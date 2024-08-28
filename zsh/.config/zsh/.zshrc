@@ -66,7 +66,12 @@ bindkey -s '^o' '^ulfcd\n'
 aliasfile="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc"
 [ -f "$aliasfile" ] && source "$aliasfile"
 
-[ -x "$(command -v starship)" ] && eval "$(starship init zsh)"
+if [ -x "$(command -v starship)" ]; then
+	eval "$(starship init zsh)"
+else
+    autoload -U colors && colors
+    PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+fi
 
 # Language package/runtime managers
 #

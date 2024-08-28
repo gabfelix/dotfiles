@@ -14,6 +14,7 @@ let mapleader = ' '
 let localmapleader = ' '
 
 set nocompatible
+set noesckeys " Fix small delay when pressing Esc-Shift-o quickly
 set shiftwidth=8
 set tabstop=8
 set incsearch
