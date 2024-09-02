@@ -52,10 +52,10 @@ let &t_te.="\e[0 q"
 endif
 
 " Plugins
-call plug#begin()
-Plug 'tpope/vim-fugitive'
-call plug#end()
-
-" Plugin-specific configuration
-" fugitive
-nnoremap <leader>G :Git<cr>
+if filereadable($HOME . '/.vim/autoload/plug.vim')
+	call plug#begin()
+	Plug 'tpope/vim-fugitive'
+	call plug#end()
+	" fugitive
+	nnoremap <leader>G :Git<cr>
+endif
