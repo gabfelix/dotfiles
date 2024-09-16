@@ -163,10 +163,10 @@ vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>B', ':bd ', { desc = 'Auto-fill [B]uffer delete command' }) -- TODO: Use telescope to do this (exclude the current buffer)
 -- Move lines up and down with alt
-vim.keymap.set('n', '<A-j>', ':m .+1<CR>==') -- move line up(n)
-vim.keymap.set('n', '<A-k>', ':m .-2<CR>==') -- move line down(n)
-vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv") -- move line up(v)
-vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv") -- move line down(v)
+vim.keymap.set('n', '<A-j>', ':m .+1<CR>==')                                             -- move line up(n)
+vim.keymap.set('n', '<A-k>', ':m .-2<CR>==')                                             -- move line down(n)
+vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv")                                         -- move line up(v)
+vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv")                                         -- move line down(v)
 
 -- :make keymaps
 vim.keymap.set('n', '<leader>m', vim.cmd.make, { desc = ':[M]ake' })
@@ -253,7 +253,7 @@ require('lazy').setup({
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',    opts = {} },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -288,7 +288,7 @@ require('lazy').setup({
   -- after the plugin has been loaded:
   --  config = function() ... end
 
-  { -- Useful plugin to show you pending keybinds.
+  {                     -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
@@ -334,7 +334,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -435,11 +435,11 @@ require('lazy').setup({
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim', opts = {} },
+      { 'folke/neodev.nvim',       opts = {} },
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -591,8 +591,8 @@ require('lazy').setup({
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
-        -- But for many setups, the LSP (`tsserver`) will work just fine
-        tsserver = {},
+        -- But for many setups, the LSP (`ts_ls`) will work just fine
+        ts_ls = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -621,7 +621,7 @@ require('lazy').setup({
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua', -- lua
+        'stylua',    -- lua
         'prettierd', -- ts/js
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -913,12 +913,12 @@ require('lazy').setup({
   {
     'NeogitOrg/neogit',
     dependencies = {
-      'nvim-lua/plenary.nvim', -- required
+      'nvim-lua/plenary.nvim',  -- required
       'sindrets/diffview.nvim', -- optional - Diff integration
 
       -- Only one of these is needed, not both.
       'nvim-telescope/telescope.nvim', -- optional
-      'ibhagwan/fzf-lua', -- optional
+      'ibhagwan/fzf-lua',              -- optional
     },
     config = function()
       require('which-key').add {
