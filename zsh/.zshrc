@@ -68,16 +68,11 @@ bindkey -s '^a' 'tmux_textionizer\n'
 aliasfile="${HOME}/.aliasrc"
 [ -f "$aliasfile" ] && source "$aliasfile"
 
-if [ -x "$(command -v starship)" ]; then
-	eval "$(starship init zsh)"
-else
-	# Default prompt
-    autoload -U colors && colors
-    PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-fi
+# Default prompt
+autoload -U colors && colors
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 # Language package/runtime managers
-#
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  
