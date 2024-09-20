@@ -55,6 +55,7 @@ endif
 if filereadable($HOME . '/.vim/autoload/plug.vim')
 	call plug#begin()
 	Plug 'tpope/vim-fugitive'
+	Plug 'tpope/vim-surround'
 	call plug#end()
 	" fugitive
 	nnoremap <leader>G :Git<cr>
