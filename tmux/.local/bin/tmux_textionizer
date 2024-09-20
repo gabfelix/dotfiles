@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
-
-[ ! -z "$TMUX" ] && echo "tmux-sessionizer does not support running inside tmux" && exit 1
+[ ! -z "$TMUX" ] && echo "tmux-textionizer does not support running inside tmux" && exit 1
 
 search_dirs="$HOME/Code"
 
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find $search_dirs -mindepth 1 -maxdepth 1 -type d | wofi --show dmenu -p "Sessionize:" -i)
+    selected=$(find $search_dirs -mindepth 1 -maxdepth 1 -type d | fzf --prompt="Sessionize> ")
 fi
 
 [ -z "$selected" ] && exit 0
@@ -26,4 +25,4 @@ if ! tmux has-session -t=$selected_name 2> /dev/null; then
     tmux new-session -ds $selected_name -c $selected
 fi
 
-exec ${TERMINAL:-kitty} -e "tmux" "attach" "-t" "$selected_name"
+tmux attach -t $selected_name
