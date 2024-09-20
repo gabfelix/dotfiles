@@ -51,36 +51,37 @@ bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
 
 # Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    tmp="$(mktemp -uq)"
-    trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
-bindkey -s '^o' '^ulfcd\n'
+# lfcd () {
+#     tmp="$(mktemp -uq)"
+#     trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
+#     lf -last-dir-path="$tmp" "$@"
+#     if [ -f "$tmp" ]; then
+#         dir="$(cat "$tmp")"
+#         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+#     fi
+# }
+# bindkey -s '^o' '^ulfcd\n'
+
+bindkey -s '^a' 'tmux_textionizer\n'
 
 # Load aliases
-aliasfile="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc"
+aliasfile="${HOME}/.aliasrc"
 [ -f "$aliasfile" ] && source "$aliasfile"
 
 if [ -x "$(command -v starship)" ]; then
 	eval "$(starship init zsh)"
 else
+	# Default prompt
     autoload -U colors && colors
     PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 fi
 
 # Language package/runtime managers
 #
-# Node (requires AUR package)
-nvm_location="/usr/share/nvm/init-nvm.sh"
-[ -f "$nvm_location" ] && source "$nvm_location"
-
-# Ruby
-pacman -Qm "rbenv" 2>& /dev/null && eval "$(rbenv init -)" && export CUCUMBER_PUBLISH_QUIET=true
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  
 
 # Load syntax highlighting; should be last
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
