@@ -11,7 +11,7 @@ end
 vim.api.nvim_create_autocmd('BufWritePost', {
 	pattern = dotfiles_path .. '/**',
 	callback = function()
-		local cmd = string.format('stow --no-folding -d %s nvim -t ~', dotfiles_path)
+		local cmd = string.format('stow -v --no-folding -d %s nvim -t ~', dotfiles_path)
 		vim.cmd('!' .. cmd)
 	end
 })
