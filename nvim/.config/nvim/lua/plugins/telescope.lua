@@ -21,6 +21,11 @@ return {
           require('telescope.themes').get_dropdown(),
         },
       },
+      pickers = {
+        find_files = {
+          follow = true,
+        },
+      },
     }
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
