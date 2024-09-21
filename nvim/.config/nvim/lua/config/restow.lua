@@ -7,9 +7,9 @@ if vim.fn.filereadable(deployed_path) then
   vim.fn.system(cmd)
 end
 
--- Redeploy nvim config with stow wrapper script on change
+-- Redeploy nvim config on change to nvim module
 vim.api.nvim_create_autocmd('BufWritePost', {
-  pattern = dotfiles_path .. '/**',
+  pattern = dotfiles_path .. '/nvim/**',
   callback = function()
     local cmd = string.format('stow -v --no-folding -d %s nvim -t ~', dotfiles_path)
     vim.cmd('!' .. cmd)
