@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-[ ! -z "$TMUX" ] && echo "tmux-textionizer does not support running inside tmux" && exit 1
+[ ! -z "$TMUX" ] && echo "textionizer does not support running inside tmux" && exit 1
 
 search_dirs="$HOME/Code"
 
@@ -14,8 +14,8 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 
 # Check if selected_name corresponds to a valid directory in search_dirs
-if [ ! -d "$search_dirs/$selected_name" ]; then
-    notify-send "Error" "Invalid directory '${selected_name}'" -t 1500
+if [ ! -d "$selected" ]; then
+    notify-send "Error" "Invalid directory '${selected}'" -t 1500
     exit 1
 fi
 

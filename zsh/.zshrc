@@ -62,7 +62,7 @@ bindkey -M visual '^[[P' vi-delete
 # }
 # bindkey -s '^o' '^ulfcd\n'
 
-bindkey -s '^a' 'tmux_textionizer\n'
+bindkey -s '^a' 'textionizer\n'
 
 # Load aliases
 aliasfile="${HOME}/.aliasrc"
