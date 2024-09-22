@@ -4,9 +4,16 @@ setopt autocd # change directory by typing name without 'cd'
 setopt interactive_comments # Allow comments on interactive shells
 setopt rmstarsilent # I already have an alias to `rm -I` for confirmation
 
+# history settings
 HISTSIZE=1000
 SAVEHIST=10000
 HISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/history"
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS # no duplicate in HISTFILE
+setopt HIST_SAVE_NO_DUPS  # no saving duplicate
+setopt HIST_REDUCE_BLANKS  # remove unnecessary blanks
+setopt INC_APPEND_HISTORY_TIME  # add to histfile after execution
+setopt EXTENDED_HISTORY  # record command start time
 
 autoload -U compinit
 zstyle ':completion:*' menu select
