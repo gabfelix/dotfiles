@@ -16,10 +16,19 @@ vim.opt.inccommand = 'split' -- Live substitution previews
 vim.opt.scrolloff = 8
 vim.opt.wildmenu = true
 vim.opt.wildmode = { 'longest:full', 'full' }
-vim.opt.laststatus = 3 -- Global status bar
+vim.opt.laststatus = 0 -- Vim style bar
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+-- Highlight when yanking (copying) text
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
