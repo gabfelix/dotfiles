@@ -63,12 +63,8 @@ require('mini.deps').setup()
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
 -- Colorscheme
-add({
-  source = 'ellisonleao/gruvbox.nvim'
-})
 now(function()
-  vim.opt.background = 'dark'
-  vim.cmd.colorscheme 'gruvbox'
+  vim.cmd.colorscheme 'zaibatsu'
 end)
 
 if vim.g.have_nerd_font then
