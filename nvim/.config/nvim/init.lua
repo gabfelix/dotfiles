@@ -89,6 +89,12 @@ later(function()
     vim.keymap.set('n', '<leader>ld', function() lsp_picker { scope = 'document_symbol' } end)
     vim.keymap.set('n', '<leader>lr', function() lsp_picker { scope = 'references' } end)
 end)
+
+-- mini.pairs
+later(function()
+  require('mini.pairs').setup()
+end)
+
 -- oil.nvim
 add({
   source = 'stevearc/oil.nvim'
@@ -103,3 +109,15 @@ require('oil').setup {
       },
 }
 vim.keymap.set('n', '-', vim.cmd.Oil)
+
+-- treesitter
+add({
+  source = 'nvim-treesitter/nvim-treesitter',
+  checkout = 'master',
+  monitor = 'main',
+  hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
+})
+require('nvim-treesitter.configs').setup({
+  ensure_installed = { 'lua', 'vimdoc' },
+  highlight = { enable = true },
+})
