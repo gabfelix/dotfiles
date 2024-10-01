@@ -62,6 +62,15 @@ require('mini.deps').setup()
 
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
+-- Colorscheme
+add({
+  source = 'ellisonleao/gruvbox.nvim'
+})
+now(function()
+  vim.opt.background = 'dark'
+  vim.cmd.colorscheme 'gruvbox'
+end)
+
 if vim.g.have_nerd_font then
   now(function()
     require('mini.icons').setup()
@@ -73,6 +82,7 @@ now(function()
     use_icons = vim.g.have_nerd_font,
   }
 end)
+
 
 -- mini.pick
 later(function()
@@ -95,6 +105,16 @@ later(function()
   require('mini.pairs').setup()
 end)
 
+-- mini.surround
+later(function()
+  require('mini.surround').setup()
+end)
+ 
+-- mini.comment
+later(function()
+  require('mini.comment').setup()
+end)
+
 -- oil.nvim
 add({
   source = 'stevearc/oil.nvim'
@@ -109,6 +129,11 @@ require('oil').setup {
       },
 }
 vim.keymap.set('n', '-', vim.cmd.Oil)
+
+-- mini.git
+later(function()
+  require('mini.git').setup()
+end)
 
 -- treesitter
 add({
