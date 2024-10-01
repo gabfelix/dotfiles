@@ -16,7 +16,6 @@ vim.opt.inccommand = 'split' -- Live substitution previews
 vim.opt.scrolloff = 8
 vim.opt.wildmenu = true
 vim.opt.wildmode = { 'longest:full', 'full' }
-vim.opt.laststatus = 0 -- Vim style bar
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
