@@ -2,7 +2,6 @@ return {
   'echasnovski/mini.pick',
   version = false,
   dependencies = {
-    'nvim-tree/nvim-web-devicons',
     { 'echasnovski/mini.extra', version = false }, -- More pickers
   },
   opts = {
