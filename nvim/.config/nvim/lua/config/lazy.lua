@@ -16,7 +16,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup {
-  spec = { { import = 'plugins' } },
+  spec = {
+    { import = 'plugins' },
+    { import = 'plugins.mini' },
+  },
   missing = true,
   install = { colorscheme = { '' } },
   checker = { enabled = true },
