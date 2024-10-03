@@ -9,13 +9,8 @@
 
 (setq backup-directory-alist `(("." . "~/.saves")))
 
-(set-frame-font "Iosevka Comfy 14" nil t)
+(set-frame-font "DejaVu Sans Mono 12" nil t)
 
-;; (use-package gruber-darker-theme
-;;   :ensure t
-;;   :config
-;;   (load-theme 'gruber-darker t)
-;; )
 (load-theme 'modus-vivendi t)
 
 (setq ido-enable-flex-matching t)
