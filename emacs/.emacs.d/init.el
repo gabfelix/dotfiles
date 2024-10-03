@@ -19,8 +19,6 @@
 
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
-(setq-default show-trailing-whitespace t)
-
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (when (file-exists-p custom-file)
   (load custom-file))
