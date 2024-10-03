@@ -9,13 +9,14 @@
 
 (setq backup-directory-alist `(("." . "~/.saves")))
 
-(set-frame-font "Iosevka Nerd Font 18" nil t)
+(set-frame-font "Iosevka Comfy 14" nil t)
 
-(use-package gruber-darker-theme
-  :ensure t
-  :config
-  (load-theme 'gruber-darker t)
-)
+;; (use-package gruber-darker-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'gruber-darker t)
+;; )
+(load-theme 'modus-vivendi t)
 
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
@@ -42,7 +43,6 @@
   (let ((entry (if (eq major-mode 'elfeed-show-mode) elfeed-show-entry (elfeed-search-selected :single))))
     (message "Opening %s with haruna..." (elfeed-entry-link entry))
     (start-process "elfeed-mpv" nil "haruna" (elfeed-entry-link entry))))
-
 
 (defvar elfeed-mpv-patterns
   '("youtu\\.?be")
