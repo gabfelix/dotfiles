@@ -1,5 +1,5 @@
-" My vim config is meant to be simple and hyper focused on text editing
-" No fancy LSPs or tooling to get in the way such as linting or spell-checking
+" My vim (not neovim) config is meant to be simple and hyper focused around editing text
+" No fancy LSPs or tooling such as debuggers, linters or spellcheckers to get in the way
 " No debugger integration
 " Use as little plugins as possible
 " File trees are icky and don't belong in vim
@@ -10,6 +10,7 @@ filetype plugin on
 filetype indent on
 syntax on
 
+" Map leaders before anything else
 let mapleader = ' '
 let localmapleader = ' '
 
@@ -36,7 +37,7 @@ match TrailingWhitespace /\s\+$/
 " delete trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-" I HATE WINDOWS section
+" === I HATE WINDOWS Begin ===
 function! IsWindows()
 	" Check for WINDIR environment variable
 	let l:is_windows = system('echo %WINDIR%') != ''
@@ -50,6 +51,7 @@ let &t_SI.="\e[5 q"
 let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
 endif
+" === I HATE WINDOWS End ===
 
 " Plugins
 if filereadable($HOME . '/.vim/autoload/plug.vim')
@@ -57,6 +59,6 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-surround'
 	call plug#end()
-	" fugitive
+	" Plugin config section
 	nnoremap <leader>G :Git<cr>
 endif
