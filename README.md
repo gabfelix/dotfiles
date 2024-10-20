@@ -6,6 +6,8 @@ The system is divided into modules, represented by the top-level directories. Th
 
 I tried to make it as modular as I could, but there is some connection between different programs. For example, the reason why I can put my scripts in `~/.local/bin` is because I add it to my `$PATH` in my bashrc, so every directory with `.local/bin` has an implicit dependency on the "bash" directory.
 
+I don't use all of these anymore, but I figured there might be some use for the config. This is why there are configs for conflictin programs, like different window managers.
+
 Since these are my personal configurations and this is (at the time of writing) a private repository, I won't make any effort to document such dependencies. Should this repository become public, any potential users of these files are expected to fix the issues themselves and (if possible) contribute a fix back.
 
 ## Installation
@@ -20,7 +22,7 @@ You may also pick and choose specific programs to link:
 $ stow bash sway -t ~
 ```
 
-To avoid folding (symlinking the entire directory instead of only the files) and getting logs and other junk files inside this repo, consider using the `--no-folding` flag: 
+To avoid folding (symlinking the entire directory instead of only the files) and getting logs and other junk files inside this repo, consider using the `--no-folding` flag:
 ```sh
 $ stow --no-folding bash sway -t ~
 ```
