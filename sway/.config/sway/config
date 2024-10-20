@@ -70,6 +70,10 @@ input "type:keyboard" {
 	xkb_options caps:escape
 }
 
+input "type:mouse" {
+	accel_profile "flat" # Disable acceleration
+}
+
 ### Key bindings
 #
 # Basics:
