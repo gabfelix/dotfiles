@@ -9,9 +9,9 @@
 
 (setq backup-directory-alist `(("." . "~/.saves")))
 
-(set-frame-font "DejaVu Sans Mono 12" nil t)
-
+;; Appearance
 (load-theme 'modus-vivendi t)
+(set-face-attribute 'default nil :height 120)
 
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
@@ -23,35 +23,39 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-(use-package typescript-mode)
-(use-package markdown-mode)
-(use-package magit)
+;;(use-package typescript-mode)
+(use-package markdown-mode
+  :ensure t)
+(use-package magit
+  :ensure t)
 
 ;; elfeed - RSS reader
-(use-package elfeed)
+(use-package elfeed
+  :ensure t
+  :config
+  (defun elfeed-play-with-mpv ()
+    "Play entry link with mpv."
+    (interactive)
+    (let ((entry (if (eq major-mode 'elfeed-show-mode) elfeed-show-entry (elfeed-search-selected :single))))
+      (message "Opening %s with haruna..." (elfeed-entry-link entry))
+      (start-process "elfeed-mpv" nil "haruna" (elfeed-entry-link entry))))
 
-(defun elfeed-play-with-mpv ()
-  "Play entry link with mpv."
-  (interactive)
-  (let ((entry (if (eq major-mode 'elfeed-show-mode) elfeed-show-entry (elfeed-search-selected :single))))
-    (message "Opening %s with haruna..." (elfeed-entry-link entry))
-    (start-process "elfeed-mpv" nil "haruna" (elfeed-entry-link entry))))
-
-(defvar elfeed-mpv-patterns
-  '("youtu\\.?be")
-  "List of regexp to match against elfeed entry link to know
+  (defvar elfeed-mpv-patterns
+    '("youtu\\.?be")
+    "List of regexp to match against elfeed entry link to know
 whether to use mpv to visit the link.")
 
-(defun elfeed-visit-or-play-with-mpv ()
-  "Play in mpv if entry link matches elfeed-mpv-patterns', visit otherwise.
+  (defun elfeed-visit-or-play-with-mpv ()
+    "Play in mpv if entry link matches elfeed-mpv-patterns', visit otherwise.
 See elfeed-play-with-mpv'."
-  (interactive)
-  (let ((entry (if (eq major-mode 'elfeed-show-mode) elfeed-show-entry (elfeed-search-selected :single)))
-        (patterns elfeed-mpv-patterns))
-    (while (and patterns (not (string-match (car elfeed-mpv-patterns) (elfeed-entry-link entry))))
-      (setq patterns (cdr patterns)))
-    (if patterns
-        (elfeed-play-with-mpv)
-      (if (eq major-mode 'elfeed-search-mode)
-          (elfeed-search-browse-url)
-        (elfeed-show-visit)))))
+    (interactive)
+    (let ((entry (if (eq major-mode 'elfeed-show-mode) elfeed-show-entry (elfeed-search-selected :single)))
+          (patterns elfeed-mpv-patterns))
+      (while (and patterns (not (string-match (car elfeed-mpv-patterns) (elfeed-entry-link entry))))
+	(setq patterns (cdr patterns)))
+      (if patterns
+          (elfeed-play-with-mpv)
+	(if (eq major-mode 'elfeed-search-mode)
+            (elfeed-search-browse-url)
+          (elfeed-show-visit)))))
+  )
