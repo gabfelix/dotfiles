@@ -59,6 +59,9 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-surround'
 	call plug#end()
-	" Plugin config section
+	" Plugin configs
+	" fugitive
 	nnoremap <leader>G :Git<cr>
+	" Shortcut for updating plugins and vim-plug
+	command! PU PlugUpdate | PlugUpgrade
 endif
