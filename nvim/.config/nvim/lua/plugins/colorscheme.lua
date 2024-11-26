@@ -1,8 +1,11 @@
 return {
-  'miikanissi/modus-themes.nvim',
+  'ellisonleao/gruvbox.nvim',
   priority = 1000,
   config = function()
+    require('gruvbox').setup {
+      transparent_mode = true,
+    }
     vim.opt.background = 'dark'
-    vim.cmd.colorscheme 'modus'
+    vim.cmd.colorscheme 'gruvbox'
   end,
 }
