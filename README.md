@@ -89,6 +89,8 @@ All packages are using Arch names.
 
 * `waybar`
 
+* `ttf-font-awesome`
+
 * `tmux`
 
 * `kitty`
@@ -185,8 +187,6 @@ All packages are using Arch names.
 * `newsboat`
 
 * `inter-font`
-
-* `ttf-font-awesome`
 
 * `ttf-meslo-nerd`
 
