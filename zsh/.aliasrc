@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# Setup command $1 as an alternative to $2 (if $1 is present)
+# Setup command $1 with arguments $3 as an alternative to $2 (if $1 is present)
 set_alt() {
-	[ -x "$(command -v "$1")" ] && alias "$2"="$1"
+	[ -x "$(command -v "$1")" ] && alias "$2"="$1 $3"
 }
 
 # Sets up $1 as an alternative to $2 if and only if:
@@ -16,7 +16,7 @@ set_alt_exclusive() {
 set_alt_exclusive nvim vim
 set_alt_exclusive nvim vi
 set_alt_exclusive yt-dlp youtube-dl
-set_alt eza ls
+set_alt eza ls "--group-directories-first"
 
 alias "v"="$EDITOR"
 alias "e"="$EDITOR"
