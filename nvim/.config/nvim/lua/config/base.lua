@@ -18,7 +18,7 @@ vim.opt.wildmenu = true
 vim.opt.wildmode = { 'longest:full', 'full' }
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.laststatus = 0 -- vim style
+vim.opt.laststatus = 3 -- Single bar for all splits
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
