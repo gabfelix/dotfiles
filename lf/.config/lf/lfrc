@@ -17,7 +17,7 @@ map gD cd ~/doc
 map gi cd ~/pic
 map gp cd ~/pic
 
-set icons
+#set icons
 
 # Image previews
 set previewer ctpv
