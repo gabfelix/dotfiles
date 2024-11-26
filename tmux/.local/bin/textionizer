@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 [ ! -z "$TMUX" ] && echo "textionizer does not support running inside tmux" && exit 1
 
-search_dirs="$HOME/Code"
+search_dirs="$HOME/dev"
 
 if [[ $# -eq 1 ]]; then
     selected=$1
