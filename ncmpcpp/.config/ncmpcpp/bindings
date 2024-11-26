@@ -339,8 +339,8 @@
 #def_key "A"
 #  add
 #
-#def_key "S"
-#  save_playlist
+def_key "S"
+	save_playlist
 #
 #def_key "o"
 #  jump_to_playing_song
