@@ -47,9 +47,11 @@ You may also pass specific modules, just like before:
 ```sh
 $ ./stowit.sh bash sway
 ```
+## Additional settings
+These are some additional settings which need manual intervention.
 
 ### GTK
-Set the font in GTK to `Inter 10.5` (which GNOME will use by default in the future) by running:
+Set the font in GTK to `Inter 10.5` or anything else you want with
 ```sh
 gsettings set org.gnome.desktop.interface font-name 'Inter 10'
 ```
@@ -62,11 +64,17 @@ After installing vim-plug, install the plugins by opening vim and running:
 :PlugInstall
 ```
 
+### MPD playlists
+My MPD + ncmpcpp setup expects the existence of the `~/mus` and `~/mus/playlists` directories.
+
+### ZSH
+The `zsh` module expects the existence of the **file** `~.cache/zsh/history`. If it's not found, an error will be emitted every time you leave a session. This isn't visible during normal usage, but it can get annoying if you ever need to call `zsh` manually.
+
 ## Modules
 Small observations about certain modules:
 
 - The `lf` module contains a systemd service and timer for automatically clearing the cache in `$HOME/.cache` once a week. It is important to note that, should the `.timer` or the `.service` be disabled, their symlinks created by stow will ALSO be removed because systemd removes ALL links to the file.
-- Most modules in this repository are better installed with `--no-folding` because it avoids miscellaneous files, which is why the `stowit.sh` script was added. However, some modules like `nvim`, whose structure constantly changes between commits, work better when installed with folding.
+- Most modules in this repository are better installed with `--no-folding` because it avoids miscellaneous files, which is why the `stowit.sh` script was added. However, some modules like `nvim`, whose structure constantly changes between commits, work better when installed with folding. However, in order to enable the use of the `nvim` module with `--no-folding`, there is some *"restow"* code in my neovim config which removes broken symlinks and re-deploys the module whenever a change to the `nvim` module in this  repo is detected. This ensures `~/.config/nvim` always has all the new files. It is important to note that this setup is *not* bidirectional. New files added to `~/.config/nvim` will *not* be automatically copied into the module in this repo, so you should always edit the config here first and let neovim handle the rest.
 
 ## Packages
 Some programs you'll need in order to make the setup work.
