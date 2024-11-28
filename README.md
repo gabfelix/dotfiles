@@ -194,9 +194,9 @@ All packages are using Arch names.
 
 * `newsboat`
 
-* `bluez`
+* `bluez` # systemctl enable bluetooth
 
-* `bluez-utils`
+* `bluez-utils` # optional (has a command line utility for bluetooth, blueman's applet already provides GUI)
 
 * `blueman`
 
