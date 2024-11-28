@@ -13,6 +13,8 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_CACHE_HOME="${HOME}/.cache"
 export HISTFILE="${XDG_DATA_HOME}/history"
 
+export BAT_THEME="gruvbox-dark"
+
 # Autostart hyprland on tty1
 if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
   exec Hyprland
