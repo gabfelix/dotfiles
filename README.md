@@ -194,9 +194,11 @@ All packages are using Arch names.
 
 * `newsboat`
 
-* `inter-font`
+* `bluez`
 
-* `ttf-meslo-nerd`
+* `bluez-utils`
+
+* `blueman`
 
 ### AUR
 
