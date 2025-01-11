@@ -11,13 +11,15 @@
 
 (setq backup-directory-alist `(("." . "~/.emacs_saves")))
 
+;; Appearance
 (load-theme 'cobalt2 t)
 (custom-set-faces
  '(font-lock-comment-face ((t (:foreground "#3AD900"))))
  '(font-lock-doc-face ((t (:foreground "#3AD900"))))
 )
 (when (eq system-type 'windows-nt)
-  (set-frame-font "Consolas 10" nil t))
+  (set-frame-font "Roboto Mono 11" nil t))
+(blink-cursor-mode 0) ;; Stop blinking cursor
 
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
