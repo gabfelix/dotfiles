@@ -27,3 +27,9 @@
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (when (file-exists-p custom-file)
   (load custom-file))
+
+(use-package typescript-mode
+  :ensure t)
+
+(use-package magit
+  :ensure t)
