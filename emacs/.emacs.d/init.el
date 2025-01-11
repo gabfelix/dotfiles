@@ -1,3 +1,8 @@
+;; MELPA
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
 ;; Remove junk
 (setq inhibit-startup-message t)
 (tool-bar-mode -1)
