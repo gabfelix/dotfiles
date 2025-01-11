@@ -19,7 +19,6 @@
 )
 (when (eq system-type 'windows-nt)
   (set-frame-font "Roboto Mono 11" nil t))
-(blink-cursor-mode 0) ;; Stop blinking cursor
 
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
