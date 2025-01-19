@@ -115,7 +115,7 @@ All packages are using Arch names.
 
 * `starship`
 
-* `wofi`
+* `rofi`
 
 * `pipewire-pulse`
 
