@@ -4,10 +4,6 @@ padding.y = 4
 
 [font]
 size = 13
-normal.family = "Noto Sans Mono"
-bold.family = "Noto Sans Mono"
-italic.family = "Noto Sans Mono"
-bold_italic.family = "Noto Sans Mono"
 
 [terminal]
 shell = "/usr/bin/fish"
