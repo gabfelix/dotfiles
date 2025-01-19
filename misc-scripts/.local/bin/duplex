@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Code inspired by this article: https://opensource.com/article/20/4/print-duplex-bash-script
+
+[ -z "$1" ] && echo "PDf file argument required" && exit 1
+# NOTE: This error checking code is a mess
+# n_pages=$(pdfinfo "$1" | awk '/^Pages:/ {print $2}')
+# if [ ! -f "$1" ] || [ ! -z "$(file "$1" | grep -qi 'pdf')" ]; then
+# 	echo "Invalid file passed"
+# 	exit 1
+# fi
+# [ "$pages" -eq "1" ] && echo "Single page document does not need pseudo-duplex printing." && exit 0
+echo "Printing odd pages..."
+lpr -o page-set=odd "$1"
+sleep 5
+printf "Turn the pages around, insert them and press Enter to continue"
+read x
+lpr -o page-set=even -o outputorder=reverse "$1"
+echo "Printing even pages..."
