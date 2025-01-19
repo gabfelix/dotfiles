@@ -1,3 +1,14 @@
+# Shorten commands
+alias "g"="git"
+alias "ga"="git add -A"
+alias "gac"="git add -A && git commit"
+alias "gap"="git add -p"
+alias "gco"="git commit"
+alias "gst"="git status"
+alias "p"="sudo pacman"
+alias "ll"="ls -l"
+alias "la"="ls -la"
+
 # Verbosity and settings that you pretty much just always are going to want.
 alias ls='ls -h --group-directories-first --color=auto'
 alias ls='ls -h --group-directories-first --color=auto'
