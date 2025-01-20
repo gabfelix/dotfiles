@@ -3,8 +3,6 @@ set statusbar-h-padding 0
 set statusbar-v-padding 0
 set page-padding 1
 
-set sandbox strict
-
 set selection-clipboard clipboard
 
 map f toggle_fullscreen
@@ -12,13 +10,18 @@ map [fullscreen] f toggle_fullscreen
 map l follow
 map L display_link
 
-map u scroll half-up
-map d scroll half-down
 map D toggle_page_mode
 map r reload
 map R rotate
 map K zoom in
+map [fullscreen] K zoom in
 map J zoom out
+map [fullscreen] J zoom out
 map i recolor
-map p print # disabled on sandbox = strict
+map [fullscreen] i recolor
+map p print
 map g goto top
+map u scroll half-up
+map d scroll half-down
+map [fullscreen] u scroll half-up
+map [fullscreen] d scroll half-down
