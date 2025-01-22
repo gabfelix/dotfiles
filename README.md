@@ -57,7 +57,7 @@ gsettings set org.gnome.desktop.interface font-name 'Inter 10'
 ```
 
 ### Vim
-If you're installing the `vim` module, you need the `vim-plug` plugin manager. Check out [vim-plug's installation instructions for vim](https://github.com/junegunn/vim-plug?tab=readme-ov-file#vim).
+If you're installing the `vim` module, you need to install the `vim-plug` plugin manager manually. Check out [vim-plug's installation instructions for vim](https://github.com/junegunn/vim-plug?tab=readme-ov-file#vim).
 
 After installing vim-plug, install the plugins by opening vim and running:
 ```
@@ -69,6 +69,13 @@ My MPD + ncmpcpp setup expects the existence of the `~/mus` and `~/mus/playlists
 
 ### ZSH
 The `zsh` module expects the existence of the **file** `~.cache/zsh/history`. If it's not found, an error will be emitted every time you leave a session. This isn't visible during normal usage, but it can get annoying if you ever need to call `zsh` manually.
+
+I am no longer using zsh and am just keeping it in the repo because, well, why not?
+
+### Fish
+I use the fish shell, but I since it's not POSIX compatible, (I don't set it as my default shell)[https://tim.siosm.fr/blog/2023/12/22/dont-change-defaut-login-shell/]. Instead, I configure my terminal (alacritty) to use fish.
+
+What this means is that the `fish` module might require some stuff from the `bash` module to work. For example, since my login shell is still the default (bash), I need to configure auto-starting Hyprland on TTY1 in my `.bash_profile`, because fish doesn't run when I login, only when I open Alacritty.
 
 ## Modules
 Small observations about certain modules:
