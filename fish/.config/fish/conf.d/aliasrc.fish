@@ -29,3 +29,4 @@ alias grep='grep --color=auto'
 alias cp="cp -iv" 
 alias mv="mv -iv" 
 alias rm="rm -vI" 
+alias bat="bat --theme ansi"
