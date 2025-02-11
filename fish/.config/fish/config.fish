@@ -1,4 +1,3 @@
-# Hide greeting `help` message
 set fish_greeting
 
 fish_add_path ~/.local/bin
