@@ -69,10 +69,8 @@ lfcd () {
 }
 bindkey -s '^o' '^ulfcd\n'
 
-bindkey -s '^a' 'textionizer\n'
-
 # Load aliases
-aliasfile="${HOME}/.aliasrc"
+aliasfile="${XDG_CONFIG_HOME}/shell/aliasrc"
 [ -f "$aliasfile" ] && source "$aliasfile"
 
 # Default prompt
@@ -80,10 +78,9 @@ autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 # Language package/runtime managers
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  
 
 # Load syntax highlighting; should be last
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

@@ -45,7 +45,8 @@ alias yta="yt -x -f bestaudio/best --audio-format mp3"
 alias ytt="yt --skip-download --write-thumbnail" 
 alias ffmpeg="ffmpeg -hide_banner"
 alias stow="stow -v"
-# Only do this if there are no other aliases for ls
+# Only do this if there are no other aliases for ls (aka eza not found)
 [ -z "$(alias ls)" ] && alias ls="ls --color=auto --group-directories-first -h"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
+
