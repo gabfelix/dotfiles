@@ -14,7 +14,7 @@ export XDG_CACHE_HOME="${HOME}/.cache"
 export HISTFILE="${XDG_DATA_HOME}/history"
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
-# Autostart hyprland on tty1
+# Autostart i3 on tty1
 if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-  exec Hyprland
+  exec startx
 fi
