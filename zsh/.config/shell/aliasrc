@@ -31,6 +31,7 @@ alias "gst"="git status"
 alias "p"="sudo pacman"
 alias "ll"="ls -l"
 alias "la"="ls -la"
+[ -x "$(command -v lazygit)" ] && alias "lg"="lazygit"
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias cp="cp -iv" 

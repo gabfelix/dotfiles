@@ -163,6 +163,7 @@ All packages are using Arch names.
 - `bluez-utils` # optional (has a command line utility for bluetooth, blueman's applet already provides GUI)
 - `blueman`
 - `urlscan`
+- `lazygit`
 
 ### i3 Packages
 I recently had to return to i3 because of bad performance on my external monitor with the NVIDIA driver under Wayland. This happened on GNOME and Hyprland, so I'm just going back, at least for now.
