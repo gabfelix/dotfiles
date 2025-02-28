@@ -51,7 +51,7 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{:%I:%M }",
+        "format": "{:%H:%M }",
         "format-alt": "{:%Y-%m-%d}"
       
     },
