@@ -50,8 +50,23 @@ $ ./stowit.sh bash sway
 ## Additional settings
 These are some additional settings which need manual intervention.
 
+### Natural Scrolling
+On Wayland, this is usually handled by the compositor itself.
+
+For X11, you need to set up natural scrolling by editing `/usr/share/X11/xorg.conf.d/40-libinput.conf`. I like doing this only for the touchpad. To do so, look for the touchpad config and make it look like this:
+
+```
+Section "InputClass"
+    ...
+    MatchIsTouchpad "on"
+    ...
+    Option "NaturalScrolling" "True"
+```
+
 ### GTK
-Set the font in GTK to `Inter 10.5` or anything else you want with
+> NOTE: As of GNOME 48, "Adwaita Sans" (which is just a modified version of Inter) is the new default font, so you might not need to do this anymore.
+
+Set the font in GTK to `Inter` or anything else you want with
 ```sh
 gsettings set org.gnome.desktop.interface font-name 'Inter 10'
 ```
@@ -80,7 +95,6 @@ What this means is that the `fish` module might require some stuff from the `bas
 ## Modules
 Small observations about certain modules:
 
-- The `lf` module contains a systemd service and timer for automatically clearing the cache in `$HOME/.cache` once a week. It is important to note that, should the `.timer` or the `.service` be disabled, their symlinks created by stow will ALSO be removed because systemd removes ALL links to the file.
 - Most modules in this repository are better installed with `--no-folding` because it avoids miscellaneous files, which is why the `stowit.sh` script was added. However, some modules like `nvim`, whose structure constantly changes between commits, work better when installed with folding. However, in order to enable the use of the `nvim` module with `--no-folding`, there is some *"restow"* code in my neovim config which removes broken symlinks and re-deploys the module whenever a change to the `nvim` module in this  repo is detected. This ensures `~/.config/nvim` always has all the new files. It is important to note that this setup is *not* bidirectional. New files added to `~/.config/nvim` will *not* be automatically copied into the module in this repo, so you should always edit the config here first and let neovim handle the rest.
 
 ## Packages
