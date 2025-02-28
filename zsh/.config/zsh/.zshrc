@@ -83,4 +83,5 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 # [ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  
 
 # Load syntax highlighting; should be last
-# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+syntax_hl_file="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+[ -f "$syntax_hl_file" ] &&  source "$syntax_hl_file" 2>/dev/null
