@@ -138,7 +138,6 @@ All packages are using Arch names.
 - `bat`
 - `chafa`
 - `colordiff`
-- `poppler` # Dependency for ctpv
 - `mpd` # systemctl --user enable
 - `ncmpcpp`
 - `mako` # systemctl --user enable
