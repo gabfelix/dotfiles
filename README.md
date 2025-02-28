@@ -106,6 +106,7 @@ All packages are using Arch names.
 
 - `udisks2`
 - `udisks2-btrfs`
+- `udisks2-lvm2`
 - `stow`
 - `hyprland`
 - `hyprpaper`
@@ -178,13 +179,8 @@ These are put on top of the previous hyrpland setup's packages, so there is some
 - `dunst`: Notifications
 - `xclip`: Clipboard
 
-
 ### AUR
 
-* `paru-bin` # The AUR helper I use, install this first
-
-* `nvm`
-
-* `librewolf-bin`
-
-* `ctpv`
+- `paru-bin` # The AUR helper I use, install this first
+- `nvm`
+- `librewolf-bin`
