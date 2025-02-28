@@ -10,7 +10,7 @@ reboot='🔃 reboot'
 shutdown='🖥️shutdown'
 hibernate='🛌hibernate'
 
-case "$(printf "${reboot}\n${hibernate}\n${shutdown}\n" | rofi -dmenu -i -p 'Action: ')" in
+case "$(printf "${reboot}\n${hibernate}\n${shutdown}\n" | dmenu -i -l 3 -p 'Action: ')" in
 	$reboot) systemctl reboot -i ;;
 	$hibernate) systemctl hibernate -i ;;
 	$shutdown) systemctl poweroff -i ;;
