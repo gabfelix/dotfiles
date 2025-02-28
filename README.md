@@ -104,122 +104,80 @@ All packages are using Arch names.
 
 ### Official repos
 
-* `udisks2`
+- `udisks2`
+- `udisks2-btrfs`
+- `stow`
+- `hyprland`
+- `hyprpaper`
+- `hyprcursor`
+- `waybar`
+- `ttf-font-awesome`
+- `tmux`
+- `kitty`
+- `gtk3` # unspecified kitty dependency (won't open otherwise)
+- `imagemagick`
+- `zsh`
+- `zsh-completions`
+- `zsh-syntax-highlighting`
+- `starship`
+- `rofi`
+- `pipewire-pulse`
+- `pipewire-alsa`
+- `pipewire-jack`
+- `yt-dlp`
+- `mpv`
+- `ffmpeg`
+- `zathura`
+- `zathura-cb`
+- `zathura-pdf-mupdf`
+- `lf`
+- `atool`
+- `ffmpegthumbnailer`
+- `atool`
+- `bat`
+- `chafa`
+- `colordiff`
+- `poppler` # Dependency for ctpv
+- `mpd` # systemctl --user enable
+- `ncmpcpp`
+- `mako` # systemctl --user enable
+- `noto-fonts`
+- `noto-fonts-cjk`
+- `noto-fonts-emoji`
+- `noto-fonts-extra`
+- `pulsemixer`
+- `libnotify`
+- `slurp`
+- `grim`
+- `neovim`
+- `wl-clipboard`
+- `ripgrep`
+- `fzf`
+- `just`
+- `jq`
+- `imv`
+- `zip`
+- `unzip`
+- `newsboat`
+- `bluez` # systemctl enable bluetooth
+- `bluez-utils` # optional (has a command line utility for bluetooth, blueman's applet already provides GUI)
+- `blueman`
+- `urlscan`
 
-* `udisks2-btrfs`
+### i3 Packages
+I recently had to return to i3 because of bad performance on my external monitor with the NVIDIA driver under Wayland. This happened on GNOME and Hyprland, so I'm just going back, at least for now.
 
-* `stow`
+These are put on top of the previous hyrpland setup's packages, so there is some overlap and common dependencies I'm not putting in because they're already listed above (example: I have `dunst` in here, but not `libnotify`.
 
-* `hyprland`
+- `i3-wm`
+- `xorg`
+- `xorg-xinit`
+- `i3status`: Default status bar
+- `dmenu`: Default launcher
+- `feh`: Setting wallpaper
+- `dunst`: Notifications
+- `xclip`: Clipboard
 
-* `hyprpaper`
-
-* `hyprcursor`
-
-* `waybar`
-
-* `ttf-font-awesome`
-
-* `tmux`
-
-* `kitty`
-
-* `gtk3` # unspecified kitty dependency (won't open otherwise)
-
-* `imagemagick`
-
-* `zsh`
-
-* `zsh-completions`
-
-* `zsh-syntax-highlighting`
-
-* `starship`
-
-* `rofi`
-
-* `pipewire-pulse`
-
-* `pipewire-alsa`
-
-* `pipewire-jack`
-
-* `yt-dlp`
-
-* `mpv`
-
-* `ffmpeg`
-
-* `zathura`
-
-* `zathura-cb`
-
-* `zathura-pdf-mupdf`
-
-* `lf`
-
-* `atool`
-
-* `ffmpegthumbnailer`
-
-* `atool`
-
-* `bat`
-
-* `chafa`
-
-* `colordiff`
-
-
-* `poppler` # Dependency for ctpv
-
-* `mpd` # systemctl --user enable
-
-* `ncmpcpp`
-
-* `mako` # systemctl --user enable
-
-* `noto-fonts`
-
-* `noto-fonts-cjk`
-
-* `noto-fonts-emoji`
-
-* `noto-fonts-extra`
-
-* `pulsemixer`
-
-* `libnotify`
-
-* `slurp`
-
-* `grim`
-
-* `neovim`
-
-* `wl-clipboard`
-
-* `ripgrep`
-
-* `fzf`
-
-* `just`
-
-* `jq`
-
-* `imv`
-
-* `zip`
-
-* `unzip`
-
-* `newsboat`
-
-* `bluez` # systemctl enable bluetooth
-
-* `bluez-utils` # optional (has a command line utility for bluetooth, blueman's applet already provides GUI)
-
-* `blueman`
 
 ### AUR
 
