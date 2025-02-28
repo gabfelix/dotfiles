@@ -37,7 +37,9 @@ exec --no-startup-id nm-applet
 # Pick a wallpaper using feh
 exec --no-startup-id i3randpaper
 
+# Startup daemons
 exec --no-startup-id dunst &
+exec --no-startup-id mpd &
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -195,4 +197,9 @@ bar {
         status_command i3status
 }
 
-bindsym  $mod+Shift+w exec "i3randpaper"
+bindsym $mod+Shift+w exec "i3randpaper"
+bindsym $mod+y exec "${BROWSER:-firefox}"
+bindsym $mod+u exec "kitty -e lf"
+bindsym $mod+i exec "kitty -e newsboat"
+bindsym $mod+o exec "kitty -e ncmpcppp"
+bindsym $mod+p exec "kitty -e pulsemixer"
