@@ -201,7 +201,7 @@ bindsym $mod+Shift+w exec "i3randpaper"
 bindsym $mod+y exec "${BROWSER:-firefox}"
 bindsym $mod+u exec "kitty -e lf"
 bindsym $mod+i exec "kitty -e newsboat"
-bindsym $mod+o exec "kitty -e ncmpcppp"
+bindsym $mod+o exec "kitty -e ncmpcpp"
 bindsym $mod+p exec "kitty -e pulsemixer"
 
 bindsym $mod+BackSpace exec "sysact"
