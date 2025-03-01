@@ -174,7 +174,6 @@ These are put on top of the previous hyrpland setup's packages, so there is some
 - `xorg`
 - `xorg-xinit`
 - `i3status`: Default status bar
-- `dmenu`: Default launcher
 - `feh`: Setting wallpaper
 - `dunst`: Notifications
 - `xclip`: Clipboard
