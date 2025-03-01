@@ -28,7 +28,13 @@ alias "gac"="git add -A && git commit"
 alias "gap"="git add -p"
 alias "gco"="git commit"
 alias "gst"="git status"
-alias "p"="sudo pacman"
+if [ -x "$(command -v paru)" ]; then
+	alias "p"="sudo paru"
+elif [ -x "$(command -v yay)" ]; then
+	alias "p"="sudo yay"
+else
+	alias "p"="sudo pacman"
+fi
 alias "ll"="ls -l"
 alias "la"="ls -la"
 [ -x "$(command -v lazygit)" ] && alias "lg"="lazygit"
