@@ -208,4 +208,3 @@ bindsym $mod+BackSpace exec "sysact"
 
 # Godot window rules
 for_window [instance="Godot_Engine"] floating enable
-for_window [class="Godot"] floating disable
