@@ -145,6 +145,8 @@ All packages are using Arch names.
 - `noto-fonts-cjk`
 - `noto-fonts-emoji`
 - `noto-fonts-extra`
+- `ttf-jetbrains-mono`
+- `ttf-jetbrains-mono-nerd`
 - `pulsemixer`
 - `libnotify`
 - `slurp`
