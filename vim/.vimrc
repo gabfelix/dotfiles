@@ -37,7 +37,6 @@ match TrailingWhitespace /\s\+$/
 " delete trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-" === I HATE WINDOWS Begin ===
 function! IsWindows()
 	" Check for WINDIR environment variable
 	let l:is_windows = system('echo %WINDIR%') != ''
@@ -45,23 +44,27 @@ function! IsWindows()
 endfunction
 
 if IsWindows()
-" force block cursor
-let &t_ti.="\e[1 q"
-let &t_SI.="\e[5 q"
-let &t_EI.="\e[1 q"
-let &t_te.="\e[0 q"
+	" force block cursor
+	let &t_ti.="\e[1 q"
+	let &t_SI.="\e[5 q"
+	let &t_EI.="\e[1 q"
+	let &t_te.="\e[0 q"
 endif
-" === I HATE WINDOWS End ===
 
 " Plugins
 if filereadable($HOME . '/.vim/autoload/plug.vim')
 	call plug#begin()
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-surround'
+	Plug 'ericbn/vim-solarized'
+	Plug 'vimwiki/vimwiki'
 	call plug#end()
 	" Plugin configs
 	" fugitive
 	nnoremap <leader>G :Git<cr>
 	" Shortcut for updating plugins and vim-plug
 	command! PU PlugUpdate | PlugUpgrade
+	set background=dark
+	colorscheme solarized
 endif
+
