@@ -31,12 +31,6 @@ set wildmode=longest,full
 set number
 set relativenumber
 
-" highlight any trailing whitespace with red
-highlight TrailingWhitespace ctermbg=red guibg=red
-match TrailingWhitespace /\s\+$/
-" delete trailing whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
-
 function! IsWindows()
 	" Check for WINDIR environment variable
 	let l:is_windows = system('echo %WINDIR%') != ''
@@ -64,7 +58,11 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 	nnoremap <leader>G :Git<cr>
 	" Shortcut for updating plugins and vim-plug
 	command! PU PlugUpdate | PlugUpgrade
+	set termguicolors
 	set background=dark
 	colorscheme solarized
+	" Vimwiki
+	let g:vimwiki_list = [{'syntax': 'markdown',
+				\ 'ext': 'md'}]
 endif
 
