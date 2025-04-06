@@ -30,7 +30,7 @@ cmd open &{{
         image/*)
             imv $fx ;;
         audio/*)
-            mpv --no-terminal $fx ;;
+            mpv --no-video --no-terminal $fx ;;
         video/*)
             mpv --no-terminal "$f" ;;
         application/pdf|application/epub+zip)
