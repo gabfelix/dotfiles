@@ -18,7 +18,14 @@ vim.opt.wildmenu = true
 vim.opt.wildmode = { 'longest:full', 'full' }
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.laststatus = 3 -- Single bar for all splits
+
+-- Vim-style things
+vim.opt.termguicolors = false
+vim.cmd.colorscheme 'vim'
+-- Back gutter black
+vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'black' })
+vim.api.nvim_set_hl(0, 'LineNr', { bg = 'black' })
+vim.api.nvim_set_hl(0, 'FoldColumn', { bg = 'black' })
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
