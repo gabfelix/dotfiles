@@ -7,7 +7,10 @@
 export EDITOR=nvim
 export BROWSER=librewolf # Used by my hyprland config
 
-# Select session
-if uwsm check may-start && uwsm select; then
-	exec uwsm start default
+# Add .local/bin to $PATH
+export PATH="${PATH}:$(find -L ${HOME}/.local/bin -type d | paste -sd ':' -)"
+
+# Exec hyprland (recommended way by devs)
+if uwsm check may-start; then
+	exec uwsm start hyprland.desktop
 fi
