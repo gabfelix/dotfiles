@@ -1,10 +1,12 @@
 return {
-  'ellisonleao/gruvbox.nvim',
-  priority = 1000,
-  lazy = false,
+  "navarasu/onedark.nvim",
+  priority = 1000, -- make sure to load this before all the other start plugins
   config = function()
-    vim.opt.background = 'dark'
-    vim.opt.termguicolors = true
-    vim.cmd.colorscheme 'gruvbox'
-  end,
+    require('onedark').setup {
+      -- style = 'darker'
+      style = 'dark'
+    }
+    -- Enable theme
+    require('onedark').load()
+  end
 }
