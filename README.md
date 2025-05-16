@@ -1,6 +1,8 @@
 # dotfiles
 These are my personal configuration files and scripts managed using GNU Stow.
 
+Over time, this became a mess. Not going to fix it. It's mostly for reference anyway, not to create you a perfect setup with no cost at all.
+
 ## Structure
 The system is divided into modules, represented by the top-level directories. The structure inside each module mimicks the target structure in the `$HOME` directory. This is why pretty much every folder has a `.config` inside it.
 
@@ -166,6 +168,7 @@ All packages are using Arch names.
 - `blueman`
 - `urlscan`
 - `lazygit`
+- `uwsm`
 
 ### i3 Packages
 I recently had to return to i3 because of bad performance on my external monitor with the NVIDIA driver under Wayland. This happened on GNOME and Hyprland, so I'm just going back, at least for now.
