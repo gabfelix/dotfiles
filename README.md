@@ -94,6 +94,9 @@ I use the fish shell, but I since it's not POSIX compatible, (I don't set it as 
 
 What this means is that the `fish` module might require some stuff from the `bash` module to work. For example, since my login shell is still the default (bash), I need to configure auto-starting Hyprland on TTY1 in my `.bash_profile`, because fish doesn't run when I login, only when I open Alacritty.
 
+### lf and Previews
+To see video thumbnail previews, the previewer uses a script called `vidthumb` that requires `jq` and `ffmpegthumbnailer`. The cache it creates for the image has a JSON manifest created/parsed with `jq`, so don't forget to install it!
+
 ## Modules
 Small observations about certain modules:
 
