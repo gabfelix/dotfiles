@@ -1,3 +1,4 @@
 require 'config.base' -- Load this before anything else
 require 'config.restow' -- Automatically redeploy nvim config
 require 'config.lazy'
+require 'config.markdown-preview'
