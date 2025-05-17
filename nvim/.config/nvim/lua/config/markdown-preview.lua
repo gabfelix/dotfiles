@@ -4,7 +4,7 @@ end
 
 local preview_markdown = function()
   if not system_can_preview_markdown() then
-    error "Markdown preview dependencies not found ('pandoc' and 'zathura')"
+    error "Markdown preview dependencies not found ('pandoc' and 'zathura' and 'pdflatex')"
   end
   if vim.bo.filetype ~= 'markdown' then
     error 'Buffer filetype is not markdown'
