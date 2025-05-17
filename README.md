@@ -1,9 +1,11 @@
 # dotfiles
 These are my personal configuration files and scripts managed using GNU Stow.
 
-Over time, this became a mess. Not going to fix it. It's mostly for reference anyway, not to create you a perfect setup with no cost at all.
+The idea initially was for this to be a complete setup you could just deploy to your `$HOME` with `./stowit.sh */` but still pick and choose if you wanted anything specific, but as I tried programs over the years, the configs kept piling up and I didn't want to remove them in case I needed the reference when/if I tried them again. So a lot of these don't see any use from me in my day-to-day.
 
-## Structure
+With that in mind, let's get to the configs and setup notes, I hope you find something useful here.
+
+# Structure
 The system is divided into modules, represented by the top-level directories. The structure inside each module mimicks the target structure in the `$HOME` directory. This is why pretty much every folder has a `.config` inside it.
 
 I tried to make it as modular as I could, but there is some connection between different programs. For example, the reason why I can put my scripts in `~/.local/bin` is because I add it to my `$PATH` in my bashrc, so every directory with `.local/bin` has an implicit dependency on the "bash" directory.
@@ -12,8 +14,8 @@ I don't use all of these anymore, but I figured there might be some use for the 
 
 Since these are my personal configurations and this is (at the time of writing) a private repository, I won't make any effort to document such dependencies. Should this repository become public, any potential users of these files are expected to fix the issues themselves and (if possible) contribute a fix back.
 
-## Installation
-### GNU Stow
+# Installation
+## GNU Stow
 Assuming you've already cloned and entered this repository, run this to create symlinks to all directories in ~/ using GNU Stow:
 ```sh
 $ stow */ -t ~
@@ -49,10 +51,10 @@ You may also pass specific modules, just like before:
 ```sh
 $ ./stowit.sh bash sway
 ```
-## Additional settings
+# Additional settings
 These are some additional settings which need manual intervention.
 
-### Natural Scrolling
+## Natural Scrolling
 On Wayland, this is usually handled by the compositor itself.
 
 For X11, you need to set up natural scrolling by editing `/usr/share/X11/xorg.conf.d/40-libinput.conf`. I like doing this only for the touchpad. To do so, look for the touchpad config and make it look like this:
@@ -65,7 +67,7 @@ Section "InputClass"
     Option "NaturalScrolling" "True"
 ```
 
-### GTK
+## GTK
 > NOTE: As of GNOME 48, "Adwaita Sans" (which is just a modified version of Inter) is the new default font, so you might not need to do this anymore.
 
 Set the font in GTK to `Inter` or anything else you want with
@@ -73,7 +75,7 @@ Set the font in GTK to `Inter` or anything else you want with
 gsettings set org.gnome.desktop.interface font-name 'Inter 10'
 ```
 
-### Vim
+## Vim
 If you're installing the `vim` module, you need to install the `vim-plug` plugin manager manually. Check out [vim-plug's installation instructions for vim](https://github.com/junegunn/vim-plug?tab=readme-ov-file#vim).
 
 After installing vim-plug, install the plugins by opening vim and running:
@@ -81,26 +83,26 @@ After installing vim-plug, install the plugins by opening vim and running:
 :PlugInstall
 ```
 
-### MPD playlists
+## MPD playlists
 My MPD + ncmpcpp setup expects the existence of the `~/mus` and `~/mus/playlists` directories.
 
-### ZSH
+## ZSH
 The `zsh` module expects the existence of the **file** `~.cache/zsh/history`. If it's not found, an error will be emitted every time you leave a session. This isn't visible during normal usage, but it can get annoying if you ever need to call `zsh` manually.
 
 I am no longer using zsh and am just keeping it in the repo because, well, why not?
 
-### Fish
+## Fish
 I use the fish shell, but I since it's not POSIX compatible, (I don't set it as my default shell)[https://tim.siosm.fr/blog/2023/12/22/dont-change-defaut-login-shell/]. Instead, I configure my terminal (alacritty) to use fish.
 
 What this means is that the `fish` module might require some stuff from the `bash` module to work. For example, since my login shell is still the default (bash), I need to configure auto-starting Hyprland on TTY1 in my `.bash_profile`, because fish doesn't run when I login, only when I open Alacritty.
 
-### lf and Previews
+## lf and Previews
 To see video thumbnail previews, the previewer uses a script called `vidthumb` that requires `jq` and `ffmpegthumbnailer`. The cache it creates for the image has a JSON manifest created/parsed with `jq`, so don't forget to install it!
 
-## Modules
+# Modules
 Small observations about certain modules:
 
-- Most modules in this repository are better installed with `--no-folding` because it avoids miscellaneous files, which is why the `stowit.sh` script was added. However, some modules like `nvim`, whose structure constantly changes between commits, work better when installed with folding. However, in order to enable the use of the `nvim` module with `--no-folding`, there is some *"restow"* code in my neovim config which removes broken symlinks and re-deploys the module whenever a change to the `nvim` module in this  repo is detected. This ensures `~/.config/nvim` always has all the new files. It is important to note that this setup is *not* bidirectional. New files added to `~/.config/nvim` will *not* be automatically copied into the module in this repo, so you should always edit the config here first and let neovim handle the rest.
+- Most modules in this repository are better installed with `--no-folding` because it avoids miscellaneous files, which is why the `stowit.sh` script was added. However, some modules like `nvim`, whose structure constantly changes between commits, work better when installed with folding. However, in order to enable the use of the `nvim` module with `--no-folding`, there is a file called `restow.lua` in my neovim config which removes broken symlinks and re-deploys the module whenever a change to the `nvim` module in this  repo is detected. This ensures `~/.config/nvim` always has all the new files. It is important to note that this setup is *not* bidirectional. New files added to `~/.config/nvim` will *not* be automatically copied into the module in this repo, so you should always edit the config here first and let neovim handle the rest.
 
 ## Packages
 Some programs you'll need in order to make the setup work.
