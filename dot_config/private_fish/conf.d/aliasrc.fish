@@ -1,7 +1,3 @@
-alias yt="yt-dlp --embed-metadata -i" 
-alias ytv="yt -S res,ext:mp4:m4a --recode mp4" 
-alias yta="yt -x -f bestaudio/best --audio-format mp3" 
-alias ytt="yt --skip-download --write-thumbnail" 
 alias vim="nvim"
-alias vi"=nvim"
+alias vi="nvim"
 alias lg="lazygit"
