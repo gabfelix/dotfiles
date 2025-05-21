@@ -1,3 +1,4 @@
 README.md
 .config/newsboat/urls
 .config/nvim/lazy-lock.json
+.config/ncmpcpp/*.log
