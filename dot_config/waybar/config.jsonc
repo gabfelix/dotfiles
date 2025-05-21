@@ -9,7 +9,7 @@
     "scroll-step": 5,
     "format": "{icon} {volume}%",
     "format-muted": "󰝟 {volume}%",
-    "on-click":"kitty -- alsamixer -V all",
+    "on-click":"kitty -e pulsemixer",
     "format-icons": {
       "default": ["", "", ""]
     }
@@ -20,7 +20,7 @@
     "tooltip": false,
     "format-wifi": "  {essid}",
     "format-ethernet": "",
-    "on-click":"kitty -- nmtui"
+    "on-click":"kitty -e nmtui"
 	},
 
 
@@ -28,8 +28,8 @@
 		"tooltip": false,
 		"format": " {}%",
 		"interval":1,
-        "on-scroll-up": "light -A 5",
-		"on-scroll-down": "light -U 5"
+        "on-scroll-up": "brightnessctl set +5%",
+		"on-scroll-down": "brightnessctl set 5%-"
 	},
 
 
@@ -49,6 +49,7 @@
 
 
   "clock": {
+	  "tooltip": false,
       "format": "{:%H:%M}",
       "format-alt": "{:%m-%d-%Y}"
   },
@@ -79,8 +80,8 @@
           "default": " "
       },
       "escape": true,
-      "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
-      "on-click": "playerctl play-pause"
+      // "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
+      // "on-click": "playerctl play-pause"
   },
 
 
