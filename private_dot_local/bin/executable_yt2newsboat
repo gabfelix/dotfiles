@@ -16,11 +16,10 @@ done
 for url in "${input_urls[@]}"; do
     channel_id="$(yt-dlp --print channel_url --playlist-items 1 "$url" 2>/dev/null | sed 's|https://www\.youtube\.com/channel/||')"
     if [[ -z "$channel_id" ]]; then
-        echo "Warning: could not get channel_id for $url"
+        echo "Could not get channel_id for $url"
         continue
     fi
     output="https://www.youtube.com/feeds/videos.xml?channel_id=${channel_id} \"youtube\""
-    printf "Appending\n$output\nto newsboat urls file\n"
     echo "$output" >> "${XDG_CONFIG_HOME:-$HOME/.config}/newsboat/urls"
 done
 
