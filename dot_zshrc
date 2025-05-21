@@ -1,5 +1,10 @@
 setopt autocd
 
+HISTSIZE=10000000
+SAVEHIST=10000000
+HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
+setopt inc_append_history
+
 # settings
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
