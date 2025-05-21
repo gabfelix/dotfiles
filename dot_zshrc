@@ -8,6 +8,7 @@ alias bc='bc -ql'
 alias p='sudo pacman'
 alias chz='chezmoi'
 alias chez='chezmoi edit'
+alias chaz='chezmoi apply'
 alias lg='lazygit'
 # exports
 export EDITOR=nvim
