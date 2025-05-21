@@ -1,0 +1,18 @@
+#!/bin/sh
+
+wmpid(){ # This function is needed if there are multiple instances of the window manager.
+	tree="$(pstree -ps $$)"
+	tree="${tree#*sway(}"
+	echo "${tree%%)*}"
+}
+
+reboot='🔃 reboot'
+shutdown='🖥️shutdown'
+hibernate='🛌hibernate'
+
+case "$(printf "${reboot}\n${hibernate}\n${shutdown}\n" | rofi -dmenu -i -l 3 -p 'Action: ')" in
+	$reboot) systemctl reboot -i ;;
+	$hibernate) systemctl hibernate -i ;;
+	$shutdown) systemctl poweroff -i ;;
+	*) exit 1 ;;
+esac
