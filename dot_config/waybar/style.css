@@ -172,8 +172,8 @@ window#waybar.hidden {
   padding-right: 5px;
   border-radius: 10px;
   transition: none;
-  color: #fe8019;
-  /*default: color: #89dceb; */
+  /* color: #fe8019; */
+  color: #89dceb; 
   background: #161320;
 }
 
