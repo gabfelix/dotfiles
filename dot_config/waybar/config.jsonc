@@ -2,7 +2,7 @@
 	"layer": "top",
 	"modules-left": ["custom/launcher", "backlight", "wireplumber"],
 	"modules-center": ["hyprland/workspaces"],
-	"modules-right": ["network", "cpu", "memory", "battery", "clock"],
+	"modules-right": ["tray", "network", "cpu", "memory", "battery", "clock"],
 	
   "wireplumber": {
     "tooltip": false,
@@ -15,6 +15,10 @@
     }
   },
 
+  "tray": {
+		// "icon-size": 21,
+		"spacing": 10
+  },
 
   "network": {
     "tooltip": false,
