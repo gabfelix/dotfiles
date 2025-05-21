@@ -135,6 +135,15 @@ require("lazy").setup({
 					return '%2l:%-2v'
 				end
 			end,
+		},
+		{
+			'echasnovski/mini.pick',
+			dependencies = { 'nvim-tree/nvim-web-devicons' }, -- or mini.icons
+			version = false,
+			config = true,
+			keys = {
+				{ "<leader>sf", "<cmd>Pick files<cr>", desc = "Search files" },
+			}
 		}
 	},
 	-- automatically check for plugin updates
