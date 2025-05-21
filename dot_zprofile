@@ -1,3 +1,8 @@
 #!/usr/bin/zsh
 
 export PATH="${PATH}:$(find -L ${HOME}/.local/bin -type d | paste -sd ':' -)"
+
+# autostart WM on tty1 login
+if [[ -z "$DISPLAY" && $(tty) == /dev/tty1 ]]; then
+    exec Hyprland
+fi
