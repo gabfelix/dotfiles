@@ -50,7 +50,7 @@ local preview_markdown = function()
     local lines = (vim.api.nvim_buf_get_lines(buf, 0, -1, false))
     file:write(table.concat(lines, '\n'))
     file:close()
-    vim.fn.system('pandoc -t pdf "' .. filename .. '" | zathura -')
+    vim.fn.system('pandoc -t pdf "' .. filename .. '" -V linkcolor=blue | zathura -')
   else
     print('Failed to save buffer contents to "' .. filename .. '"')
   end
@@ -124,6 +124,7 @@ require("lazy").setup({
 		},
 		{
 			'echasnovski/mini.statusline',
+			version = false,
 			opts = {
 				use_icons = true,
 			},
@@ -137,89 +138,15 @@ require("lazy").setup({
 			end,
 		},
 		{
-			'nvim-telescope/telescope.nvim',
-			event = 'VimEnter',
-			branch = '0.1.x',
-			dependencies = {
-				'nvim-lua/plenary.nvim',
-				{
-					'nvim-telescope/telescope-fzf-native.nvim',
-					build = 'make',
-					cond = function()
-						return vim.fn.executable 'make' == 1
-					end,
-				},
-				{ 'nvim-telescope/telescope-ui-select.nvim' },
-				{ 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-			},
+			'echasnovski/mini.pick',
+			dependencies = { 'nvim-tree/nvim-web-devicons' }, -- or mini.icons
+			version = false, -- latest version
+			lazy = false,
 			config = function()
-				require('telescope').setup {
-					extensions = {
-						['ui-select'] = {
-							require('telescope.themes').get_dropdown(),
-						},
-					},
-					pickers = {
-						find_files = {
-							follow = true,
-						},
-					},
-				}
-				pcall(require('telescope').load_extension, 'fzf')
-				pcall(require('telescope').load_extension, 'ui-select')
-
-				local builtin = require 'telescope.builtin'
-				vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-				vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-				vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-				vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-				vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-				vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-				vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-				vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-				vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-				vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-				vim.keymap.set('n', '<leader>sn', function()
-					builtin.find_files { cwd = vim.fn.stdpath 'config' }
-				end, { desc = '[S]earch [N]eovim files' })
+				require('mini.pick').setup()
+				vim.api.nvim_set_keymap('n', '<leader>sf', '<cmd>Pick files<cr>', { desc = 'Search files' })
 			end,
-		}
-	},
-	{
-		'nvim-treesitter/nvim-treesitter',
-		build = ':TSUpdate',
-		main = 'nvim-treesitter.configs',
-		opts = {
-			ensure_installed = {
-				'bash',
-				'c',
-				'cpp',
-				'diff',
-				'html',
-				'lua',
-				'luadoc',
-				'markdown',
-				'markdown_inline',
-				'query',
-				'vim',
-				'vimdoc',
-				'toml',
-				'yaml',
-				'ini',
-				'rust',
-				'javascript',
-				'typescript',
-			},
-			auto_install = true,
-			highlight = {
-				enable = true,
-				disable = function(_, bufnr)
-					return vim.api.nvim_buf_line_count(bufnr) > 50000
-				end,
-				additional_vim_regex_highlighting = { 'ruby' },
-			},
-			indent = { enable = false },
-		}
+		},
 	},
 	-- automatically check for plugin updates
 	checker = { enabled = true },
