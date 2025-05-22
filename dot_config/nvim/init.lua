@@ -147,6 +147,9 @@ require("lazy").setup({
 				vim.api.nvim_set_keymap('n', '<leader>sf', '<cmd>Pick files<cr>', { desc = 'Search files' })
 			end,
 		},
+		{
+			'tpope/vim-surround',
+		},
 	},
 	-- automatically check for plugin updates
 	checker = { enabled = true },
