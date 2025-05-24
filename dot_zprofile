@@ -1,9 +1,0 @@
-#!/usr/bin/zsh
-
-export PATH="${PATH}:$(find -L ${HOME}/.local/bin -type d | paste -sd ':' -)"
-
-# autostart WM on tty1 login
-# Select uwsm by running `uwsm select` and checking hyprland in the TUI
-if [[ -z "$DISPLAY" && $(tty) == /dev/tty1 ]] && uwsm check may-start && uwsm select; then
-	exec uwsm start default
-fi

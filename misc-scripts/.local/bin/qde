@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Quick dotfile editing script
+
+function yes_or_no {
+    while true; do
+        read -p "$* [y/N]: " yn
+        case $yn in
+            [Yy]*) return 0  ;;  
+            *) echo "Aborted" ; return  1 ;;
+        esac
+    done
+}
+
+dotfile_repo="${HOME}/dev/dotfiles"
+
+find "$dotfile_repo" -type f -not -iwholename '*.git*' | fzf | xargs ${EDITOR:-vi}
+
+cwd="$(pwd)"
+cd "$dotfile_repo"
+git add -A
+git status
+yes_or_no "Would you like to add and commit ALL of these changes?" && \
+	git add -A && \
+	git commit
+yes_or_no "Push?" && git push
+cd "$cwd"

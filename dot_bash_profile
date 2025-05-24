@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-[[ -f ~/.bashrc ]] && . ~/.bashrc
-
-export PATH="${PATH}:$(find -L ${HOME}/.local/bin -type d | paste -sd ':' -)"

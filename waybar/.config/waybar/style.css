@@ -1,0 +1,175 @@
+@import "colors.css";
+
+* {
+  font-family: "JetBrains Nerd Font";
+  font-weight: bold;
+  font-size: 12px;
+}
+
+window#waybar {
+  background: @dark;
+}
+
+window#waybar > box {
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+#custom-separator {
+  color: @alt500;
+  padding-left: 3px;
+  padding-right: 10px;
+}
+
+/* Application Menu */
+#custom-menu {
+  font-size: 15px;
+  color: @text;
+}
+
+#custom-menu:hover {
+  color: @text500;
+}
+
+#custom-menu:active {
+  color: @text500;
+}
+
+#custom-fullscreen {
+  font-size: 15px;
+  color: @yellow;
+}
+
+#workspaces {
+}
+
+#workspaces button {
+  color: @text500;
+  border: 0px solid @text;
+  background-color: transparent;
+}
+
+#workspaces button:hover {
+  color: @text700;
+}
+
+#workspaces button.visible {
+  color: @blue;
+  background-color: transparent;
+}
+
+#workspaces button.active {
+  color: @yellow;
+  background-color: transparent;
+}
+
+#workspaces button.hidden {
+  color: @red;
+  background-color: transparent;
+}
+
+#custom-updates,
+#custom-spotify,
+#network,
+#bluetooth,
+#custom-keyboard,
+#idle_inhibitor,
+#battery,
+#clock,
+#tray {
+  background-color: @background500;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#network,
+#bluetooth,
+#custom-keyboard,
+#idle_inhibitor,
+#battery {
+  background-color: @background500;
+}
+
+#network.disconnected,
+#bluetooth.off,
+#bluetooth.disabled,
+#pulseaudio.muted {
+  color: @alt;
+}
+
+#custom-updates,
+#custom-spotify {
+  background-color: @background500;
+  border-radius: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 5px;
+}
+
+#custom-updates {
+  color: @red;
+}
+
+#custom-spotify {
+  color: @green;
+}
+
+#network {
+  color: @green;
+  border-radius: 10px 0 0 10px;
+  padding-left: 10px;
+}
+
+#bluetooth {
+  border-radius: 10px 0 0 10px;
+  padding-left: 10px;
+  font-size: 15px;
+  color: @blue;
+}
+
+#custom-keyboard {
+  color: @white;
+  font-size: 15px;
+}
+
+#idle_inhibitor {
+  color: @white;
+  padding-right: 10px;
+  border-radius: 0 10px 10px 0;
+}
+
+#battery {
+  border-radius: 10px 0 0 10px;
+  padding-left: 10px;
+  margin-left: 5px;
+  color: @green;
+}
+
+#battery.warning {
+  color: @yellow;
+}
+
+#battery.critical {
+  color: @red;
+}
+
+#battery.charging {
+  color: @blue;
+}
+
+#clock {
+  color: @text;
+}
+
+#tray {
+  color: @text;
+  padding-right: 10px;
+  border-radius: 0 10px 10px 0;
+}
+
