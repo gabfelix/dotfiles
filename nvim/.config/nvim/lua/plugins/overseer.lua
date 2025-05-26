@@ -8,6 +8,7 @@ return {
     task_list = {
       bindings = {
         ['<Esc>'] = 'Close',
+        ['q'] = 'Close',
       },
     },
     task_launcher = {
@@ -28,6 +29,7 @@ return {
   config = true,
   keys = {
     { '<leader>or', '<cmd>OverseerRun<cr>', desc = 'Overseer Run' },
-    -- { '<leader>os', '<cmd>OverseerRun<cr>', desc = 'Overseer Toggle VSplit' },
+    { '<leader>oo', '<cmd>OverseerToggle<cr>', desc = 'Overseer Toggle' },
+    { '<leader>oa', '<cmd>OverseerQuickAction<cr>', desc = 'Perform Overseer Action on a Task' },
   },
 }
