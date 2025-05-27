@@ -1,27 +1,22 @@
-#!/usr/bin/zsh
+autoload -U colors && colors	# Load colors
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+stty stop undef
+setopt interactive_comments
 
-setopt autocd # change directory by typing name without 'cd'
-setopt interactive_comments # Allow comments on interactive shells
-setopt rmstarsilent # I already have an alias to `rm -I` for confirmation
+# History in cache directory:
+HISTSIZE=10000000
+SAVEHIST=10000000
+HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
+setopt inc_append_history
 
-# history settings
-HISTSIZE=1000
-SAVEHIST=10000
-HISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/history"
-setopt SHARE_HISTORY
-setopt HIST_IGNORE_ALL_DUPS # no duplicate in HISTFILE
-setopt HIST_SAVE_NO_DUPS  # no saving duplicate
-setopt HIST_REDUCE_BLANKS  # remove unnecessary blanks
-setopt INC_APPEND_HISTORY_TIME  # add to histfile after execution
-setopt EXTENDED_HISTORY  # record command start time
-
+# Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
-_comp_options+=(globdots)
+_comp_options+=(globdots)		# Include hidden files.
 
-stty stop undef # No Ctrl-S to freeze terminal
+export EDITOR=nvim
 
 # vi mode
 bindkey -v
@@ -50,33 +45,11 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
+bindkey '^[[P' delete-char
+
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
-
-# Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    tmp="$(mktemp -uq)"
-    trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
-bindkey -s '^o' '^ulfcd\n'
-
-# Load aliases
-aliasfile="${XDG_CONFIG_HOME}/shell/aliasrc"
-[ -f "$aliasfile" ] && source "$aliasfile"
-
-# Default prompt
-autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-
-# Load syntax highlighting; should be last
-syntax_hl_file="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-[ -f "$syntax_hl_file" ] &&  source "$syntax_hl_file" 2>/dev/null
