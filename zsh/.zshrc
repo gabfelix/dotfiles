@@ -17,6 +17,7 @@ compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 export EDITOR=nvim
+alias bc='bc -ql'
 
 # vi mode
 bindkey -v
