@@ -1,9 +1,8 @@
-" My vim (not neovim) config is meant to be simple and hyper focused around editing text
-" No fancy LSPs or tooling such as debuggers, linters or spellcheckers to get in the way
-" No debugger integration
-" Use as little plugins as possible
-" File trees are icky and don't belong in vim
-" For any of that stuff, I use neovim or vsc*de
+" bootstrap vim-plug
+if empty(glob("~/.vim/autoload/plug.vim"))
+	  silent! execute '!curl --create-dirs -fsSLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+	    autocmd VimEnter * silent! PlugInstall
+endif
 
 filetype on
 filetype plugin on
@@ -45,24 +44,10 @@ if IsWindows()
 	let &t_te.="\e[0 q"
 endif
 
-" Plugins
-if filereadable($HOME . '/.vim/autoload/plug.vim')
-	call plug#begin()
-	Plug 'tpope/vim-fugitive'
-	Plug 'tpope/vim-surround'
-	Plug 'ericbn/vim-solarized'
-	Plug 'vimwiki/vimwiki'
-	call plug#end()
-	" Plugin configs
-	" fugitive
-	nnoremap <leader>G :Git<cr>
-	" Shortcut for updating plugins and vim-plug
-	command! PU PlugUpdate | PlugUpgrade
-	set termguicolors
-	set background=dark
-	colorscheme solarized
-	" Vimwiki
-	let g:vimwiki_list = [{'syntax': 'markdown',
-				\ 'ext': 'md'}]
-endif
-
+call plug#begin()
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+call plug#end()
+command! PU PlugUpdate | PlugUpgrade
+" Plugin configs
+nnoremap <leader>G :Git<cr>
