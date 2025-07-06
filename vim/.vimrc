@@ -1,53 +1,32 @@
-" bootstrap vim-plug
-if empty(glob("~/.vim/autoload/plug.vim"))
-	  silent! execute '!curl --create-dirs -fsSLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-	    autocmd VimEnter * silent! PlugInstall
-endif
+let mapleader=' '
+let localmapleader=' '
 
-filetype on
-filetype plugin on
-filetype indent on
-syntax on
-
-" Map leaders before anything else
-let mapleader = ' '
-let localmapleader = ' '
-
-set nocompatible
-set noesckeys " Fix small delay when pressing Esc-Shift-o quickly
-set shiftwidth=8
-set tabstop=8
-set incsearch
+set mouse=a
 set hlsearch
+set incsearch
 set ignorecase
 set smartcase
 set splitright
 set splitbelow
-set scrolloff=8
-set breakindent " visually indent wrapped lines
-set wildmenu
-set wildmode=longest,full
-set number
-set relativenumber
-
-function! IsWindows()
-	" Check for WINDIR environment variable
-	let l:is_windows = system('echo %WINDIR%') != ''
-	return l:is_windows
-endfunction
-
-if IsWindows()
-	" force block cursor
-	let &t_ti.="\e[1 q"
-	let &t_SI.="\e[5 q"
-	let &t_EI.="\e[1 q"
-	let &t_te.="\e[0 q"
-endif
 
 call plug#begin()
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary' " gcc to comment lines
+Plug 'tpope/vim-vinegar'
+" vim-surround reference:
+" ds': delete surrounding '
+" cs"': change surrounding " to '
+" ysiw): add () to surround the word under the cursor
+Plug 'tpope/vim-surround' " new motions for messing with surrounding characters
+Plug 'romainl/vim-cool' " disables highlight after you finish searching (make sure 'hlsearch' is set)
+Plug 'jasonccox/vim-wayland-clipboard'
+Plug 'markonm/traces.vim'
 call plug#end()
-command! PU PlugUpdate | PlugUpgrade
-" Plugin configs
-nnoremap <leader>G :Git<cr>
+
+" tab navigation
+nnoremap <leader>tt :tabnew<cr>
+nnoremap <leader>tx :tabclose<cr>
+nnoremap ]t :tabnext<cr>
+nnoremap [t :tabprevious<cr>
+
+colo mudworld
