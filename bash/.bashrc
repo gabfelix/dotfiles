@@ -27,6 +27,6 @@ alias diff="diff --color=auto"
 alias rm='rm -I'
 alias yt="yt-dlp --embed-metadata -i" 
 alias ytv="yt -S res,ext:mp4:m4a --recode mp4" 
-alias yta="yt -x -f bestaudio/best --audio-format mp3" 
+alias yta="yt -x -f bestaudio/best --audio-format opus" 
 alias ytt="yt --skip-download --write-thumbnail" 
 alias ffmpeg="ffmpeg -hide_banner"
