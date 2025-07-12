@@ -5,7 +5,7 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 export EDITOR=nvim
-export BROWSER=librewolf # Used by my hyprland config
+export BROWSER=firefox # Used by my hyprland config
 
 # Add .local/bin to $PATH
 export PATH="${PATH}:$(find -L ${HOME}/.local/bin -type d | paste -sd ':' -)"
