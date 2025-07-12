@@ -1,1 +1,3 @@
-@theme "style.rasi"
+//@theme "style.rasi"
+
+@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
