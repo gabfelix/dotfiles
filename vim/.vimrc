@@ -29,4 +29,4 @@ nnoremap <leader>tx :tabclose<cr>
 nnoremap ]t :tabnext<cr>
 nnoremap [t :tabprevious<cr>
 
-colo mudworld
+colorscheme mudworld

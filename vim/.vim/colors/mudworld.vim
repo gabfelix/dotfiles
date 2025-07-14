@@ -1,8 +1,8 @@
 " Put this file in your .vim/colors and you can load it with
 " :colorscheme mudworld
 
-if !has('gui_running') " gui versions of Vim don't have 'termguicolors' setting
-	set termguicolors " enable true color in terminals
+if !has('gui_running') " gui versions of Vim don't support termguicolors
+	set termguicolors
 endif
 
 if exists("syntax on")
@@ -10,11 +10,8 @@ if exists("syntax on")
 endif
 
 set background=dark
-
-colorscheme koehler " base
-
-highlight Normal guifg=#cdaa7d
-highlight Comment guifg=#bac4cf
+highlight Normal guifg=#cdaa7d guibg=#000000
+highlight Comment guifg=#bac4cf 
 highlight Constant guifg=#cf7044
 highlight Identifier guifg=#5b909a
 highlight Function guifg=white gui=bold
