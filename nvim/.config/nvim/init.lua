@@ -17,8 +17,6 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 require('mini.icons').setup()
-require('mini.basics').setup()
--- override mini.basics with the stuff I like
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.breakindent = true
@@ -72,29 +70,21 @@ vim.api.nvim_set_keymap('n', 'yss', 'ys_', { noremap = false })
 
 require('mini.statusline').setup()
 
-require('mini.base16').setup({
-	palette = {
-		base00 = "#002b36",
-		base01 = "#073642",
-		base02 = "#586e75",
-		base03 = "#657b83",
-		base04 = "#839496",
-		base05 = "#93a1a1",
-		base06 = "#eee8d5",
-		base07 = "#fdf6e3",
-		base08 = "#dc322f",
-		base09 = "#cb4b16",
-		base0A = "#b58900",
-		base0B = "#859900",
-		base0C = "#2aa198",
-		base0D = "#268bd2",
-		base0E = "#6c71c4",
-		base0F = "#d33682",
-	}
-})
-
 require('mini.pick').setup()
+vim.keymap.set('n', '<leader>sf', MiniPick.builtin.files)
+vim.keymap.set('n', '<leader>sg', MiniPick.builtin.grep_live)
+vim.keymap.set('n', '<leader>sb', MiniPick.builtin.buffers)
 
 -- Plugins (other than mini)
 require('mini.deps').setup({ path = { package = path_package } } )
+
 local add = MiniDeps.add
+
+add({
+	source = 'ellisonleao/gruvbox.nvim',
+})
+require('gruvbox').setup({
+	contrast = "hard",
+})
+vim.opt.background = 'dark'
+vim.cmd.colorscheme 'gruvbox'
