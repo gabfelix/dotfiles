@@ -5,8 +5,8 @@ return {
   version = '*', -- recommended, use latest release instead of latest commit
   lazy = true,
   event = {
-    'BufReadPre ' .. VAULT_PATH .. '/**/*.md',
-    'BufNewFile ' .. VAULT_PATH .. '/**/*.md',
+    'BufReadPre ' .. VAULT_PATH .. '/*',
+    'BufNewFile ' .. VAULT_PATH .. '/*',
   },
   dependencies = {
     'nvim-lua/plenary.nvim',
