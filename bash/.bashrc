@@ -7,9 +7,6 @@
 
 PS1='\[\033[1;36m\][\u@\h \W]\[\033[0m\]\[\033[1;97m\]\$\[\033[0m\] '
 
-# Vi mode
-set -o vi
-
 # Shorten commands
 alias p='sudo pacman'
 alias gst='git status'
