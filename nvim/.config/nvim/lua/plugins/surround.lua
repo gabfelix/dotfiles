@@ -3,7 +3,7 @@ return {
   lazy = false,
   opts = {},
   config = function()
-    -- tpope/vim-surrund keybinds
+    -- tpope/vim-surround keybinds
     require('mini.surround').setup {
       custom_surroundings = {
         ['('] = { output = { left = '( ', right = ' )' } },

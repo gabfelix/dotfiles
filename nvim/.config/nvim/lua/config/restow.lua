@@ -1,5 +1,5 @@
 local deployed_path = vim.fn.expand '$HOME/.config/nvim'
-local dotfiles_path = vim.fn.expand '$HOME/Code/dotfiles'
+local dotfiles_path = vim.fn.expand '$HOME/dev/dotfiles'
 
 -- Clean up broken symlinks in deployed config on startup
 if vim.fn.filereadable(deployed_path) then
