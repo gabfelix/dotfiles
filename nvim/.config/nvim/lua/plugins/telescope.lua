@@ -16,6 +16,18 @@ return {
   },
   config = function()
     require('telescope').setup {
+      defaults = {
+        sorting_strategy = 'ascending', -- works well with prompt_position = 'top'
+        borderchars = { '', '', '', '', '', '', '', '' },
+        path_displays = 'smart',
+        layout_config = {
+          prompt_position = 'top',
+          -- take up the entire screen
+          width = { padding = 0 },
+          height = { padding = 0 },
+          preview_width = 0.5,
+        },
+      },
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
@@ -27,21 +39,24 @@ return {
         },
       },
     }
+
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
 
     local builtin = require 'telescope.builtin'
-    vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-    vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-    vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-    vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-    vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-    vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-    vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-    vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-    vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-    vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-    vim.keymap.set('n', '<leader>sn', function()
+    local map = vim.keymap.set
+    map('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
+    map('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+    map('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+    map('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+    map('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
+    map('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+    map('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+    map('n', '<leader>sr', builtin.lsp_references, { desc = '[S]earch LSP [R]eferences' })
+    map('n', '<leader>so', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+    map('n', '<leader>sb', builtin.buffers, { desc = '[S]earch [B]uffers' })
+    map('n', '<leader><leader>', builtin.resume, { desc = '[ ] Resume last search' })
+    map('n', '<leader>sn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[S]earch [N]eovim files' })
   end,

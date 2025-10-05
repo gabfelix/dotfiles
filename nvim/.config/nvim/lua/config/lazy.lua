@@ -16,7 +16,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup {
+  dev = {
+    path = '~/Dev/nvim',
+    fallback = true, -- Fallback to git when local plugin doesn't exist
+  },
   spec = { { import = 'plugins' } },
   missing = true,
-  install = { colorscheme = { 'modus' } },
 }
