@@ -35,7 +35,7 @@ if vim.g.neovide and vim.fn.has("win32") and vim.fn.argc() == 0 then
 		end,
 	})
 end
-vim.o.guifont = 'Hjack:h14'
+vim.o.guifont = 'Hack:h14'
 
 -- PLUGINS
 local github = function(url)
