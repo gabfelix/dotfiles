@@ -28,6 +28,7 @@ Since I don't want to break the old [kickstart](https://github.com/nvim-lua/kick
 
 # Installation
 ## GNU Stow
+
 Assuming you've already cloned and entered this repository, run this to create symlinks to all directories in ~/ using GNU Stow:
 ```sh
 $ stow */ -t ~
@@ -51,6 +52,7 @@ $ stow --no-folding zsh -t ~
 ```
 
 ### Wrapper script
+
 The `stowit.sh` wrapper script can help the user quickly symlink config files to `$HOME` by wrapping around the `stow` command.
 Note that `--no-folding` is enabled by default, which means it'll only symlink files, not directories.
 Assuming you're inside this repository's cloned directory, run:
@@ -63,6 +65,7 @@ You may also pass specific modules, just like before:
 ```sh
 $ ./stowit.sh bash sway
 ```
+
 # Additional settings
 These are some additional settings which need manual intervention.
 
@@ -96,30 +99,35 @@ After installing vim-plug, install the plugins by opening vim and running:
 ```
 
 ## MPD playlists
+
 My MPD + ncmpcpp setup expects the existence of the `~/mus` and `~/mus/playlists` directories.
 
 ## ZSH
+
 The `zsh` module expects the existence of the **file** `~.cache/zsh/history`. If it's not found, an error will be emitted every time you leave a session. This isn't visible during normal usage, but it can get annoying if you ever need to call `zsh` manually.
 
 I am no longer using zsh and am just keeping it in the repo because, well, why not?
 
 ## Fish
+
 I use the fish shell, but I since it's not POSIX compatible, (I don't set it as my default shell)[https://tim.siosm.fr/blog/2023/12/22/dont-change-defaut-login-shell/]. Instead, I configure my terminal (alacritty) to use fish.
 
 What this means is that the `fish` module might require some stuff from the `bash` module to work. For example, since my login shell is still the default (bash), I need to configure auto-starting Hyprland on TTY1 in my `.bash_profile`, because fish doesn't run when I login, only when I open Alacritty.
 
 ## lf and Previews
+
 To see video thumbnail previews, the previewer uses a script called `vidthumb` that requires `jq` and `ffmpegthumbnailer`. The cache it creates for the image has a JSON manifest created/parsed with `jq`, so don't forget to install it!
 
 # Modules
+
 Small observations about certain modules:
 
 - Most modules in this repository are better installed with `--no-folding` because it avoids miscellaneous files, which is why the `stowit.sh` script was added. However, some modules like `nvim`, whose structure constantly changes between commits, work better when installed with folding. However, in order to enable the use of the `nvim` module with `--no-folding`, there is a file called `restow.lua` in my neovim config which removes broken symlinks and re-deploys the module whenever a change to the `nvim` module in this  repo is detected. This ensures `~/.config/nvim` always has all the new files. It is important to note that this setup is *not* bidirectional. New files added to `~/.config/nvim` will *not* be automatically copied into the module in this repo, so you should always edit the config here first and let neovim handle the rest.
 
 ## Packages
-Some programs you'll need in order to make the setup work.
-I can't promise that this list is exhaustive, but I just did a fresh reinstall so everything should be here.
-All packages are using Arch names.
+
+A list of packages you'll need in order to make the setup work. All packages are using Arch names.
+I can't guarantee that this list is correct. The programs and their dependencies change all the time either by the changes I make here or the ones by the many maintainers involved in all these projects and it's a massive pain to keep it up to date. This is what I had from the notes I took during an Arch reinstall a few months ago and a few manual edits thereafter:
 
 ### Official repos
 
@@ -188,11 +196,13 @@ All packages are using Arch names.
 - `uwsm`
 
 ### AUR
+
 I try not to pull too much stuff from the AUR for the default setup for security concerns.
 
 - `paru-bin` # The AUR helper I use, install this by cloning first
 
 # Credits
+
 These repos were a great help for inspiration and reference in writing all this stuff.
 
 - [Luke Smith's voidrice]( https://github.com/LukeSmithxyz/voidrice ): Luke's videos were what got me started on Linux and terminal applications. I learnt shell scripting by reading his code. My setup is heavily based on his. Some of the configs in this repo are just copied straight from his.
