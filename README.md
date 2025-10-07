@@ -3,6 +3,8 @@ These are my personal configuration files and scripts managed using GNU Stow.
 
 The idea initially was for this to be a complete setup you could just deploy to your `$HOME` with `./stowit.sh */` but still pick and choose if you wanted anything specific, but as I tried programs over the years, the configs kept piling up and I didn't want to remove them in case I needed the reference when/if I tried them again. So a lot of these don't see any use from me in my day-to-day.
 
+The README itself isn't very organized as well, there's *some* structure to it, but it's mostly a big stack of miscellaneous notes on the various programs I'm using.
+
 With that in mind, let's get to the configs and setup notes, I hope you find something useful here.
 
 # Structure
@@ -13,6 +15,16 @@ I tried to make it as modular as I could, but there is some connection between d
 I don't use all of these anymore, but I figured there might be some use for the config. This is why there are configs for conflictin programs, like different window managers.
 
 Since these are my personal configurations and this is (at the time of writing) a private repository, I won't make any effort to document such dependencies. Should this repository become public, any potential users of these files are expected to fix the issues themselves and (if possible) contribute a fix back.
+
+## vim x vim-nightly?
+> TL;DR: vim/ = old config, vim-nightly/ = new config
+
+At the time of writing this README, neovim has a new native package manager merged in called `vim-pack`, which is modeled after [mini.deps](https://github.com/nvim-mini/mini.deps). I decided to switch to it because I really like the idea of not having to install a package manager with curl, so I'm rewriting my config to:
+1. Work well with Windows as well as Linux
+2. Require as little dependencies as possible (features that require external dependencies should be optional)
+3. Be mostly comprised of a single, dumb, big `init.lua`, as I haven't actually gotten many benefits from the multi-file structure suggested by kickstart. It's mostly been a lot of jumping around. I'll only be splitting files where it makes sense, like `ftplugin`
+
+Since I don't want to break the old [kickstart](https://github.com/nvim-lua/kickstart.nvim)-based config as I do this, I'm making a new stow module for it. This is what `vim-nightly/` is.
 
 # Installation
 ## GNU Stow
@@ -175,21 +187,7 @@ All packages are using Arch names.
 - `lazygit`
 - `uwsm`
 
-### i3 Packages
-I recently had to return to i3 because of bad performance on my external monitor with the NVIDIA driver under Wayland. This happened on GNOME and Hyprland, so I'm just going back, at least for now.
-
-These are put on top of the previous hyrpland setup's packages, so there is some overlap and common dependencies I'm not putting in because they're already listed above (example: I have `dunst` in here, but not `libnotify`.
-
-- `i3-wm`
-- `xorg`
-- `xorg-xinit`
-- `i3status`: Default status bar
-- `feh`: Setting wallpaper
-- `dunst`: Notifications
-- `xclip`: Clipboard
-
 ### AUR
+I try not to pull too much stuff from the AUR for the default setup for security concerns.
 
-- `paru-bin` # The AUR helper I use, install this first
-- `nvm`
-- `librewolf-bin`
+- `paru-bin` # The AUR helper I use, install this by cloning first
