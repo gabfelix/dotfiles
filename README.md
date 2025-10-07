@@ -191,3 +191,11 @@ All packages are using Arch names.
 I try not to pull too much stuff from the AUR for the default setup for security concerns.
 
 - `paru-bin` # The AUR helper I use, install this by cloning first
+
+# Credits
+These repos were a great help for inspiration and reference in writing all this stuff.
+
+- [Luke Smith's voidrice]( https://github.com/LukeSmithxyz/voidrice ): Luke's videos were what got me started on Linux and terminal applications. I learnt shell scripting by reading his code. My setup is heavily based on his. Some of the configs in this repo are just copied straight from his.
+- [ThePrimeagen](https://github.com/ThePrimeagen/.dotfiles): Mostly took prime's tmux stuff, like his [sessionizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer) script.
+- [Sylvan Franklin](https://github.com/SylvanFranklin/.config): Telescope configs and took some ideas for my `init.lua`
+- [Kickstart](https://github.com/nvim-lua/kickstart.nvim): Used this as the base for my neovim config in the second rewrite. I had a custom LSP setup I hated maintaining and this gave me something semi-automatic that worked. I mostly removed stuff I didn't care about from it.
