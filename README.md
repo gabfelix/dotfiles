@@ -16,15 +16,15 @@ I don't use all of these anymore, but I figured there might be some use for the 
 
 Since these are my personal configurations and this is (at the time of writing) a private repository, I won't make any effort to document such dependencies. Should this repository become public, any potential users of these files are expected to fix the issues themselves and (if possible) contribute a fix back.
 
-## vim x vim-nightly?
-> TL;DR: vim/ = old config, vim-nightly/ = new config
+## nvim x nvim-nightly?
+> TL;DR: nvim/ = old config, nvim-nightly/ = new config
 
-At the time of writing this README, neovim has a new native package manager merged in called `vim-pack`, which is modeled after [mini.deps](https://github.com/nvim-mini/mini.deps). I decided to switch to it because I really like the idea of not having to install a package manager with curl, so I'm rewriting my config to:
+At the time of writing this README, neovim has a new native package manager in the "nightly" version called `vim.pack`, which is modeled after [mini.deps](https://github.com/nvim-mini/mini.deps). I decided to switch to it because I really like the idea of hitting the ground running instead of having to install a package manager with curl on startup, so I'm rewriting my config to:
 1. Work well with Windows as well as Linux
 2. Require as little dependencies as possible (features that require external dependencies should be optional)
 3. Be mostly comprised of a single, dumb, big `init.lua`, as I haven't actually gotten many benefits from the multi-file structure suggested by kickstart. It's mostly been a lot of jumping around. I'll only be splitting files where it makes sense, like `ftplugin`
 
-Since I don't want to break the old [kickstart](https://github.com/nvim-lua/kickstart.nvim)-based config as I do this, I'm making a new stow module for it. This is what `vim-nightly/` is.
+Since I don't want to break the old [kickstart](https://github.com/nvim-lua/kickstart.nvim)-based config as I do this, so I'm making a new stow module for it. This is what `nvim-nightly/` is.
 
 # Installation
 ## GNU Stow
