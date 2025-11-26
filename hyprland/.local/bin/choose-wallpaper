@@ -5,8 +5,7 @@ CACHE_ROOT="${XDG_CACHE_HOME:-$HOME/.cache}/wallpaper-thumbs"
 
 mkdir -p "$CACHE_ROOT"
 
-# Show notification
-notify-send "Wallpaper Selector" "Loading wallpapers..." -t 2000 &
+# Note that the first run may be slow depending on how many wallpapers you have.
 
 # Find all image files recursively
 mapfile -t originPath < <(find "${WALLPAPER_ROOT}" -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.bmp" -o -iname "*.gif" -o -iname "*.webp" \))
@@ -76,7 +75,7 @@ for fName in "${bgnames[@]}"; do
 done
 
 # Display rofi menu and set wallpaper
-selected=$(echo -en "${strrr}" | rofi -dmenu -case-smart -show-icons -p "Wallpaper")
+selected=$(echo -en "${strrr}" | rofi -dmenu -case-smart -show-icons -p "Choose a wallpaper" -theme-str ' window { height: 800px; } element-icon { size: 80px; } listview { fixed-height: false; }')
 
 if [ -n "$selected" ]; then
     # Update hyprpaper config
