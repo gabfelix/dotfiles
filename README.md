@@ -225,6 +225,7 @@ Here’s a rough package list (Arch names). It’s not exhaustive or guaranteed 
 - fd
 - blueberry
 - btop
+- parallel
 ```
 
 ### AUR

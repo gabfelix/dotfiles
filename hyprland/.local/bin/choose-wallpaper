@@ -1,0 +1,93 @@
+#!/bin/bash
+
+WALLPAPER_ROOT=~/pic/papes
+CACHE_ROOT="${XDG_CACHE_HOME:-$HOME/.cache}/wallpaper-thumbs"
+
+mkdir -p "$CACHE_ROOT"
+
+# Show notification
+notify-send "Wallpaper Selector" "Loading wallpapers..." -t 2000 &
+
+# Find all image files recursively
+mapfile -t originPath < <(find "${WALLPAPER_ROOT}" -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.bmp" -o -iname "*.gif" -o -iname "*.webp" \))
+
+if [ ${#originPath[@]} -eq 0 ]; then
+    echo "No images found in ${WALLPAPER_ROOT}"
+    exit 1
+fi
+
+declare -A bgresult
+declare -A cachedresult
+bgnames=()
+
+function cacheImg {
+    local input=$1
+    local output=$2
+    
+    resolution=$(ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 "$input")
+    width_=$(echo "${resolution}" | awk -F',' '{print $1}')
+    height_=$(echo "${resolution}" | awk -F',' '{print $2}')
+    
+    if [ "${width_}" -lt "${height_}" ]; then
+        ffmpeg -i "$input" -loglevel quiet -vf "scale=900:-1, crop=900:900:0:(iw-900)/2" "$output"
+    else
+        ffmpeg -i "$input" -loglevel quiet -vf "scale=-1:900, crop=900:900:(iw-900)/2:0" "$output"
+    fi
+    
+    echo "$output"
+}
+
+export -f cacheImg
+export CACHE_ROOT
+
+function getFileName {
+    basename "$1" | sed 's/\.[^.]*$//'
+}
+
+# Build associative arrays
+for pathIDX in "${!originPath[@]}"; do
+    filename=$(getFileName "${originPath[$pathIDX]}")
+    bgresult["${filename}"]="${originPath[$pathIDX]}"
+    bgnames[$pathIDX]+="${filename}"
+done
+
+# Cache images in parallel (only cache if not already cached)
+to_cache=()
+for path in "${originPath[@]}"; do
+    filename=$(getFileName "$path")
+    if [ ! -f "${CACHE_ROOT}/${filename}.png" ]; then
+        to_cache+=("$path")
+    fi
+done
+
+if [ ${#to_cache[@]} -gt 0 ]; then
+    parallel --will-cite cacheImg {} "${CACHE_ROOT}/{/.}.png" ::: "${to_cache[@]}" > /dev/null
+fi
+
+# Build cached result map
+for fName in "${bgnames[@]}"; do
+    cachedresult[$fName]="${CACHE_ROOT}/${fName}.png"
+done
+
+# Build rofi menu string
+strrr=""
+for fName in "${bgnames[@]}"; do
+    strrr+="$(echo -n "${fName}\0icon\x1f${cachedresult[$fName]}\n")"
+done
+
+# Display rofi menu and set wallpaper
+selected=$(echo -en "${strrr}" | rofi -dmenu -case-smart -show-icons -p "Wallpaper")
+
+if [ -n "$selected" ]; then
+    # Update hyprpaper config
+    full_image_path=$(realpath "${bgresult[$selected]}")
+    cat > ~/.config/hypr/hyprpaper.conf <<CONF
+preload = $full_image_path
+wallpaper = , $full_image_path
+CONF
+    
+    # Reload hyprpaper
+    pkill hyprpaper
+    hyprpaper &
+    echo "Wallpaper set to '$full_image_path'"
+fi
