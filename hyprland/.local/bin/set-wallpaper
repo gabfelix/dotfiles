@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# Check if a file argument is provided
+if [ -z "$1" ]; then
+  echo "Usage: $0 <image-file>"
+  exit 1
+fi
+
+# Check if the file exists
+if [ ! -f "$1" ]; then
+  echo "Error: File '$1' does not exist."
+  exit 1
+fi
+
+# Check if the file is an image using the 'file' command
+if ! file "$1" | grep -qE 'image'; then
+  echo "Error: '$1' is not a valid image file."
+  exit 1
+fi
+
+# Resolve the full canonical path of the provided image file (to handle relative paths, symlinks, etc.)
+full_image_path=$(realpath "$1")
+
+# Write the new config from scratch with the canonicalized path
+cat > ~/.config/hypr/hyprpaper.conf <<EOF
+preload = $full_image_path
+wallpaper = , $full_image_path
+EOF
+
+# Reload Hyprpaper or Hyprland to apply changes
+pkill hyprpaper
+hyprpaper &
+
+echo "Wallpaper updated to '$full_image_path' and Hyprpaper reloaded."

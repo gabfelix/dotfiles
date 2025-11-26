@@ -1,0 +1,12 @@
+[user]
+	name = Gabriel Felix
+	email = 89144990+gabfelix@users.noreply.github.com
+[init]
+	defaultBranch = master
+[core]
+	editor = nvim
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

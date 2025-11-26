@@ -223,6 +223,8 @@ Here’s a rough package list (Arch names). It’s not exhaustive or guaranteed 
 - openssh
 - yazi
 - fd
+- blueberry
+- btop
 ```
 
 ### AUR
