@@ -3,23 +3,22 @@
 Personal configuration files and scripts managed with **GNU Stow**.
 
 Originally, this repo was meant to be a ready-to-deploy setup for `$HOME` using `./stowit.sh */`, while still allowing selective installs. Over time, configs for different tools piled up — some of which I don’t use daily but keep around as references.  
-
 So, if you find some conflicting or legacy configs here, that’s intentional. Consider this a living archive of setups that have worked for me at different times.
 
 ---
 
-## 📁 Structure
+## Structure
 
 Each top-level directory is a **module**, mirroring its target structure under `$HOME`.  
 For example, most modules contain a `.config` directory.
 
 Although the modules are mostly independent, some have implicit dependencies — e.g., anything using `~/.local/bin` depends on `bash`, since `$PATH` is extended in `.bashrc`.
 
-I’m not interested in documenting all interdependencies. If you fork or reuse this setup, you’ll need to troubleshoot and patch things up yourself — ideally sending improvements back my way 😄.
+I’m not interested in documenting all interdependencies. If you fork or reuse this setup, you’ll need to troubleshoot and patch things up yourself.
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 ### Using GNU Stow
 
@@ -72,7 +71,7 @@ Or just a few modules:
 
 ---
 
-## 🧩 Modules and Notes
+## Modules and Notes
 
 ### Neovim (`nvim` vs `nvim-nightly`)
 - `nvim/`: legacy config (Kickstart-based, using the [lazy.nvim](https://github.com/folke/lazy.nvim) package manager)  
@@ -136,7 +135,7 @@ They’re required for MPD + ncmpcpp to work properly.
 
 ---
 
-## 🧠 System Tweaks
+## System Tweaks
 
 ### Natural Scrolling
 
@@ -161,47 +160,97 @@ gsettings set org.gnome.desktop.interface font-name 'Inter 10'
 
 ---
 
-## 🧰 Packages
+## Packages
 
 Here’s a rough package list (Arch names). It’s not exhaustive or guaranteed current — things change often.
 
 ### Official Repos
 ```
-udisks2 udisks2-btrfs udisks2-lvm2 stow hyprland hyprpaper hyprcursor waybar
-ttf-font-awesome tmux kitty gtk3 imagemagick zsh zsh-completions
-zsh-syntax-highlighting starship rofi pipewire-pulse pipewire-alsa
-pipewire-jack yt-dlp mpv ffmpeg zathura zathura-cb zathura-pdf-mupdf
-lf atool ffmpegthumbnailer bat chafa colordiff mpd ncmpcpp mako
-noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
-ttf-jetbrains-mono ttf-jetbrains-mono-nerd pulsemixer libnotify
-slurp grim neovim wl-clipboard ripgrep fzf just jq imv zip unzip
-newsboat bluez bluez-utils blueman urlscan lazygit uwsm
+- udisks2
+- hyprpaper
+- hyprcursor
+- ttf
+- font
+- awesome
+- imagemagick
+- rofi
+- pipewire
+- pulse
+- pipewire
+- alsa
+- pipewire
+- jack
+- yt-dlp
+- mpv
+- ffmpeg
+- zathura
+- zathura-cb
+- zathura-pdf-mupdf
+- lf
+- atool
+- ffmpegthumbnailer
+- bat
+- colordiff
+- mpd
+- ncmpcpp
+- mako
+- noto-fonts
+- noto-fonts-cjk
+- noto-fonts-emoji
+- noto-fonts-extra
+- ttf-jetbrains-mono
+- ttf-jetbrains-mono-nerd
+- libnotify
+- slurp
+- grim
+- neovim
+- wl-clipboard
+- ripgrep
+- fzf
+- jq
+- imv
+- zip
+- unzip
+- newsboat
+- bluez
+- bluez-utils
+- blueman
+- urlscan
+- lazygit
+- uwsm
+- pulsemixer
+- npm
+- openssh
+- yazi
+- fd
 ```
 
 ### AUR
 ```
 paru-bin
+librewolf-bin
 ```
 
 ---
 
-## 💡 Special Notes on Stowing
+## Special Notes on Stowing
 
 Most modules are best installed with `--no-folding`, hence the `stowit.sh` default.  
 However, `nvim` changes structure often, so folding it may work better.  
 
 The Neovim config includes a helper script `restow.lua` that:
 - Cleans broken symlinks
-- Redeploys updated files when the repo changes  
-*(Not bidirectional — edits in `~/.config/nvim` won’t sync back automatically.)*
+- Redeploys updated files when the repo changes *(Not bidirectional — edits in `~/.config/nvim` won’t sync back automatically.)*
+
+on every startup.
 
 ---
 
-## 🙌 Credits
+## Credits
 
 Huge thanks to these projects for inspiration and code snippets:
 
-- [Luke Smith’s voidrice](https://github.com/LukeSmithxyz/voidrice) — my starting point for dotfile management and shell scripting.  
+- [Luke Smith’s voidrice](https://github.com/LukeSmithxyz/voidrice) — Learned most of this stuff from reading Luke's dotfiles and scripts, many files here are just copied from his.  
 - [ThePrimeagen](https://github.com/ThePrimeagen/.dotfiles) — tmux utilities like the [sessionizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer).  
 - [Sylvan Franklin](https://github.com/SylvanFranklin/.config) — ideas for Telescope and Neovim structure.  
 - [Kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) — the base for my second Neovim config.  
