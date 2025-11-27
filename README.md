@@ -226,6 +226,8 @@ Here’s a rough package list (Arch names). It’s not exhaustive or guaranteed 
 - blueberry
 - btop
 - parallel
+- brightnessctl
+- hyprlock 
 ```
 
 ### AUR
