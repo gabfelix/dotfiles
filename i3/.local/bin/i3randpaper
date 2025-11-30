@@ -1,6 +1,0 @@
-#!/bin/sh
-
-WALLPAPER_DIR="$HOME/pic/papes"
-wallpaper="$(find "$WALLPAPER_DIR" -type f | shuf -n 1)"
-	feh --bg-scale "$wallpaper"
-notify-send -i "$wallpaper" "Wallpaper updated" "$(basename "$wallpaper")" -t 2000
