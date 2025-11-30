@@ -44,8 +44,7 @@ if [ -n "$selected" ]; then
 preload = $full_image_path
 wallpaper = , $full_image_path
 CONF
-    
-    # Reload hyprpaper
-    pkill hyprpaper &
-    echo "Wallpaper set to '$full_image_path'"
+	# Reload hyprpaper
+	pkill hyprpaper
+	hyprpaper &
 fi
