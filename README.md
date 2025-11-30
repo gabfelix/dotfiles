@@ -73,6 +73,16 @@ Or just a few modules:
 
 ## Modules and Notes
 
+### Wallpaper switching
+The script I use for switching my wallpapers with rofi, `choose-wallpaper` uses a little program I wrote called [imgcache](https://github.com/gabfelix/imgcache). In short, it saves your images in a cache directory, hiding all the required complexity such as picking the directories, building and running the thumbnailing command, and others from your scripts. You need to build it in release mode and put it somewhere in your `$PATH` for it to work:
+
+```sh
+git clone https://github.com/gabfelix/imgcache.git
+cd imgcache
+cargo build --release
+mv target/release/imgcache ~/.local/bin # Or any other directory in your $PATH
+```
+
 ### Neovim (`nvim` vs `nvim-nightly`)
 - `nvim/`: legacy config (Kickstart-based, using the [lazy.nvim](https://github.com/folke/lazy.nvim) package manager)  
 - `nvim-nightly/`: new config using Neovim’s native `vim.pack` package manager (similar to [mini.deps](https://github.com/nvim-mini/mini.deps))
