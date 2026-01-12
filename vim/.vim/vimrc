@@ -1,0 +1,46 @@
+let mapleader = ' '
+let maplocalleader = ' '
+
+set nocompatible " shouldn't be needed, but it's good to be explicit
+syntax on
+filetype plugin indent on
+
+set mouse=
+set number
+set relativenumber
+set undofile
+set ignorecase
+set smartcase
+set updatetime=250
+set splitright
+set splitbelow
+set wildmenu
+set wildmode=longest,full
+set hlsearch
+
+" Automation for editing ftplugin
+
+" whether we should default to after/ (laying our changes on top of defaults) or replace the syntax code entirely
+let g:ftplugin_after_default = get(g:, 'ftplugin_after_default', 1)
+
+
+function! EditFtplugin()
+	let l:ft = empty(&filetype) ? 'text' : &filetype
+	let l:config = split(&runtimepath, ',')[0]
+	let l:subdir = get(g:, 'ftplugin_after_default', 1)
+				\ ? 'after/ftplugin'
+				\ : 'ftplugin'
+	let l:path = l:config . '/' . l:subdir . '/' . l:ft . '.vim'
+	call mkdir(fnamemodify(l:path, ':h'), 'p')
+	execute 'edit' fnameescape(l:path)
+endfunction
+nnoremap <leader>ef :call EditFtplugin()<CR>
+
+nnoremap <F7> :edit $MYVIMRC<CR>
+
+call plug#begin()
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+call plug#end()
+nnoremap <leader>g <cmd>Git<CR>
