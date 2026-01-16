@@ -13,35 +13,65 @@
 ;; Appearance
 (use-package doom-themes
   :ensure t
-  :config (load-theme 'doom-one t))
+  :init (load-theme 'doom-one t))
 
 (set-frame-font "JetBrains Mono 14" nil t)
 
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
-;; Ido completion (comes with Emacs)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
+;; Fix compile-mode broken color codes
+;; TODO: This might be a windows specific issue, investigate
+(add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
 ;; Have emacs change custom.el instead of here
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (when (file-exists-p custom-file)
   (load custom-file))
 
+(use-package ripgrep
+  :ensure t)
+
 (use-package magit
   :ensure t)
 
 (use-package which-key
   :ensure t
-  :config
+  :init
   (which-key-mode))
 
 (use-package multiple-cursors
   :ensure t
+  :init
+  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
+
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode t))
+
+(use-package vertico-prescient
+  :ensure t
+  :after vertico
   :config
-  (
-   ))
+  (vertico-prescient-mode 1)
+  (prescient-persist-mode 1))
+
+(use-package projectile
+  :requires ripgrep
+  :ensure t
+  :init
+  (setq projectile-project-search-path
+        (list (expand-file-name 
+               "Code/"
+               (or (getenv "USERPROFILE") ;; Windows
+                   (getenv "HOME"))))) ;; Everywhere else
+  :config
+  (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
+  (global-set-key (kbd "C-c p") 'projectile-command-map)
+  (projectile-mode +1))
 
 ;; Edit this file quickly
 (global-set-key [f7] (lambda () (interactive) (find-file user-init-file)))
