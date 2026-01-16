@@ -26,6 +26,8 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highl
 -- Quickfix
 vim.keymap.set('n', '<leader>q', '<cmd>botright copen<CR>', { noremap = true, desc = 'Open Quickfix list (bottom right)' })
 vim.keymap.set('n', '<leader>Q', '<cmd>cclose<CR>', { noremap = true, desc = 'Close Quickfix list' })
+vim.keymap.set('n', ']q', '<cmd>cnext<CR>', { desc = 'Next Quickfix Item' })
+vim.keymap.set('n', '[q', '<cmd>cprev<CR>', { desc = 'Previous Quickfix Item' })
 -- Open/close location list
 vim.keymap.set('n', '<leader>l', '<cmd>lopen<CR>', { noremap = true, desc = 'Open Location list' })
 vim.keymap.set('n', '<leader>L', '<cmd>lclose<CR>', { noremap = true, desc = 'Close Location list' })
