@@ -1,11 +1,9 @@
 return {
-  'ellisonleao/gruvbox.nvim',
+  'gabfelix/mudworld',
   priority = 1000,
   config = function()
-    require('gruvbox').setup {
-      transparent_mode = true,
-    }
+    require('mudworld').setup()
     vim.o.background = 'dark'
-    vim.cmd.colorscheme 'gruvbox'
+    vim.cmd.colorscheme 'mudworld'
   end,
 }
