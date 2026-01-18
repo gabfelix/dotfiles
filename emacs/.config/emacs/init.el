@@ -8,16 +8,15 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
-(setq backup-directory-alist `(("." . "~/.emacs_saves")))
+(setq backup-directory-alist `(("." . "~/.config/emacs/emacs_saves")))
 
 ;; Appearance
-(use-package doom-themes
-  :ensure t
-  :init (load-theme 'doom-one t))
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'modus-vivendi)
 
 (set-frame-font "JetBrains Mono 14" nil t)
 
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+;; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 ;; Fix compile-mode broken color codes
 ;; TODO: This might be a windows specific issue, investigate
