@@ -237,7 +237,8 @@ Here’s a rough package list (Arch names). It’s not exhaustive or guaranteed 
 - btop
 - parallel
 - brightnessctl
-- hyprlock 
+- hyprlock
+- xdg-user-dirs
 ```
 
 ### AUR
