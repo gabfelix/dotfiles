@@ -176,69 +176,59 @@ Here’s a rough package list (Arch names). It’s not exhaustive or guaranteed 
 
 ### Official Repos
 ```
-- udisks2
-- hyprpaper
-- hyprcursor
-- ttf
-- font
-- awesome
-- imagemagick
-- rofi
-- pipewire
-- pulse
-- pipewire
-- alsa
-- pipewire
-- jack
-- yt-dlp
-- mpv
-- ffmpeg
-- zathura
-- zathura-cb
-- zathura-pdf-mupdf
-- lf
-- atool
-- ffmpegthumbnailer
-- bat
-- colordiff
-- mpd
-- ncmpcpp
-- mako
-- noto-fonts
-- noto-fonts-cjk
-- noto-fonts-emoji
-- noto-fonts-extra
-- ttf-jetbrains-mono
-- ttf-jetbrains-mono-nerd
-- libnotify
-- slurp
-- grim
-- neovim
-- wl-clipboard
-- ripgrep
-- fzf
-- jq
-- imv
-- zip
-- unzip
-- newsboat
-- bluez
-- bluez-utils
-- blueman
-- urlscan
-- lazygit
-- uwsm
-- pulsemixer
-- npm
-- openssh
-- yazi
-- fd
-- blueberry
-- btop
-- parallel
-- brightnessctl
-- hyprlock
-- xdg-user-dirs
+udisks2
+hyprpaper
+hyprcursor
+ttf-font-awesome
+imagemagick
+rofi
+pipewire
+pipewire-pulse
+pipewire-alsa
+pipewire-jack
+yt-dlp
+mpv
+ffmpeg
+zathura
+zathura-cb
+zathura-pdf-mupdf
+mpd
+ncmpcpp
+mako
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+noto-fonts-extra
+ttf-jetbrains-mono
+ttf-jetbrains-mono-nerd
+libnotify
+slurp
+grim
+neovim
+wl-clipboard
+ripgrep
+fzf
+jq
+imv
+zip
+unzip
+newsboat
+bluez
+bluez-utils
+blueman
+urlscan
+uwsm
+pulsemixer
+npm
+openssh
+fd
+btop
+parallel
+brightnessctl
+hyprlock
+xdg-user-dirs
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-kde
 ```
 
 ### AUR
