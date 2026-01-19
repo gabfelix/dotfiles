@@ -215,7 +215,6 @@ unzip
 newsboat
 bluez
 bluez-utils
-blueman
 urlscan
 uwsm
 pulsemixer
@@ -235,6 +234,7 @@ xdg-desktop-portal-kde
 ```
 paru-bin
 librewolf-bin
+blueberry
 ```
 
 ---
