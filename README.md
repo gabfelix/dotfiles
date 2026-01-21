@@ -168,6 +168,14 @@ Set the font manually if needed:
 gsettings set org.gnome.desktop.interface font-name 'Inter 10'
 ```
 
+### Ignoring newsboat urls for this repo
+I like having the `urls` file in the repo to make it more complete. Newsboat can then open without any errors, but I don't want my RSS feeds all over GitHub, so I do the following to ignore my local changes to urls AFTER stowing:
+
+1. Add to `.git/info/exclude` to ignore future changes.
+2. If there are local changes to ignore, run: `git update-index --assume-unchanged newsboat/.config/newsboat/urls`
+
+This will ignore all current and future changes to the file, while still keeping it checked into the repo, unchanged.
+
 ---
 
 ## Packages
