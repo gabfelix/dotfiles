@@ -239,13 +239,13 @@ xdg-desktop-portal-hyprland
 xdg-desktop-portal-kde
 kitty
 waybar
+blueman
 ```
 
 ### AUR
 ```
 yay-bin
 librewolf-bin
-blueberry
 ```
 
 ---
