@@ -176,6 +176,7 @@ Here’s a rough package list (Arch names). It’s not exhaustive or guaranteed 
 
 ### Official Repos
 ```
+hyprland
 udisks2
 hyprpaper
 hyprcursor
@@ -228,6 +229,8 @@ hyprlock
 xdg-user-dirs
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-kde
+kitty
+waybar
 ```
 
 ### AUR
