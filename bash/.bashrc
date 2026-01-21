@@ -7,12 +7,6 @@
 
 PS1='\[\033[1;36m\][\u@\h \W]\[\033[0m\]\[\033[1;97m\]\$\[\033[0m\] '
 
-# Shorten commands
-alias p='sudo pacman'
-alias gst='git status'
-alias gac='git add -A && git commit'
-alias gap="git add -p"
-alias lg='lazygit'
 # Alternative programs
 alias youtube-dl='yt-dlp'
 alias vim='nvim'
