@@ -235,7 +235,7 @@ waybar
 
 ### AUR
 ```
-paru-bin
+yay-bin
 librewolf-bin
 blueberry
 ```
