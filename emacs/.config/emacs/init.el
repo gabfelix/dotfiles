@@ -14,7 +14,7 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'modus-vivendi)
 
-(set-frame-font "JetBrains Mono 14" nil t)
+(set-frame-font "Noto Sans Mono 13" nil t)
 
 ;; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
@@ -72,8 +72,8 @@
   (global-set-key (kbd "C-c p") 'projectile-command-map)
   (projectile-mode +1))
 
-;; Edit this file quickly
-(global-set-key [f7] (lambda () (interactive) (find-file user-init-file)))
+(global-set-key [f7] (lambda () (interactive) (find-file user-init-file))) ; Edit this file quickly
+(define-key dired-mode-map (kbd "-") #'dired-up-directory)
 
 ;; Ignore casing when searching with project.el
 (setq read-file-name-completion-ignore-case t)

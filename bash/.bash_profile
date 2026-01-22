@@ -9,7 +9,3 @@ export BROWSER=librewolf
 
 # Add .local/bin to $PATH
 export PATH="${PATH}:$(find -L ${HOME}/.local/bin -type d | paste -sd ':' -)"
-
-if uwsm check may-start && uwsm select; then
-	exec uwsm start default
-fi
