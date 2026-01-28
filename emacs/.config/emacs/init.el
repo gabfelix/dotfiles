@@ -84,8 +84,8 @@
   (global-set-key (kbd "C-c f") 'projectile-ripgrep)
   (projectile-mode +1))
 
-(global-set-key [f7] (lambda () (interactive) (find-file user-init-file))) ; Edit this file quickly
-(define-key dired-mode-map (kbd "-") #'dired-up-directory)
+;; Edit this file quickly
+(global-set-key [f7] (lambda () (interactive) (find-file user-init-file)))
 
 ;; Ignore casing when searching with project.el
 (setq read-file-name-completion-ignore-case t)
