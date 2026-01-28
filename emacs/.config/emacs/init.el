@@ -12,13 +12,12 @@
 
 (setq backup-directory-alist `(("." . "~/.config/emacs/emacs_saves")))
 
-(set-frame-font "Consolas 11" nil t)
-
-;; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
-
-;; Fix compile-mode broken color codes
-;; TODO: This might be a windows specific issue, investigate
-(add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+;; Appearance
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(use-package naysayer-theme
+  :ensure t
+  :config
+  (load-theme 'naysayer t))
 
 (global-set-key (kbd "C-c c") 'compile)
 ;; The default bindings are pretty bad on Brazilian kb layout
@@ -90,28 +89,18 @@
 ;; Ignore casing when searching with project.el
 (setq read-file-name-completion-ignore-case t)
 
-(set-language-environment "UTF-8") ; If you deliberately sabotage my diacritics I will f*ck you like a pig!
-
+;; WINDOWS-SPECIFIC SETTINGS
 (when (eq system-type 'windows-nt)
-  (setq default-directory (concat (getenv "USERPROFILE") "/")))
 
-;; It was kind of a pain to get GNU Stow-like functionality in Windows so I'll just have Emacs do it for me.
-(when (eq system-type 'windows-nt)
-  (defun sync-emacs-config ()
-    (let* ((user (file-name-as-directory (getenv "USERPROFILE")))
-           (dot (file-name-as-directory (file-truename (concat user "Code/dotfiles/emacs/.emacs.d"))))
-           (app (file-name-as-directory (file-truename "~/.emacs.d")))
-           (cur (file-truename (buffer-file-name)))
-           (base (file-name-nondirectory cur))
-           (target (cond ((string-prefix-p dot cur t) (concat app base))
-			 ((string-prefix-p app cur t) (concat dot base)))))
-      (when (and target (member base '("init.el")))
-	(copy-file cur target t)
-	(message "Synced current buffer to: %s" target))))
-  (add-hook 'after-save-hook #'sync-emacs-config))
+  ;; Set font
+  (set-frame-font "Consolas 11" nil t)
+  ;; Fix compile-mode broken color codes
+  ;; TODO: This might be a windows specific issue, investigate
+  (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
-;; Fix error location syntax for Typescript on Windows
-(when (eq system-type 'windows-nt)
+  (set-language-environment "UTF-8") ; If you deliberately sabotage my diacritics I will f*ck you like a pig!
+  
+  ;; Fix error location syntax for typescript (\ for paths)
   (eval-after-load 'compile
     '(progn
        ;; Full path
@@ -126,4 +115,19 @@
        (add-to-list 'compilation-error-regexp-alist-alist
                     '(typescript-path
                       "^\\([^:\n]+\\.ts\\):\\([0-9]+\\):\\([0-9]+\\)"
-                      1 2 3)))))
+                      1 2 3))))
+  
+  (setq default-directory (concat (getenv "USERPROFILE") "/")) ;; ~ = USERPROFILE
+  ;; It was kind of a pain to get GNU Stow-like functionality in Windows so I'll just have Emacs do it for me.
+  (defun sync-emacs-config ()1
+	 (let* ((userpath (file-name-as-directory (getenv "USERPROFILE")))
+		(dot (file-name-as-directory (file-truename (concat userpath "Code/dotfiles/emacs/.config/emacs"))))
+		(app (file-name-as-directory (file-truename "~/.emacs.d")))
+		(cur (file-truename (buffer-file-name)))
+		(base (file-name-nondirectory cur))
+		(target (cond ((string-prefix-p dot cur t) (concat app base))
+			      ((string-prefix-p app cur t) (concat dot base)))))
+	   (when (and target (member base '("init.el")))
+	     (copy-file cur target t)
+	     (message "Synced current buffer to: %s" target))))
+  (add-hook 'after-save-hook #'sync-emacs-config))
