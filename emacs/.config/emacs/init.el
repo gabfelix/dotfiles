@@ -12,6 +12,9 @@
 
 (setq backup-directory-alist `(("." . "~/.config/emacs/emacs_saves")))
 
+(setq vc-follow-symlinks t)
+(push '(fullscreen . maximized) default-frame-alist) ; maximize on startup
+
 ;; Appearance
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (use-package naysayer-theme
