@@ -8,13 +8,11 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
+(setq visible-bell 1) ; Turn off the annoying bell
+
 (setq backup-directory-alist `(("." . "~/.config/emacs/emacs_saves")))
 
-;; Appearance
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'modus-vivendi)
-
-(set-frame-font "Noto Sans Mono 13" nil t)
+(set-frame-font "Consolas 11" nil t)
 
 ;; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
@@ -22,15 +20,28 @@
 ;; TODO: This might be a windows specific issue, investigate
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
+(global-set-key (kbd "C-c c") 'compile)
+;; The default bindings are pretty bad on Brazilian kb layout
+(global-set-key (kbd "C-x [") 'previous-error)
+(global-set-key (kbd "C-x ]") 'next-error)
+
 ;; Have emacs change custom.el instead of here
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (when (file-exists-p custom-file)
   (load custom-file))
 
+(use-package naysayer-theme
+  :ensure t
+  :config
+(load-theme 'naysayer t))
+
 (use-package ripgrep
   :ensure t)
 
 (use-package magit
+  :ensure t)
+
+(use-package markdown-mode
   :ensure t)
 
 (use-package which-key
@@ -70,6 +81,7 @@
   :config
   (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
   (global-set-key (kbd "C-c p") 'projectile-command-map)
+  (global-set-key (kbd "C-c f") 'projectile-ripgrep)
   (projectile-mode +1))
 
 (global-set-key [f7] (lambda () (interactive) (find-file user-init-file))) ; Edit this file quickly
@@ -78,7 +90,7 @@
 ;; Ignore casing when searching with project.el
 (setq read-file-name-completion-ignore-case t)
 
-(set-language-environment "UTF-8") ;; If you deliberately sabotage my diacritics I will f*ck you like a pig!
+(set-language-environment "UTF-8") ; If you deliberately sabotage my diacritics I will f*ck you like a pig!
 
 (when (eq system-type 'windows-nt)
   (setq default-directory (concat (getenv "USERPROFILE") "/")))
@@ -97,3 +109,21 @@
 	(copy-file cur target t)
 	(message "Synced current buffer to: %s" target))))
   (add-hook 'after-save-hook #'sync-emacs-config))
+
+;; Fix error location syntax for Typescript on Windows
+(when (eq system-type 'windows-nt)
+  (eval-after-load 'compile
+    '(progn
+       ;; Full path
+       (add-to-list 'compilation-error-regexp-alist 'windows-absolute)
+       (add-to-list 'compilation-error-regexp-alist-alist
+                    '(windows-absolute
+                      "^\\([a-zA-Z]:[^:(\t\n]+\\):\\([0-9]+\\):\\([0-9]+\\)"
+                      1 2 3))
+       
+       ;; Relative
+       (add-to-list 'compilation-error-regexp-alist 'typescript-path)
+       (add-to-list 'compilation-error-regexp-alist-alist
+                    '(typescript-path
+                      "^\\([^:\n]+\\.ts\\):\\([0-9]+\\):\\([0-9]+\\)"
+                      1 2 3)))))
