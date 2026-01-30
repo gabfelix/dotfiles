@@ -89,22 +89,38 @@
 (when (eq system-type 'windows-nt)
   (setq default-directory (concat (getenv "USERPROFILE") "/")))
 
-; Set frame font
+; Keep our font selections OS and Emacs server-agnostic
 (defun my/set-font-faces (fixed-font var-font fixed-size var-size)
   (message "Setting faces")
   (set-face-attribute 'default nil :font fixed-font :height fixed-size)
   (set-face-attribute 'fixed-pitch nil :font fixed-font :height fixed-size)
   (set-face-attribute 'variable-pitch nil :font var-font :height var-size :weight 'regular))
 
+(setq windows-mono-font "Consolas"
+      windows-mono-font-size 11
+      windows-var-font "Segoe UI"
+      windows-var-font-size 11
+      
+      linux-mono-font "DejaVu Sans Mono"
+      linux-mono-font-size 12
+      linux-var-font "Ubuntu Sans"
+      linux-var-font-size 12)
+
 (if (daemonp)
     (add-hook 'server-after-make-frame-hook
-	      (lambda ()
-		(cond ((eq system-type 'gnu/linux) (my/set-font-faces "DejaVu Sans Mono" "Ubuntu Sans" 120 120))
-		      ((eq system-type 'windows-nt) (my/set-font-faces "Consolas" "Segoe UI" 120 120)))))
-  (cond((eq system-type 'gnu/linux) (set-frame-font "DejaVu Sans Mono 12" nil t))
-       ((eq system-type 'windows-nt) (set-frame-font "Consolas 12" nil t))))
+              (lambda ()
+                (cond 
+                 ((eq system-type 'gnu/linux) 
+                  (my/set-font-faces linux-mono-font linux-var-font 120 120))
+                 ((eq system-type 'windows-nt) 
+                  (my/set-font-faces windows-mono-font windows-var-font 120 120)))))
+  ;; Non-daemon config
+  (cond
+   ((eq system-type 'gnu/linux) 
+    (set-frame-font (format "%s-%d" linux-mono-font linux-mono-font-size) nil t))
+   ((eq system-type 'windows-nt) 
+    (set-frame-font (format "%s-%d" windows-mono-font windows-mono-font-size) nil t))))
 
-; It was kind of a pain to get GNU Stow-like functionality in Windows so I'll just have Emacs do it for me.
 (when (eq system-type 'windows-nt)
   (defun sync-emacs-config ()
     (let* ((user (file-name-as-directory (getenv "USERPROFILE")))
