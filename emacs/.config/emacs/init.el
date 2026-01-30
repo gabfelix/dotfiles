@@ -2,7 +2,7 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-; Remove junk
+;; Remove junk
 (setq inhibit-startup-message t)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -12,14 +12,14 @@
 
 (setq backup-directory-alist `(("." . "~/.config/emacs/emacs_saves")))
 
-(setq vc-follow-symlinks t) ;; Always follow the symlink (for GNU Stow)
+(setq vc-follow-symlinks t) ; Always follow the symlink (for GNU Stow)
 
 (global-set-key (kbd "C-c c") 'compile)
-; The default bindings are pretty bad on Brazilian kb layout
+;; The default bindings are pretty bad on Brazilian kb layout
 (global-set-key (kbd "C-x [") 'previous-error)
 (global-set-key (kbd "C-x ]") 'next-error)
 
-; Have emacs change custom.el instead of here
+;; Have emacs change custom.el instead of here
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (when (file-exists-p custom-file)
   (load custom-file))
@@ -27,7 +27,7 @@
 (use-package naysayer-theme
   :ensure t
   :config
-(load-theme 'naysayer t))
+  (load-theme 'naysayer t))
 
 (use-package ripgrep
   :ensure t)
@@ -78,10 +78,10 @@
   (global-set-key (kbd "C-c f") 'projectile-ripgrep)
   (projectile-mode +1))
 
-; Edit this file quickly
+;; Edit this file quickly
 (global-set-key [f7] (lambda () (interactive) (find-file user-init-file)))
 
-; Ignore casing when searching with project.el
+;; Ignore casing when searching with project.el
 (setq read-file-name-completion-ignore-case t)
 
 (set-language-environment "UTF-8") ; If you deliberately sabotage my diacritics I will f*ck you like a pig!
@@ -89,7 +89,7 @@
 (when (eq system-type 'windows-nt)
   (setq default-directory (concat (getenv "USERPROFILE") "/")))
 
-; Keep our font selections OS and Emacs server-agnostic
+;; Keep our font selections OS and Emacs server-agnostic
 (defun my/set-font-faces (fixed-font var-font fixed-size var-size)
   (message "Setting faces")
   (set-face-attribute 'default nil :font fixed-font :height fixed-size)
@@ -121,7 +121,9 @@
    ((eq system-type 'windows-nt) 
     (set-frame-font (format "%s-%d" windows-mono-font windows-mono-font-size) nil t))))
 
+;; Fix error location syntax for Typescript on Windows
 (when (eq system-type 'windows-nt)
+  ;; Can't get Stow to work in Windows so I'll just copy the config with Emacs
   (defun sync-emacs-config ()
     (let* ((user (file-name-as-directory (getenv "USERPROFILE")))
            (dot (file-name-as-directory (file-truename (concat user "Code/dotfiles/emacs/.config/emacs"))))
@@ -132,24 +134,21 @@
 			 ((string-prefix-p app cur t) (concat dot base)))))
       (when (and target (member base '("init.el")))
 	(copy-file cur target t)
-	(message "Synced current buffer to: %s" target))))
-  (add-hook 'after-save-hook #'sync-emacs-config))
-
-					; Fix error location syntax for Typescript on Windows
-(when (eq system-type 'windows-nt)
-					; Fix compile-mode broken color codes
-					; TODO: This might be a windows specific issue, investigate
+	(message "Synced config file to: %s" target))))
+  (add-hook 'after-save-hook #'sync-emacs-config)
+  ;; Fix compile-mode broken color codes
+  ;; TODO: This might be a windows specific issue, investigate
   (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
   (eval-after-load 'compile
     '(progn
-					; Full path
+       ;; Full path
        (add-to-list 'compilation-error-regexp-alist 'windows-absolute)
        (add-to-list 'compilation-error-regexp-alist-alist
                     '(windows-absolute
                       "^\\([a-zA-Z]:[^:(\t\n]+\\):\\([0-9]+\\):\\([0-9]+\\)"
                       1 2 3))
        
-					; Relative
+       ;; Relative
        (add-to-list 'compilation-error-regexp-alist 'typescript-path)
        (add-to-list 'compilation-error-regexp-alist-alist
                     '(typescript-path
