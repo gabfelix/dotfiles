@@ -8,6 +8,7 @@
     "hyprland/workspaces"
   ],
   "modules-center": [
+    "mpd",
     "clock"
   ],
   "modules-right": [
@@ -46,6 +47,15 @@
     "interval": 5,
     "format": "󰍛",
     "on-click": "kitty -e btop"
+  },
+  "mpd": {
+    "format": " {title} - {artist}",
+    "format-paused": " {title} - {artist}",
+    "format-stopped": "",
+    "format-disconnected": "",
+    "max-length": 35,
+    "on-click": "kitty -e ncmpcpp",
+    "tooltip": false
   },
   "clock": {
     "format": "{:%A %H:%M}",

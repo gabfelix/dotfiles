@@ -26,11 +26,21 @@ vim.keymap.set('n', '<F7>', function()
 	vim.cmd("edit " .. init_file_path)
 end, { desc = 'Edit init.lua and change CWD' })
 
+vim.api.nvim_create_autocmd('PackChanged', {
+	callback = function(ev)
+		local name, kind = ev.data.spec.name, ev.data.kind
+		if name == 'telescope-fzf-native.nvim' and (kind == 'install' or kind == 'update') then
+			vim.system({ 'make' }, { cwd = ev.data.path })
+		end
+	end,
+})
+
 vim.pack.add({
 	'https://github.com/nvim-mini/mini.surround',
 	'https://github.com/stevearc/oil.nvim',
 	'https://github.com/nvim-lua/plenary.nvim', -- telescope dependency
 	'https://github.com/nvim-telescope/telescope.nvim',
+	'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
 })
 
 require('mini.surround').setup {
@@ -69,6 +79,7 @@ require('oil').setup {
 vim.keymap.set('n', '-', '<cmd>Oil<cr>', { desc = 'Open parent directory in Oil' })
 
 require('telescope').setup()
+require('telescope').load_extension('fzf')
 
 local builtin = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>f', builtin.find_files)

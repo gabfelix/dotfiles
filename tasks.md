@@ -1,3 +1,0 @@
-- [ ] hyprland: migrate config to lua. Create a separate file so it doesn't change the running symlinked version. If you can somehow get hyprland to validate the config with a terminal command, that'd be great. Keep in mind that I'm currently running Hyprland.
-- [ ] system doesnt have default apps (including browser). Browser - brave-origin, text editor: neovim, image viewer: imv, video player: mpv
-- [ ] waybar: it'd be nice to show the currently playing song (truncate if too long)
