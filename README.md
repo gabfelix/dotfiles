@@ -2,11 +2,6 @@
 
 Personal configuration files and scripts managed with **GNU Stow**.
 
-Originally, this repo was meant to be a ready-to-deploy setup for `$HOME` using `./stowit.sh */`, while still allowing selective installs. Over time, configs for different tools piled up — some of which I don’t use daily but keep around as references.  
-So, if you find some conflicting or legacy configs here, that’s intentional. Consider this a living archive of setups that have worked for me at different times.
-
----
-
 ## Structure
 
 Each top-level directory is a **module**, mirroring its target structure under `$HOME`.  
@@ -16,9 +11,25 @@ Although the modules are mostly independent, some have implicit dependencies —
 
 I’m not interested in documenting all interdependencies. If you fork or reuse this setup, you’ll need to troubleshoot and patch things up yourself.
 
----
+## Special Notes on Stowing
+Most modules are best installed with `--no-folding`, hence the `stowit.sh` default.  
+However, `nvim` changes structure often, so folding it may work better. This must be decided on a module-by-module basis.
 
 ## Installation
+
+### Using the Wrapper Script
+
+`stowit.sh` is a helper script that wraps `stow`. It uses `--no-folding` by default.
+
+```sh
+./stowit.sh */
+```
+
+Or just a few modules:
+
+```sh
+./stowit.sh bash sway
+```
 
 ### Using GNU Stow
 
@@ -55,66 +66,6 @@ stow -D bash -t ~
 stow --no-folding zsh -t ~
 ```
 
-### Using the Wrapper Script
-
-`stowit.sh` wraps around GNU Stow for convenience. It uses `--no-folding` by default.
-
-```sh
-./stowit.sh */
-```
-
-Or just a few modules:
-
-```sh
-./stowit.sh bash sway
-```
-
----
-
-## Modules and Notes
-
-### Wallpaper switching
-The script I use for switching my wallpapers with rofi, `choose-wallpaper` uses a little program I wrote called [imgcache](https://github.com/gabfelix/imgcache). In short, it saves your images in a cache directory, hiding all the required complexity such as picking the directories, building and running the thumbnailing command, and others from your scripts. You need to build it in release mode and put it somewhere in your `$PATH` for it to work:
-
-```sh
-git clone https://github.com/gabfelix/imgcache.git
-cd imgcache
-cargo build --release
-mv target/release/imgcache ~/.local/bin # Or any other directory in your $PATH
-```
-
-### Neovim (`nvim` vs `nvim-nightly`)
-- `nvim/`: legacy config (Kickstart-based, using the [lazy.nvim](https://github.com/folke/lazy.nvim) package manager)  
-- `nvim-nightly/`: new config using Neovim’s native `vim.pack` package manager (similar to [mini.deps](https://github.com/nvim-mini/mini.deps))
-
-The new setup aims to:
-1. Work on both Linux and Windows  
-2. Minimize dependencies (external features should be optional where possible)  
-3. Keep most config in a single `init.lua`, splitting only where logical (e.g., `ftplugin`)
-
-Because I’m still transitioning, both configs coexist for now.
-
----
-
-### Shells
-
-#### Bash
-Other shells may rely on it for environment setup.
-
-#### Zsh
-Requires `~/.cache/zsh/history` (a file, not a directory) to exist — otherwise it’ll throw a harmless but annoying error.  
-I don’t actively use Zsh anymore, but I keep it here for reference.
-
-#### Fish
-I also don't use Fish anymore.
-
-Fish isn’t POSIX-compliant, so I don’t set it as the default login shell — instead, my terminal (Alacritty or Kitty) launches it.  
-Because Bash runs first at login, auto-start logic (like Hyprland on TTY1) still lives in `.bash_profile`.
-
-Reference: [Don’t change your default login shell](https://tim.siosm.fr/blog/2023/12/22/dont-change-defaut-login-shell/)
-
----
-
 ### lf (File Manager)
 To enable video previews, install:
 - `jq`
@@ -124,26 +75,12 @@ The previewer script `vidthumb` uses those tools to generate thumbnails and a JS
 
 For easier previews without extra configuration, you may want to opt for [yazi](https://github.com/sxyazi/yazi) and the [kitty terminal](https://github.com/kovidgoyal/kitty) for terminal file management. Just install the dependencies and you're set.
 
----
-
-### Vim
-If you use the `vim` module:
-1. Install [vim-plug](https://github.com/junegunn/vim-plug?tab=readme-ov-file#vim)
-2. Open Vim and run:
-   ```
-   :PlugInstall
-   ```
-
----
-
 ### MPD
 Create these directories:
 ```sh
 mkdir -p ~/mus/playlists
 ```
-They’re required for MPD + ncmpcpp to work properly.
-
----
+They’re required for MPD + ncmpcpp to work without complaining about missing directories.
 
 ## System Tweaks
 
@@ -171,37 +108,20 @@ gsettings set org.gnome.desktop.interface font-name 'Inter 10'
 ### Ignoring newsboat urls for this repo
 I like having the `urls` file in the repo to make it more complete. Newsboat can then open without any errors, but I don't want my RSS feeds all over GitHub, so I do the following to ignore my local changes to urls AFTER stowing:
 
-1. Add to `.git/info/exclude` to ignore future changes.
-2. If there are local changes to ignore, run: `git update-index --assume-unchanged newsboat/.config/newsboat/urls`
-
+```sh
+echo './newsboat/.config/newsboat/urls' >> .git/info/exclude
+git update-index --assume-unchanged newsboat/.config/newsboat/urls`
+```
 This will ignore all current and future changes to the file, while still keeping it checked into the repo, unchanged.
 
----
-
 ## Packages
-
-Removed. See the `pkgs.sh` script for a package list.
-
----
-
-## Special Notes on Stowing
-
-Most modules are best installed with `--no-folding`, hence the `stowit.sh` default.  
-However, `nvim` changes structure often, so folding it may work better.  
-
-The Neovim config includes a helper script `restow.lua` that:
-- Cleans broken symlinks
-- Redeploys updated files when the repo changes *(Not bidirectional — edits in `~/.config/nvim` won’t sync back automatically.)*
-
-on every startup.
-
----
+Removed. See the `pkgs.sh` script for an Arch package list.
 
 ## Credits
 
 Huge thanks to these projects for inspiration and code snippets:
 
-- [Luke Smith’s voidrice](https://github.com/LukeSmithxyz/voidrice) — Learned most of this stuff from reading Luke's dotfiles and scripts, many files here are just copied from his.  
+- [Luke Smith’s voidrice](https://github.com/LukeSmithxyz/voidrice) — Luke's stuff is what got me into tiling window managers and terminal apps. Learned most of this stuff from reading his dotfiles and scripts, many files here are just copies of his.  
 - [ThePrimeagen](https://github.com/ThePrimeagen/.dotfiles) — tmux utilities like the [sessionizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer).  
 - [Sylvan Franklin](https://github.com/SylvanFranklin/.config) — ideas for Telescope and Neovim structure.  
-- [Kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) — the base for my second Neovim config.  
+- [Kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) — the initial base for the long line of configs and rewrites I use to this day.
