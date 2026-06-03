@@ -18,6 +18,8 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.hlsearch = true
 
+vim.cmd.colorscheme 'retrobox'
+
 -- F7 to edit main config
 vim.keymap.set('n', '<F7>', function()
 	local config_dir = vim.fn.stdpath("config")
