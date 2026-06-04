@@ -59,4 +59,5 @@ sudo pacman -S --needed hyprland \
 	blueman \
 	archlinux-contrib \
 	man-db \
-	man-pages
+	man-pages \
+	hypridle
