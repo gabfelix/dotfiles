@@ -23,6 +23,22 @@ hl.window_rule({
     tile  = true,
 })
 
+-- Dedicated, gap-less workspace for Godot.
+hl.workspace_rule({
+  workspace  = "name:godot",
+  persistent = true,
+  gaps_in    = 0,
+  gaps_out   = 0,
+})
+
+-- Send every Godot window (project manager, editor, dialogs) to its workspace
+-- instead of opening on whatever workspace is currently focused.
+hl.window_rule({
+  name      = "Godot Workspace",
+  workspace = "name:godot",
+  match     = { class = "^Godot$" },
+})
+
 hl.window_rule({
   name = "Godot Float Internal Windows",
   float = true,
