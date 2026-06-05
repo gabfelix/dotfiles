@@ -1,0 +1,40 @@
+[plugin]
+prepend_preloaders = [
+	{ url = "*.cb[7rz]", run = "comicthumb" },
+]
+prepend_previewers = [
+	{ url = "*.cb[7rz]", run = "comicthumb" },
+]
+
+# Drive the same apps as ~/.config/mimeapps.list directly, instead of
+# relying on $EDITOR / xdg-open. Keys here override yazi's defaults.
+[opener]
+edit = [
+	{ run = 'nvim "$@"', block = true, desc = "nvim", for = "unix" },
+]
+image = [
+	{ run = 'imv "$@"', orphan = true, desc = "imv", for = "unix" },
+]
+play = [
+	{ run = 'mpv --player-operation-mode=pseudo-gui -- "$@"', orphan = true, desc = "mpv", for = "unix" },
+]
+browser = [
+	{ run = 'brave-origin "$@"', orphan = true, desc = "brave", for = "unix" },
+]
+document = [
+	{ run = 'zathura "$@"', orphan = true, desc = "zathura", for = "unix" },
+]
+
+[open]
+# Checked before yazi's defaults; the default `*` rule (xdg-open) stays as
+# a fallback and still resolves through mimeapps.list.
+prepend_rules = [
+	# Comic books matched by name so they win over the default zip "extract"
+	# rule (and to dodge unreliable archive mime detection).
+	{ url = "*.cb[7rtz]", use = "document" },
+	{ mime = "application/{pdf,epub+zip,oxps,vnd.ms-xpsdocument}", use = "document" },
+	{ mime = "text/html", use = "browser" },
+	{ mime = "image/*", use = "image" },
+	{ mime = "{audio,video}/*", use = "play" },
+	{ mime = "text/*", use = "edit" },
+]

@@ -60,4 +60,7 @@ sudo pacman -S --needed hyprland \
 	archlinux-contrib \
 	man-db \
 	man-pages \
+	7zip \
+	trash-cli \
+	yazi \
 	hypridle

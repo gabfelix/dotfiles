@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Zathura
+GenericName=Document Viewer
+Comment=View documents, PDFs and comic books
+Exec=zathura %U
+Terminal=false
+Type=Application
+Icon=org.pwmt.zathura
+Categories=Office;Viewer;
+MimeType=application/pdf;application/epub+zip;application/oxps;application/vnd.ms-xpsdocument;application/x-cbr;application/x-cbz;application/x-cb7;application/x-cbt;application/vnd.comicbook+zip;application/vnd.comicbook-rar;

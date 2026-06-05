@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=mpv Media Player
+GenericName=Multimedia Player
+Comment=Play movies and audio
+Exec=mpv --player-operation-mode=pseudo-gui -- %U
+Terminal=false
+Type=Application
+Icon=mpv
+Categories=AudioVideo;Audio;Video;Player;
+MimeType=video/mp4;video/x-matroska;video/webm;video/mpeg;video/ogg;video/quicktime;video/x-msvideo;video/x-flv;video/3gpp;video/3gpp2;audio/mpeg;audio/flac;audio/ogg;audio/x-wav;audio/x-m4a;audio/opus;audio/aac;

@@ -52,8 +52,10 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- screenshots
-hl.bind("print",        hl.dsp.exec_cmd("grim $(xdg-user-dir PICTURES)/shots/$(date +'%s_grim.png')"))
-hl.bind("CTRL + print", hl.dsp.exec_cmd('grim -g "$(slurp -o)" $(xdg-user-dir PICTURES)/shots/$(date +\'%s_grim.png\')'))
+hl.bind("print", hl.dsp.exec_cmd("grim $(xdg-user-dir PICTURES)/shots/$(date +'%s_grim.png') && notify-send 'Screenshot' 'Full screenshot saved' -u low -i camera-photo"))
+hl.bind("CTRL + print", hl.dsp.exec_cmd("grim -g \"$(slurp -o)\" - | tee $(xdg-user-dir PICTURES)/shots/$(date +'%s_grim.png') | wl-copy && notify-send 'Screenshot' 'Region copied to clipboard' -u low -i camera-photo"))
+
+
 
 -- volume and brightness
 hl.bind("XF86AudioRaiseVolume",  hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })

@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Neovim
+GenericName=Text Editor
+Comment=Edit text files
+# Wrap in a terminal explicitly: Hyprland has no DE terminal integration,
+# so a bare Terminal=true entry never launches from xdg-open/mimeapps.
+Exec=kitty -e nvim %F
+Terminal=false
+Type=Application
+Icon=nvim
+Categories=Utility;TextEditor;
+MimeType=text/plain;text/english;text/x-makefile;text/x-csrc;text/x-chdr;text/x-c++src;text/x-c++hdr;text/markdown;application/x-shellscript;application/json;
+NoDisplay=false

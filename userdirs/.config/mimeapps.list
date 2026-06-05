@@ -7,6 +7,17 @@ application/xhtml+xml=brave-origin.desktop
 
 text/plain=nvim.desktop
 
+application/pdf=zathura.desktop
+application/epub+zip=zathura.desktop
+application/oxps=zathura.desktop
+application/vnd.ms-xpsdocument=zathura.desktop
+application/x-cbr=zathura.desktop
+application/x-cbz=zathura.desktop
+application/x-cb7=zathura.desktop
+application/x-cbt=zathura.desktop
+application/vnd.comicbook+zip=zathura.desktop
+application/vnd.comicbook-rar=zathura.desktop
+
 image/jpeg=imv.desktop
 image/png=imv.desktop
 image/gif=imv.desktop
@@ -26,3 +37,11 @@ video/x-msvideo=mpv.desktop
 video/x-flv=mpv.desktop
 video/3gpp=mpv.desktop
 video/3gpp2=mpv.desktop
+
+audio/mpeg=mpv.desktop
+audio/flac=mpv.desktop
+audio/ogg=mpv.desktop
+audio/x-wav=mpv.desktop
+audio/x-m4a=mpv.desktop
+audio/opus=mpv.desktop
+audio/aac=mpv.desktop
